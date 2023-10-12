@@ -41,8 +41,9 @@ public class Daggers: Weapon
         _rightDagger.transform.localPosition = Vector3.zero;
         _leftDagger.transform.localRotation = Quaternion.Euler(Vector3.zero);
         _rightDagger.transform.localRotation = Quaternion.Euler(Vector3.zero);
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.Euler(Vector3.zero);
+        _leftDagger.transform.localScale = new Vector3(2857.143f,2857.143f,2857.143f);
+        _rightDagger.transform.localScale = new Vector3(2504.421f,2857.142f, 3398.572f);
+        transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.Euler(Vector3.zero));
         /*transform.localScale = Vector3.one;*/
 
 
