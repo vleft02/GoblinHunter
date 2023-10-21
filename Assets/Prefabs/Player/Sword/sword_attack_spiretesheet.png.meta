@@ -1,0 +1,743 @@
+fileFormatVersion: 2
+guid: 6f08c18f6c963b545bd57f8a542ab3f5
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3072
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1c7e25768ea346438d9c5cd8c7cefac
+      internalID: -2103658078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_1
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 3072
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46f9228738de3444490b0b45ed0a07f1
+      internalID: -2124171795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_2
+      rect:
+        serializedVersion: 2
+        x: 1638
+        y: 3072
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 142ed75060c8bf14a8d326c7e334147c
+      internalID: -1284426945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_3
+      rect:
+        serializedVersion: 2
+        x: 2457
+        y: 3072
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f64057834130ad54ebec1dcb2dddc47d
+      internalID: -122210269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2560
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c81dcd6314c21845b47c5d4f895a803
+      internalID: -1086067373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_5
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 2560
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dae003e50d4e421449ff469f64d3468b
+      internalID: 1072833883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_6
+      rect:
+        serializedVersion: 2
+        x: 1638
+        y: 2560
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9851d2fe314b9f749acc8765c71b5c75
+      internalID: -840569561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_7
+      rect:
+        serializedVersion: 2
+        x: 2457
+        y: 2560
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6696b704e2076b641a7a3f3c7443a422
+      internalID: 1396035050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2048
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 636e6fded83f6b044983096e00dab9ae
+      internalID: 929682727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_9
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 2048
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be35ec195585d8941a030152424d1d2d
+      internalID: -1190175597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_10
+      rect:
+        serializedVersion: 2
+        x: 1638
+        y: 2048
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc1605961a03f544082d56285a4d0b15
+      internalID: -511133920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_11
+      rect:
+        serializedVersion: 2
+        x: 2457
+        y: 2048
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8df6540097e36e40b631bc5e6dcab33
+      internalID: 1216672949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f94581f839b41f47a7aa1602bc1c263
+      internalID: -181747172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_13
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 1536
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63d03767ab4785a4a86d48c3ef1252e7
+      internalID: -482582696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_14
+      rect:
+        serializedVersion: 2
+        x: 1638
+        y: 1536
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baad082f908d4f345afe0334b69a7d02
+      internalID: -513162460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_15
+      rect:
+        serializedVersion: 2
+        x: 2457
+        y: 1536
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d96ca1ff8945e7142bc906d5e538793b
+      internalID: -830762227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3c61562da9bf564c95a7a21189a7022
+      internalID: -626046334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_17
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 1024
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e14c8d9825103a4d97a128decdb97f9
+      internalID: 1730840581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_18
+      rect:
+        serializedVersion: 2
+        x: 1638
+        y: 1024
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b911fb4a12f3db644b2f9ec349dacdfa
+      internalID: 770676030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_19
+      rect:
+        serializedVersion: 2
+        x: 2457
+        y: 1024
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9a001c606b650044bd067fca66b1c0b
+      internalID: -1528248606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 312bf4c7a0a676a4f943b08009edae84
+      internalID: -987812834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_21
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 512
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f22c4f153918f34184996bf0986cd79
+      internalID: 1482834010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_22
+      rect:
+        serializedVersion: 2
+        x: 1638
+        y: 512
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc065edea9d0ff2458aa473f2eaa7d01
+      internalID: 1290968230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_23
+      rect:
+        serializedVersion: 2
+        x: 2457
+        y: 512
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7666506de7bbc104aa7c6e218dec7db9
+      internalID: 718980215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae30434312d74a24ab4e864356111412
+      internalID: 360275420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_25
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 0
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df89287df96a0474680cb72228146281
+      internalID: 1624555114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_26
+      rect:
+        serializedVersion: 2
+        x: 1638
+        y: 0
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db2dffcce160758408681dd2c16074a8
+      internalID: -1358695421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_attack_spiretesheet_27
+      rect:
+        serializedVersion: 2
+        x: 2457
+        y: 0
+        width: 819
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c1d1405e298be441a84438b7a9ada5e
+      internalID: -675770772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 4e18c52a5e1f9294281e0bc0aaf8eb4d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      sword_attack_spiretesheet_0: -2103658078
+      sword_attack_spiretesheet_1: -2124171795
+      sword_attack_spiretesheet_10: -511133920
+      sword_attack_spiretesheet_11: 1216672949
+      sword_attack_spiretesheet_12: -181747172
+      sword_attack_spiretesheet_13: -482582696
+      sword_attack_spiretesheet_14: -513162460
+      sword_attack_spiretesheet_15: -830762227
+      sword_attack_spiretesheet_16: -626046334
+      sword_attack_spiretesheet_17: 1730840581
+      sword_attack_spiretesheet_18: 770676030
+      sword_attack_spiretesheet_19: -1528248606
+      sword_attack_spiretesheet_2: -1284426945
+      sword_attack_spiretesheet_20: -987812834
+      sword_attack_spiretesheet_21: 1482834010
+      sword_attack_spiretesheet_22: 1290968230
+      sword_attack_spiretesheet_23: 718980215
+      sword_attack_spiretesheet_24: 360275420
+      sword_attack_spiretesheet_25: 1624555114
+      sword_attack_spiretesheet_26: -1358695421
+      sword_attack_spiretesheet_27: -675770772
+      sword_attack_spiretesheet_3: -122210269
+      sword_attack_spiretesheet_4: -1086067373
+      sword_attack_spiretesheet_5: 1072833883
+      sword_attack_spiretesheet_6: -840569561
+      sword_attack_spiretesheet_7: 1396035050
+      sword_attack_spiretesheet_8: 929682727
+      sword_attack_spiretesheet_9: -1190175597
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

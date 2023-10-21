@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Interactable 
+public abstract class Interactable : MonoBehaviour
 {
     /*
     public void BaseInteract()
@@ -10,8 +10,8 @@ public interface Interactable
         Interact();
     }
     */
-    public void Interact();
+    public abstract void Interact();
 
-    public string GetPromptMessage();
+    public abstract string GetPromptMessage();
     
 }

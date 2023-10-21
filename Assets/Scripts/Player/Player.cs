@@ -6,16 +6,9 @@ using UnityEngine.VFX;
 using UnityEngine.Windows;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
-public enum PlayerWeapon
-{
-    HANDS, SWORD, AXE, SHIELD, DAGGERS
-}
-
-[RequireComponent(typeof(CharacterController), typeof(PlayerMove), typeof(PlayerRotate))]
+[RequireComponent(typeof(CharacterController), typeof(PlayerController), typeof(PlayerRotate))]
 public class Player : MonoBehaviour
 {
-
-    public Weapon _weapon;
     public bool _instantiateWeapon = false;
     public PlayerWeapon _currentWeapon;
     public bool _changeWeapon = false;
@@ -23,13 +16,12 @@ public class Player : MonoBehaviour
     public PlayerInput _playerInput;
     public PlayerInput.OnFootActions _onFoot;
 
-    private PlayerMove _playerMove;
+    private PlayerController _playerController;
+    private PlayerMovementManager _moveManager;
     private PlayerRotate _rotate;
     private PlayerRotate _rotateSmooth;
     private PlayerRotate _currentRotate;
-
-    [SerializeField] public GameObject _weaponHolder;
-
+    
 
     // Start is called before the first frame update
     void Awake()
@@ -40,7 +32,7 @@ public class Player : MonoBehaviour
 
         _playerInput = new PlayerInput();
         _onFoot = _playerInput.OnFoot;
-        _playerMove = GetComponent<PlayerMove>();
+        _playerController = GetComponent<PlayerController>();
         _rotate = GetComponents<PlayerRotate>()[0];
         _rotateSmooth = GetComponents<PlayerRotate>()[1];
 #if UNITY_EDITOR
@@ -53,15 +45,26 @@ public class Player : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        WeaponManager.initWeapons();
+        WeaponManager.ChangeWeapon(new Hands());
+    }
+
     private void Update()
     {
         //_rotate.Rotate(_onFoot.Look.ReadValue<Vector2>());
-        _playerMove.Move(_onFoot.Movement.ReadValue<Vector2>());
+        _playerController.Move(_onFoot.Movement.ReadValue<Vector2>());
 
-        if (_onFoot.Punch.triggered)
+
+        if (PlayerMovementManager._isGrounded)
         {
-            _playerMove.Attack();
+            if (_onFoot.Attack.triggered)
+            {
+                _playerController.Attack();
+            }
         }
+        
 
     }
 
@@ -82,28 +85,13 @@ public class Player : MonoBehaviour
 
     private void AssignInputs()
     {
-        _onFoot.Jump.performed += ctx => _playerMove.Jump();
+        _onFoot.Jump.performed += ctx => _playerController.Jump();
 
-        _onFoot.Run.performed += ctx => _playerMove._isRunning = true;
-        _onFoot.Run.canceled += ctx => _playerMove._isRunning = false;
+        _onFoot.Run.performed += ctx => PlayerMovementManager._isRunning = true;
+        _onFoot.Run.canceled += ctx => PlayerMovementManager._isRunning = false;
 
 
 
-    }
-    public void WeaponPickUp(Weapon weapon)
-    {
-        _currentWeapon = weapon.GetWeapon();
-        _weapon = weapon;
-/*      _weapon.transform.SetParent(_weaponHolder.transform);*/
-        
-        //Each Weapon initializes transforms
-        //gets equipped in to the appropriate weapon Holder
-        //Unequips Previous Weapon
-        _weapon.InitializeWeapon();
-       
-/*      _weapon.transform.localPosition = Vector3.zero;
-        _weapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
-        _weapon.transform.localScale = Vector3.one;*/
     }
 
 }

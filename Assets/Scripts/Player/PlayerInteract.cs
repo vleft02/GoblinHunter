@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class PlayerInteract : MonoBehaviour
 {
@@ -9,13 +10,10 @@ public class PlayerInteract : MonoBehaviour
     private Transform _cameraHolder;
 
     [SerializeField]
-    private float rayMaxDistance = 5f;
+    private float rayMaxDistance = 2f;
 
     [SerializeField]
     private LayerMask mask;
-
-    [SerializeField] public GameObject _weaponToSpawn;
-    [SerializeField] public GameObject _weaponHolder;
 
     private PlayerUI _playerUI;
     private Player _player;
@@ -33,28 +31,48 @@ public class PlayerInteract : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
 
-
-
-        if (Physics.Raycast(ray, out hitInfo, rayMaxDistance, mask) && hitInfo.collider.GetComponent<Interactable>() != null)
+        if (Physics.Raycast(ray, out hitInfo, rayMaxDistance, mask))
         {
-            Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.red);
-            Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
 
-            // Player UI Update
-            _playerUI.crosshairInteraction();
-            _playerUI.updateText(interactable.GetPromptMessage());
-
-            if (_player._onFoot.Interact.triggered)
+            if (hitInfo.collider.GetComponent<Interactable>() != null)
             {
-                /*                if (interactable.GetComponent<Weapon>() != null)
-                                {
-                                    _player._changeWeapon = true;
-                                    //! allagi isos
-                                    _player._currentWeapon = PlayerWeapon.SWORD;
-                                }
-                */
-                interactable.Interact();
+            
+                Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.red);
+                Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
+
+                // Player UI Update
+                _playerUI.crosshairInteraction();
+                _playerUI.updateText(interactable.GetPromptMessage());
+
+                if (_player._onFoot.Interact.triggered)
+                {
+                    /*                if (interactable.GetComponent<Weapon>() != null)
+                                    {
+                                        _player._changeWeapon = true;
+                                        //! allagi isos
+                                        _player._currentWeapon = PlayerWeapon.SWORD;
+                                    }
+                    */
+                    interactable.Interact();
+                }
             }
+
+            if (hitInfo.collider.GetComponent<Hittable>() != null)
+            {
+                Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.red);
+
+                Hittable hittable = hitInfo.collider.GetComponent<Hittable>();
+
+                // Player UI Update
+                _playerUI.crosshairInteraction();
+
+                if (_player._onFoot.Attack.triggered)
+                {
+                    hittable.TakeDamage();
+                }
+
+            }
+
          
         }
         else
@@ -62,6 +80,11 @@ public class PlayerInteract : MonoBehaviour
             _playerUI.crosshairNoInteraction();
             Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.green);
         }
+
+
+        // Hittable
+        
+
     }
         
     void Update()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Door : MonoBehaviour, Interactable
+public class Door : Interactable
 {
     private bool _doorOpen = false;
     private bool _interact = false;
@@ -89,13 +89,13 @@ public class Door : MonoBehaviour, Interactable
 
     }
 
-    void Interactable.Interact()
+    public override void Interact()
     {
         _interact = true;
         Debug.Log("Interact with " + gameObject.name);
     }
 
-    public string GetPromptMessage()
+    public override string GetPromptMessage()
     {
         return "Press E to open the door";
     }
