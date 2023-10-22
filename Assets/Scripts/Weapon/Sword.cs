@@ -6,6 +6,8 @@ public class Sword : Weapon
 {
     public Sword()
     {
+        weaponDamage = 25f;
+        staminaConsumption = 10f;
         IDLE = new AnimationClip(Animator.StringToHash("IdleSword"), 0f);
         EQUIP = new AnimationClip(Animator.StringToHash("EquipSword"), 0.43f);
         UNEQUIP = new AnimationClip(Animator.StringToHash("UnequipSword"), 0.43f);

@@ -56,6 +56,8 @@ public class Player : MonoBehaviour
         //_rotate.Rotate(_onFoot.Look.ReadValue<Vector2>());
         _playerController.Move(_onFoot.Movement.ReadValue<Vector2>());
 
+        //Stamina is replenished
+        _playerController.ReplenishStamina();
 
         if (PlayerMovementManager._isGrounded)
         {

@@ -4,13 +4,20 @@ using UnityEngine;
 
 
 //Pithano Onoma PlayerController
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, Hittable
 {
     private CharacterController _player;
     public Vector3 _moveDir;
     private Vector3 _velocity;
 
-    //public PlayerAnimator _playerAnimator;
+    [SerializeField] public float health { get; private set; }
+
+    //stamina
+    [SerializeField] private float maxStamina;
+    private float regenRate = 5;
+    /*    private float lastRegenTime =0;*/
+    [SerializeField] public float stamina { get; private set; }
+    private float defense=1.0f;
 
     [Header("Controller")]
     [SerializeField] private float _speed = 5f;
@@ -63,7 +70,11 @@ public class PlayerController : MonoBehaviour
 
     public void Attack()
     {
-        PlayerMovementManager._isAttacking = true;
+        if (stamina>WeaponManager._currentWeapon.GetStaminaConsumption())
+        {
+            PlayerMovementManager._isAttacking = true;
+            stamina -= WeaponManager._currentWeapon.GetStaminaConsumption();
+        }
 
     }
 
@@ -76,4 +87,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void TakeDamage(float amount)
+    {
+        if (health > amount)
+        {
+            Debug.Log("Health Before: " + health);
+            health -= amount*defense;
+        }
+        else
+        {
+            health = 0;
+            //death
+        }
+        Debug.Log("Health After: " + health);
+    }
+
+    
+    public void ReplenishStamina() 
+    {
+        if (stamina<maxStamina) 
+        {
+            //frame rate independent stamina regen
+            stamina = Mathf.Clamp(stamina + Time.deltaTime*regenRate , 0, maxStamina);
+        }
+    }
 }

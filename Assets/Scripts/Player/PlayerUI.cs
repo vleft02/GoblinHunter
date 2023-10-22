@@ -8,15 +8,29 @@ public class PlayerUI : MonoBehaviour
 {
     [SerializeField] private Image _crosshair;
     [SerializeField] private TextMeshProUGUI _notifText;
+    [SerializeField] private Slider healthBar;
+    [SerializeField] private Slider staminaBar;
 
     private void Awake()
     {
-        
+
+    }
+
+    private void Start()
+    {
+
+        healthBar.value = 1;
+        staminaBar.value = 1;
+    }
+
+    void UpdateHealth() 
+    {
     }
 
     void Update()
     {
-
+        /*healthBar.value = */
+        staminaBar.value = (GetComponent<PlayerController>().stamina) * 0.1f;
     }
 
     public void updateText(string text)

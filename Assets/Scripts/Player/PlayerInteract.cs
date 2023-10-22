@@ -68,7 +68,7 @@ public class PlayerInteract : MonoBehaviour
 
                 if (_player._onFoot.Attack.triggered)
                 {
-                    hittable.TakeDamage();
+                    hittable.TakeDamage(WeaponManager._currentWeapon.GetWeaponDamage());
                 }
 
             }

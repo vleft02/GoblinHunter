@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface Hittable
 {
-    void TakeDamage();
+    void TakeDamage(float amount);
 
 
 }

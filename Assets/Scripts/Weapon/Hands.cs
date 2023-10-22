@@ -6,6 +6,8 @@ public class Hands : Weapon
 {
     public Hands()
     {
+        weaponDamage = 5f;
+        staminaConsumption = 5f;
         IDLE = new AnimationClip(Animator.StringToHash("Idle"), 0f);
         //EQUIP = new AnimationClip(Animator.StringToHash("Idle"), 0.6f);
         UNEQUIP = new AnimationClip(Animator.StringToHash("Unequip"), 0.3f);

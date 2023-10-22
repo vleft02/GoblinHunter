@@ -11,12 +11,27 @@ public abstract class Weapon
     public AnimationClip EQUIP { get; protected set; }
     public AnimationClip UNEQUIP { get; protected set; }
     public AnimationClip ATTACK { get; protected set; }
+    
+    protected float weaponDamage;
 
+    protected float staminaConsumption;
     protected Weapon()
     {
 
     }
+    public float GetWeaponDamage() 
+    {
+        return weaponDamage;
+    }
+    public void SetWeaponDamage(float amount)
+    {
+        weaponDamage = amount;
+    }
 
+    public float GetStaminaConsumption()
+    {
+        return staminaConsumption;
+    }
     public abstract PlayerWeapon getWeapon();
     
 
