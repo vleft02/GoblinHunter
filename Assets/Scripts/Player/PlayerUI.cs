@@ -19,8 +19,8 @@ public class PlayerUI : MonoBehaviour
     private void Start()
     {
 
-        healthBar.value = 1;
-        staminaBar.value = 1;
+        healthBar.value = 100;
+        staminaBar.value = 50;
     }
 
     void UpdateHealth() 
@@ -29,8 +29,8 @@ public class PlayerUI : MonoBehaviour
 
     void Update()
     {
-        /*healthBar.value = */
-        staminaBar.value = (GetComponent<PlayerController>().stamina) * 0.1f;
+        healthBar.value = GetComponent<PlayerController>().health;
+        staminaBar.value = GetComponent<PlayerController>().stamina;
     }
 
     public void updateText(string text)

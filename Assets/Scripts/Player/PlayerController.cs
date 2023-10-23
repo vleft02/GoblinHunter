@@ -10,13 +10,12 @@ public class PlayerController : MonoBehaviour, Hittable
     public Vector3 _moveDir;
     private Vector3 _velocity;
 
-    [SerializeField] public float health { get; private set; }
-
+    [SerializeField] public float health;
     //stamina
     [SerializeField] private float maxStamina;
     private float regenRate = 5;
     /*    private float lastRegenTime =0;*/
-    [SerializeField] public float stamina { get; private set; }
+    [SerializeField] public  float stamina;
     private float defense=1.0f;
 
     [Header("Controller")]
