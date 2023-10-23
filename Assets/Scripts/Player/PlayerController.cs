@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 //Pithano Onoma PlayerController
@@ -24,10 +25,13 @@ public class PlayerController : MonoBehaviour, Hittable
     public float _jumpHeight = 2f;
     public float _gravity = -9.8f;
 
+    public PlayerInput _playerInput;
+    public PlayerInput.OnFootActions _onFoot;
+
+
 
     public void Awake()
     {
-
         _player = GetComponent<CharacterController>();
     }
     
@@ -37,6 +41,23 @@ public class PlayerController : MonoBehaviour, Hittable
         _player = GetComponent<CharacterController>();
         PlayerMovementManager._isGrounded = true;
         PlayerMovementManager._isRunning = false;
+    }
+
+    void Update()
+    {
+ /*       _playerController.Move(_onFoot.Movement.ReadValue<Vector2>());
+        _playerController.ReplenishStamina();
+        if (PlayerMovementManager._isGrounded)
+        {
+            if (_onFoot.Attack.triggered)
+            {
+                if (PlayerMovementManager.CanAttack())
+                {
+                   PlayerMovementManager.AttackPerformed(WeaponManager._currentWeapon.ATTACK.Duration);
+                   _playerController.Attack();
+                }
+            }
+        }*/
     }
 
     public virtual void Move(Vector2 input)
@@ -110,4 +131,6 @@ public class PlayerController : MonoBehaviour, Hittable
             stamina = Mathf.Clamp(stamina + Time.deltaTime*regenRate , 0, maxStamina);
         }
     }
+
+
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System;
 using UnityEngine;
 using UnityEngine.VFX;
 using UnityEngine.Windows;
@@ -17,10 +18,13 @@ public class Player : MonoBehaviour
     public PlayerInput.OnFootActions _onFoot;
 
     private PlayerController _playerController;
-    private PlayerMovementManager _moveManager;
+/*    private PlayerMovementManager _moveManager;*/
     private PlayerRotate _rotate;
     private PlayerRotate _rotateSmooth;
     private PlayerRotate _currentRotate;
+
+    public event Action attackEvent;
+    public event Action deathEvent;
     
 
     // Start is called before the first frame update
@@ -52,7 +56,7 @@ public class Player : MonoBehaviour
     }
 
     private void Update()
-    {
+    {/*
         //_rotate.Rotate(_onFoot.Look.ReadValue<Vector2>());
         _playerController.Move(_onFoot.Movement.ReadValue<Vector2>());
 
@@ -66,7 +70,23 @@ public class Player : MonoBehaviour
                 _playerController.Attack();
             }
         }
+        */
+
+        _playerController.Move(_onFoot.Movement.ReadValue<Vector2>());
         
+        _playerController.ReplenishStamina();
+        
+        if (PlayerMovementManager._isGrounded)
+        {
+            if (_onFoot.Attack.triggered)
+            {
+                if (PlayerMovementManager.CanAttack())
+                {
+                    PlayerMovementManager.AttackPerformed(WeaponManager._currentWeapon.ATTACK.Duration);
+                    _playerController.Attack();
+                }
+            }
+        }
 
     }
 
