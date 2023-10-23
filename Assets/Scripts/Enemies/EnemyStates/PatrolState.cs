@@ -23,33 +23,8 @@ public class PatrolState : BaseState<EnemyStateMachine.EnemyState>
     
     public override void UpdateState()
     {
-        //PatrolCycle();
+        PatrolCycle();
 
-        //_enemy.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-
-        if (_enemy.transform.eulerAngles.y < 300 && _enemy.transform.eulerAngles.y > 240)
-        {
-            //TODO
-            AnimationAspectManager._currentAspectKey = Aspects.LEFT;
-        }
-        
-        if (_enemy.transform.eulerAngles.y > 60 && _enemy.transform.eulerAngles.y < 130)
-        {
-            //TODO
-            AnimationAspectManager._currentAspectKey = Aspects.RIGHT;
-        }
-
-        if (_enemy.transform.eulerAngles.y < 60 || _enemy.transform.eulerAngles.y > 300)
-        {
-            //TODO
-            AnimationAspectManager._currentAspectKey = Aspects.FRONT;
-        }
-        
-        if (_enemy.transform.eulerAngles.y > 130 && _enemy.transform.eulerAngles.y < 240)
-        {
-            //TODO
-            AnimationAspectManager._currentAspectKey = Aspects.BACK;
-        }
     }
 
     public override void ExitState()
@@ -65,16 +40,6 @@ public class PatrolState : BaseState<EnemyStateMachine.EnemyState>
             else _currentWaypointIndex = 0;
 
             Vector3 nextDestination = _enemy.path.waypoints[_currentWaypointIndex].position;
-
-            if (nextDestination.x < _enemy.transform.position.x)
-            {
-                AnimationAspectManager._currentAspectKey = Aspects.RIGHT;
-            }
-            
-            if (nextDestination.x > _enemy.transform.position.x)
-            {
-                AnimationAspectManager._currentAspectKey = Aspects.LEFT;
-            }
 
             _enemy.Agent.SetDestination(nextDestination);
         }

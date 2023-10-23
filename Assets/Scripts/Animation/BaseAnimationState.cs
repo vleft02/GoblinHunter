@@ -15,6 +15,8 @@ public abstract class BaseAnimationState<EState> where EState : Enum
     public float Duration { get; set; }
     public float LockedStateTime { get; set; }
 
+    public AnimationAspectManager AspectManager { get; set; }
+
     public BaseAnimationState(EState key)
     {
         StateKey = key;

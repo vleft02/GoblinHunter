@@ -9,6 +9,8 @@ public abstract class AnimationStateManager<EState> : MonoBehaviour where EState
 
     protected Animator _animator;
 
+    protected AnimationAspectManager AspectManager;
+
     protected BaseAnimationState<EState> CurrentState;
     private bool isTransitionState = false;
 
@@ -60,10 +62,13 @@ public abstract class AnimationStateManager<EState> : MonoBehaviour where EState
             if (nextState.Equals(CurrentState.StateKey) || Time.time < CurrentState.LockedStateTime)
             {
                 CurrentState.UpdateState();
-                if (AnimationAspectManager._changeAspect)
+                if (AspectManager != null)
                 {
-                    AnimationAspectManager._changeAspect = false;
-                    _animator.CrossFadeInFixedTime(CurrentState.Id, 0, 0);
+                    if (AspectManager._changeAspect)
+                    {
+                        AspectManager._changeAspect = false;
+                        _animator.CrossFadeInFixedTime(CurrentState.Id, 0, 0);
+                    }
                 }
             }
             else

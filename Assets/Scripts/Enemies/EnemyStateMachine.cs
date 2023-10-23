@@ -27,8 +27,15 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
     {
         agent = GetComponent<NavMeshAgent>();
 
+        agent.updateRotation = false;
+
         InitStates();
         CurrentState = States[EnemyState.PATROL];
+    }
+
+    private void LateUpdate()
+    {
+        transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
     }
 
 

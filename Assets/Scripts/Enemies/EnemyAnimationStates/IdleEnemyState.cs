@@ -6,11 +6,13 @@ public class IdleEnemyState : BaseAnimationState<EnemyAnimationFSM.EnemyAnimatio
 {
     private Dictionary<Aspects, AnimationClip> idleState = new Dictionary<Aspects, AnimationClip>();
 
-    public IdleEnemyState(EnemyAnimationFSM.EnemyAnimation key = EnemyAnimationFSM.EnemyAnimation.IDLE)
+    public IdleEnemyState(AnimationAspectManager _aspectManager, EnemyAnimationFSM.EnemyAnimation key = EnemyAnimationFSM.EnemyAnimation.IDLE)
         : base(key)
     {
         // TODO
         Id = 0;
+
+        AspectManager = _aspectManager;
 
         idleState[Aspects.FRONT] = new AnimationClip(Animator.StringToHash("Idle"), 0f);
         idleState[Aspects.LEFT] = new AnimationClip(Animator.StringToHash("IdleLeft"), 0f);
@@ -27,10 +29,10 @@ public class IdleEnemyState : BaseAnimationState<EnemyAnimationFSM.EnemyAnimatio
 
     public override void EnterState()
     {
-        if (idleState[AnimationAspectManager._currentAspectKey].State != Id)
+        if (idleState[AspectManager._currentAspectKey].State != Id)
         {
-            Debug.Log("Change Aspect to " + AnimationAspectManager._currentAspectKey);
-            ChangeAnimation(AnimationAspectManager._currentAspectKey);
+            Debug.Log("Change Aspect to " + AspectManager._currentAspectKey);
+            ChangeAnimation(AspectManager._currentAspectKey);
         }
 
 
@@ -51,11 +53,11 @@ public class IdleEnemyState : BaseAnimationState<EnemyAnimationFSM.EnemyAnimatio
 
     public override void UpdateState()
     {
-        if (idleState[AnimationAspectManager._currentAspectKey].State != Id)
+        if (idleState[AspectManager._currentAspectKey].State != Id)
         {
-            Debug.Log("Change Aspect to " + AnimationAspectManager._currentAspectKey);
-            ChangeAnimation(AnimationAspectManager._currentAspectKey);
-            AnimationAspectManager._changeAspect = true;
+            Debug.Log("Change Aspect to " + AspectManager._currentAspectKey);
+            ChangeAnimation(AspectManager._currentAspectKey);
+            AspectManager._changeAspect = true;
         }
 
     }
