@@ -35,7 +35,11 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
 
     private void LateUpdate()
     {
-        transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
+        if (agent.velocity.sqrMagnitude > Mathf.Epsilon)
+        {
+            transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
+        }
+        //transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
     }
 
 

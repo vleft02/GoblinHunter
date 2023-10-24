@@ -39,7 +39,7 @@ public class WalkEnemyState : BaseAnimationState<EnemyAnimationFSM.EnemyAnimatio
     {
         if (walkState[AspectManager._currentAspectKey].State != Id)
         {
-            Debug.Log("Change Aspect to " + AspectManager._currentAspectKey);
+            //Debug.Log("Change Aspect to " + AspectManager._currentAspectKey);
             ChangeAnimation(AspectManager._currentAspectKey);
         }
 
@@ -62,7 +62,7 @@ public class WalkEnemyState : BaseAnimationState<EnemyAnimationFSM.EnemyAnimatio
     {
         if (walkState[AspectManager._currentAspectKey].State != Id)
         {
-            Debug.Log("Change Aspect to " + AspectManager._currentAspectKey);
+            //Debug.Log("Change Aspect to " + AspectManager._currentAspectKey);
             ChangeAnimation(AspectManager._currentAspectKey);
             AspectManager._changeAspect = true;
         }

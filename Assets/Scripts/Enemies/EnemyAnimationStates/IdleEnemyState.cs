@@ -19,6 +19,11 @@ public class IdleEnemyState : BaseAnimationState<EnemyAnimationFSM.EnemyAnimatio
         idleState[Aspects.RIGHT] = new AnimationClip(Animator.StringToHash("IdleRight"), 0f);
         idleState[Aspects.BACK] = new AnimationClip(Animator.StringToHash("IdleBack"), 0f);
 
+        idleState[Aspects.LEFT_FRONT] = new AnimationClip(Animator.StringToHash("IdleLeftFront"), 0f);
+        idleState[Aspects.LEFT_BACK] = new AnimationClip(Animator.StringToHash("IdleLeftBack"), 0f);
+        idleState[Aspects.RIGHT_FRONT] = new AnimationClip(Animator.StringToHash("IdleRightFront"), 0f);
+        idleState[Aspects.RIGHT_BACK] = new AnimationClip(Animator.StringToHash("IdleRightBack"), 0f);
+
     }
 
     private void ChangeAnimation(Aspects aspect)
@@ -31,7 +36,7 @@ public class IdleEnemyState : BaseAnimationState<EnemyAnimationFSM.EnemyAnimatio
     {
         if (idleState[AspectManager._currentAspectKey].State != Id)
         {
-            Debug.Log("Change Aspect to " + AspectManager._currentAspectKey);
+            //Debug.Log("Change Aspect to " + AspectManager._currentAspectKey);
             ChangeAnimation(AspectManager._currentAspectKey);
         }
 
@@ -55,7 +60,7 @@ public class IdleEnemyState : BaseAnimationState<EnemyAnimationFSM.EnemyAnimatio
     {
         if (idleState[AspectManager._currentAspectKey].State != Id)
         {
-            Debug.Log("Change Aspect to " + AspectManager._currentAspectKey);
+            //Debug.Log("Change Aspect to " + AspectManager._currentAspectKey);
             ChangeAnimation(AspectManager._currentAspectKey);
             AspectManager._changeAspect = true;
         }

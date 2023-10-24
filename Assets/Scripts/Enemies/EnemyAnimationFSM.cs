@@ -21,6 +21,6 @@ public class EnemyAnimationFSM : AnimationStateManager<EnemyAnimationFSM.EnemyAn
         AspectManager = GetComponent<AnimationAspectManager>();
 
         InitStates();
-        CurrentState = States[EnemyAnimation.WALK];
+        CurrentState = States[EnemyAnimation.IDLE];
     }
 }

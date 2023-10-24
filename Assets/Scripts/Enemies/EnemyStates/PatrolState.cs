@@ -23,7 +23,7 @@ public class PatrolState : BaseState<EnemyStateMachine.EnemyState>
     
     public override void UpdateState()
     {
-        PatrolCycle();
+        //PatrolCycle();
 
     }
 
