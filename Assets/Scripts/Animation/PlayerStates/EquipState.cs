@@ -41,11 +41,11 @@ public class EquipState : BaseAnimationState<PlayerAnimationFSM.PlayerAnimation>
     {
         // TODO
         
-        if (PlayerMovementManager._isAttacking)
+/*        if (PlayerMovementManager._isAttacking)
         {
             return PlayerAnimationFSM.PlayerAnimation.ATTACK;
         }
-
+*/
         return PlayerAnimationFSM.PlayerAnimation.IDLE;
     }
 }

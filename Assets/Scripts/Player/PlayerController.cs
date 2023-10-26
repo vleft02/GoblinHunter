@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour, Hittable
     
     public void Start()
     {
-
+        EventManager.AttackEvent += Attack;
         _player = GetComponent<CharacterController>();
         PlayerMovementManager._isGrounded = true;
         PlayerMovementManager._isRunning = false;
@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour, Hittable
     {
         if (stamina>WeaponManager._currentWeapon.GetStaminaConsumption())
         {
-            PlayerMovementManager._isAttacking = true;
+            /*PlayerMovementManager._isAttacking = true;*/
             stamina -= WeaponManager._currentWeapon.GetStaminaConsumption();
         }
 

@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{34920069-A7DE-2E3A-00DB-4FC959207C3F}</ProjectGuid>
+    <ProjectGuid>{EC68E461-7843-0965-FDC1-576106273058}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\Weapon\Axe.cs" />
     <Compile Include="Assets\Scripts\Interactables\Door.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\EventManager.cs" />
     <Compile Include="Assets\Scripts\Interactables\DaggersInteractable.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyAnimationStates\WalkEnemyState.cs" />
     <Compile Include="Assets\Scripts\States\BaseState.cs" />

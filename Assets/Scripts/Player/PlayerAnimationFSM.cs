@@ -24,7 +24,24 @@ public class PlayerAnimationFSM : AnimationStateManager<PlayerAnimation>
     {
         InitStates();
         CurrentState = States[PlayerAnimation.IDLE];
+        EventManager.AttackEvent += Attack;
+        EventManager.EquipWeaponEvent += Equip;
     }
 
+    private void Attack() 
+    {
+        if (CurrentState == States[PlayerAnimation.IDLE])
+        {
+            TransitionToState(PlayerAnimation.ATTACK);
+        }
+    }
+
+    private void Equip() 
+    {
+        if (CurrentState == States[PlayerAnimation.IDLE]) 
+        {
+            TransitionToState(PlayerAnimation.UNEQUIP);
+        }
+    }
 
 }

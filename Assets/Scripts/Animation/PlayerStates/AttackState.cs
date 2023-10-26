@@ -43,10 +43,10 @@ public class AttackState : BaseAnimationState<PlayerAnimationFSM.PlayerAnimation
     {
         // TODO
         
-        if (PlayerMovementManager._isAttacking)
+/*        if (PlayerMovementManager._isAttacking)
         {
             PlayerMovementManager._isAttacking = false;
-        }
+        }*/
 
         return PlayerAnimationFSM.PlayerAnimation.IDLE;
 

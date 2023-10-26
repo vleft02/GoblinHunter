@@ -60,19 +60,19 @@ public class UnequipState : BaseAnimationState<PlayerAnimationFSM.PlayerAnimatio
     {
         // TODO
         
-        if (PlayerMovementManager._isAttacking)
+/*        if (PlayerMovementManager._isAttacking)
         {
             return PlayerAnimationFSM.PlayerAnimation.ATTACK;
         }
-
-        if (WeaponManager._changeWeapon)
-        {
+*/
+/*        if (WeaponManager._changeWeapon)
+        {*/
             //Debug.Log("UNEQUIP go to next EQUIP");
 
             return PlayerAnimationFSM.PlayerAnimation.EQUIP;
-        }
-
+/*        }*/
+/*
         //Debug.Log("UNEQUIP go to next IDLE");
-        return PlayerAnimationFSM.PlayerAnimation.IDLE;
+        return PlayerAnimationFSM.PlayerAnimation.IDLE;*/
     }
 }

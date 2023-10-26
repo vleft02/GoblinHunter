@@ -23,20 +23,27 @@ public class WeaponManager
         weapons.Add(PlayerWeapon.DAGGERS, null);
         weapons.Add(PlayerWeapon.SWORD, null);
         weapons.Add(PlayerWeapon.AXE, null);
+        weapons[PlayerWeapon.HANDS] = new Hands();
+        _currentWeapon = weapons[PlayerWeapon.HANDS];
+        _previousWeapon = _currentWeapon;
+
+
     }
 
     public static void ChangeWeapon(Weapon weapon)
     {
         if (_currentWeapon != null)
         {
-            _changeWeapon = true;
+            /*_changeWeapon = true;*/
+
             _previousWeapon = _currentWeapon;
+            EventManager.EquipWeapon();
         }
-        
         _currentWeapon = weapon;
 
         if (weapons[weapon.getWeapon()] == null)
         {
+            EventManager.EquipWeapon();
             weapons[weapon.getWeapon()] = _currentWeapon;
         }
         

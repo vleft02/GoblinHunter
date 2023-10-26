@@ -15,6 +15,8 @@ public abstract class Weapon
     protected float weaponDamage;
 
     protected float staminaConsumption;
+
+    protected float weaponRange;
     protected Weapon()
     {
 
@@ -32,7 +34,13 @@ public abstract class Weapon
     {
         return staminaConsumption;
     }
+
+    public float GetWeaponRange()
+    {
+        return weaponRange;
+    }
     public abstract PlayerWeapon getWeapon();
+
     
 
 

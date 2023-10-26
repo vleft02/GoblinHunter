@@ -47,12 +47,12 @@ public class IdleState : BaseAnimationState<PlayerAnimationFSM.PlayerAnimation>
 
     public override PlayerAnimationFSM.PlayerAnimation GetNextState()
     {
-        // TODO
+/*        // TODO
         if (PlayerMovementManager._isAttacking)
         {
             PlayerMovementManager._isAttacking = false;
             return PlayerAnimationFSM.PlayerAnimation.ATTACK;
-        }
+        }*/
 
         if (WeaponManager._changeWeapon)
         {

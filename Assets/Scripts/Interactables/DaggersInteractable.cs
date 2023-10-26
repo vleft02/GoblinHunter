@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DaggersInteractable : Interactable
 {
+    [SerializeField] bool DestroyOnPickUp;
     public override string GetPromptMessage()
     {
         return "";
@@ -12,5 +13,10 @@ public class DaggersInteractable : Interactable
     public override void Interact()
     {
         WeaponManager.ChangeWeapon(new Daggers());
+        if (DestroyOnPickUp)
+        {
+            Destroy(gameObject);
+        }
+
     }
 }

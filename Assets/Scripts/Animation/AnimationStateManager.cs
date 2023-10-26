@@ -38,7 +38,7 @@ public abstract class AnimationStateManager<EState> : MonoBehaviour where EState
     }
 
 
-    void TransitionToState(EState stateKey)
+    protected void TransitionToState(EState stateKey)
     {
         isTransitionState = true;
 

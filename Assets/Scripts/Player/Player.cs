@@ -22,9 +22,6 @@ public class Player : MonoBehaviour
     private PlayerRotate _rotate;
     private PlayerRotate _rotateSmooth;
     private PlayerRotate _currentRotate;
-
-    public event Action attackEvent;
-    public event Action deathEvent;
     
 
     // Start is called before the first frame update
@@ -33,7 +30,6 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         _currentWeapon = PlayerWeapon.HANDS;
-
         _playerInput = new PlayerInput();
         _onFoot = _playerInput.OnFoot;
         _playerController = GetComponent<PlayerController>();
@@ -51,8 +47,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        WeaponManager.initWeapons();
-        WeaponManager.ChangeWeapon(new Hands());
+         WeaponManager.initWeapons();
+/*        WeaponManager.ChangeWeapon(new Hands());*/
     }
 
     private void Update()
@@ -76,7 +72,7 @@ public class Player : MonoBehaviour
         
         _playerController.ReplenishStamina();
         
-        if (PlayerMovementManager._isGrounded)
+/*        if (PlayerMovementManager._isGrounded)
         {
             if (_onFoot.Attack.triggered)
             {
@@ -86,7 +82,7 @@ public class Player : MonoBehaviour
                     _playerController.Attack();
                 }
             }
-        }
+        }*/
 
     }
 

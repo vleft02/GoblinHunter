@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -24,6 +25,11 @@ public class PlayerInteract : MonoBehaviour
         _player = GetComponent<Player>();
     }
 
+/*    private void Start()
+    {
+        WeaponManager.initWeapons();
+    }*/
+
     private void checkInteraction()
     {
         _playerUI.updateText(string.Empty);
@@ -36,7 +42,7 @@ public class PlayerInteract : MonoBehaviour
 
             if (hitInfo.collider.GetComponent<Interactable>() != null)
             {
-            
+
                 Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.red);
                 Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
 
@@ -57,44 +63,57 @@ public class PlayerInteract : MonoBehaviour
                 }
             }
 
-            if (hitInfo.collider.GetComponent<Hittable>() != null)
+            else
             {
-                Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.red);
+                _playerUI.crosshairNoInteraction();
+                Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.green);
+            }
 
-                Hittable hittable = hitInfo.collider.GetComponent<Hittable>();
 
-                // Player UI Update
-                _playerUI.crosshairInteraction();
 
-                if (_player._onFoot.Attack.triggered)
+            // Hittable
+        }
+
+    }
+    private void CheckHit(float weaponRange)
+    {
+        if (_player._onFoot.Attack.triggered)
+        {
+            if (PlayerMovementManager.CanAttack())
+            {
+                PlayerMovementManager.AttackPerformed(WeaponManager._currentWeapon.ATTACK.Duration);
+                EventManager.AttackPerformed();
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hitInfo;
+
+                if (Physics.Raycast(ray, out hitInfo, weaponRange, mask))
                 {
-                    if (PlayerMovementManager.CanAttack())
+                    if (hitInfo.collider.GetComponent<Hittable>() != null)
                     {
+                        Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.red);
+
+                        Hittable hittable = hitInfo.collider.GetComponent<Hittable>();
+
+                        // Player UI Update
+                        _playerUI.crosshairInteraction();
                         hittable.TakeDamage(WeaponManager._currentWeapon.GetWeaponDamage());
                     }
                 }
-
+                else
+                {
+                    _playerUI.crosshairNoInteraction();
+                    Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.green);
+                }
             }
-
-         
         }
-        else
-        {
-            _playerUI.crosshairNoInteraction();
-            Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.green);
-        }
-
-
-        // Hittable
-        
-
     }
+        
         
     void Update()
     {
         // Create raycast & check collisions with interactables
         this.checkInteraction();
-
+        this.CheckHit(WeaponManager._currentWeapon.GetWeaponRange());
         if (_player._instantiateWeapon)
         {
             _player._instantiateWeapon = false;
