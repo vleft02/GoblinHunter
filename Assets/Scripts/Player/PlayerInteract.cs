@@ -82,19 +82,27 @@ public class PlayerInteract : MonoBehaviour
                     interactable.Interact();
                 }
             }
-
-            else
+        }
+        else
+        {
+            if (outline != null)
             {
-                _playerUI.crosshairNoInteraction();
-                Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.green);
+                outline._isSelected = false;
+                outline = null;
             }
 
+            //if (outline3D != null)
+            //{
+            //    outline3D._isSelected = false;
+            //    outline3D = null;
+            //}
 
-
-            // Hittable
+            _playerUI.crosshairNoInteraction();
+            Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.green);
         }
 
     }
+
     private void CheckHit(float weaponRange)
     {
         if (_player._onFoot.Attack.triggered)
@@ -110,43 +118,23 @@ public class PlayerInteract : MonoBehaviour
                 {
                     if (hitInfo.collider.GetComponent<Hittable>() != null)
                     {
-                        Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.red);
+                        Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.cyan);
 
                         Hittable hittable = hitInfo.collider.GetComponent<Hittable>();
 
                         // Player UI Update
-                        _playerUI.crosshairInteraction();
+                        //_playerUI.crosshairInteraction();
                         hittable.TakeDamage(WeaponManager._currentWeapon.GetWeaponDamage());
                     }
                 }
                 else
                 {
-                    _playerUI.crosshairNoInteraction();
-                    Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.green);
+                    //_playerUI.crosshairNoInteraction();
+                    Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.yellow);
                 }
             }
 
         }
-        else
-        {
-            if (outline != null)
-            {
-                outline._isSelected = false;
-                outline = null;
-            }
-            
-            //if (outline3D != null)
-            //{
-            //    outline3D._isSelected = false;
-            //    outline3D = null;
-            //}
-
-            _playerUI.crosshairNoInteraction();
-            Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.green);
-        }
-
-
-        // Hittable
         
 
     }

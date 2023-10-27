@@ -43,7 +43,7 @@ public class WeaponManager
 
         if (weapons[weapon.getWeapon()] == null)
         {
-            EventManager.EquipWeapon();
+            //EventManager.EquipWeapon();
             weapons[weapon.getWeapon()] = _currentWeapon;
         }
         

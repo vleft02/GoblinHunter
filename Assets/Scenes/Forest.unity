@@ -1127,7 +1127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &606407210
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3356,6 +3356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34145a090c26c24b9dc82ee05db10d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyOnPickUp: 1
 --- !u!1 &1070692520
 GameObject:
   m_ObjectHideFlags: 0
@@ -8136,6 +8137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd19a4806619954d8a130be0ddff984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyOnPickUp: 1
 --- !u!1001 &1081446940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9984,7 +9986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1755815981
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11814,6 +11816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902fc4d013c1df7428bb5ea11c77e355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyOnPickUp: 1
 --- !u!1001 &5054651002565232804
 PrefabInstance:
   m_ObjectHideFlags: 0
