@@ -19,6 +19,9 @@ public class PlayerInteract : MonoBehaviour
     private PlayerUI _playerUI;
     private Player _player;
 
+    private OutlineEffect outline;
+    private OutlineEffect3D outline3D;
+
     private void Awake()
     {
         _playerUI = GetComponent<PlayerUI>();
@@ -45,6 +48,23 @@ public class PlayerInteract : MonoBehaviour
 
                 Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.red);
                 Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
+                
+
+                // 2D object
+                if (interactable.GetComponent<OutlineEffect>() != null)
+                {
+                    outline = interactable.GetComponent<OutlineEffect>();
+                    outline._isSelected = true;
+                }
+
+
+                // 3D object
+                //if (interactable.GetComponent<OutlineEffect3D>() != null)
+                //{
+                //    outline3D = interactable.GetComponent<OutlineEffect3D>();
+                //    outline3D._isSelected = true;
+                //}
+
 
                 // Player UI Update
                 _playerUI.crosshairInteraction();
@@ -105,7 +125,30 @@ public class PlayerInteract : MonoBehaviour
                     Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.green);
                 }
             }
+
         }
+        else
+        {
+            if (outline != null)
+            {
+                outline._isSelected = false;
+                outline = null;
+            }
+            
+            //if (outline3D != null)
+            //{
+            //    outline3D._isSelected = false;
+            //    outline3D = null;
+            //}
+
+            _playerUI.crosshairNoInteraction();
+            Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.green);
+        }
+
+
+        // Hittable
+        
+
     }
         
         
