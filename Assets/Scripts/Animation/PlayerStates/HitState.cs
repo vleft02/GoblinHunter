@@ -26,6 +26,8 @@ public class HitState : BaseAnimationState<PlayerAnimationFSM.PlayerAnimation>
             }
 
         }
+        timer = 0;
+        staggerTime = 0.7f;
 
 
         LockState();
@@ -38,13 +40,11 @@ public class HitState : BaseAnimationState<PlayerAnimationFSM.PlayerAnimation>
     {
         timer += Time.deltaTime;
 
-
-
     }
 
     public override void ExitState()
     {
-
+        timer = 0;
     }
 
     public override PlayerAnimationFSM.PlayerAnimation GetNextState()
