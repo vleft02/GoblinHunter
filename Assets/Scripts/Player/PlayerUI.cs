@@ -15,6 +15,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private VisualEffect healthVFX;
     [SerializeField] private VisualEffect healthVFX_0;
     [SerializeField] private Image healthRadialFX;
+    [SerializeField] private Image damageRadialFX;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private GameObject Parent;
 
@@ -26,6 +27,7 @@ public class PlayerUI : MonoBehaviour
     private void OnEnable()
     {
         EventManager.PlayerDeathEvent += ShowDeathScreen;
+        EventManager.PlayerHitEvent += ShowDamageAnimation;
     }
     private void Start()
     {
@@ -70,8 +72,22 @@ public class PlayerUI : MonoBehaviour
         healthVFX.Stop();
         healthVFX_0.Stop();
     }
+    private void DisableRadialVfx()
+    {
+        UnityEngine.Color color = damageRadialFX.color;
+        color.a = 0f;
+        damageRadialFX.color = color;
+        damageRadialFX.enabled = false;
+    }
 
-
+    private void ShowDamageAnimation()
+    {
+        damageRadialFX.enabled = true;
+        UnityEngine.Color color = damageRadialFX.color;
+        color.a = 1f;
+        damageRadialFX.color = color;
+        Invoke("DisableRadialVfx", 2f);
+    }
 
     public void ShowDeathScreen() 
     {

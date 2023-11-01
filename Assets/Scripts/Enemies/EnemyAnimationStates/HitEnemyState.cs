@@ -30,7 +30,7 @@ public class HitEnemyState : BaseAnimationState<EnemyAnimationFSM.EnemyAnimation
         flashMaterial.color = newColor;
         originalMaterial = sprite.material;
        
-        enemyTransform = _aspectManager.gameObject.GetComponentInChildren<Transform>();
+        enemyTransform = _aspectManager.gameObject.GetComponent<Transform>();
         staggerTime = 0.5f;
         flash = true;
         AspectManager = _aspectManager;
