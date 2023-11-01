@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChaseEnemyState : BaseState<EnemyStateMachine.EnemyState>
 {
     private float chase_radius = 7f;
-    private float speed = 2f;
+    private float speed = 1f;
     private EnemyStateMachine _enemy;
     public ChaseEnemyState(EnemyStateMachine enemy, EnemyStateMachine.EnemyState key = EnemyStateMachine.EnemyState.CHASE) : base(key)
     {

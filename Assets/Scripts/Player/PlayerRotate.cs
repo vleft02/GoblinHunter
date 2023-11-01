@@ -13,6 +13,19 @@ public class PlayerRotate : MonoBehaviour
 
     protected float _holderRotation;
 
+    private Quaternion initialRotation;
+    private Quaternion nextRotation;
+
+    [SerializeField] private float tiltAmount;
+    [SerializeField] private float tiltSpeed;
+
+
+    private void Start()
+    {
+        initialRotation = _cameraHolder.localRotation;
+        tiltAmount = 2f;
+        tiltSpeed = 10f;
+    }
 
     public virtual void Rotate(Vector2 input)
     {
@@ -25,10 +38,28 @@ public class PlayerRotate : MonoBehaviour
         rotateVertical();
         rotateHorizontal();
 
+        initialRotation = _cameraHolder.localRotation;
 
     }
 
-    protected virtual void rotateVertical() => _cameraHolder.localRotation = Quaternion.Euler(_holderRotation, 0f, 0f);
+    protected virtual void rotateVertical()
+    {
+        Vector3 vec = _cameraHolder.localRotation.eulerAngles;
+        _cameraHolder.localRotation = Quaternion.Euler(_holderRotation, 0f, vec.z);
+    }
 
-    protected virtual void rotateHorizontal() => transform.Rotate(Vector3.up * _lookDir.x);
+
+    protected virtual void rotateHorizontal()
+    {
+        transform.Rotate(Vector3.up* _lookDir.x);
+    }
+
+    public void CameraTilt(Vector2 input)
+    {
+        float rotationZ = input.x;
+        Quaternion rotation = Quaternion.Euler(initialRotation.eulerAngles.x, initialRotation.eulerAngles.y, rotationZ * -tiltAmount);
+        _cameraHolder.localRotation = Quaternion.Slerp(initialRotation, rotation, tiltSpeed * Time.deltaTime);
+
+    }
+
 }

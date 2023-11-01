@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem.XR;
 
 public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
 {
     public enum EnemyState
     {
-        ATTACK, PATROL, CHASE
+        ATTACK, PATROL, CHASE, DEAD
     }
+
+    private SpriteBillboard billboard;
+    private EnemyController controller;
 
     private NavMeshAgent agent;
     public NavMeshAgent Agent { get => agent; }
@@ -21,12 +26,16 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
         States.Add(EnemyState.ATTACK, new AttackEnemyState());
         States.Add(EnemyState.PATROL, new PatrolState(this));
         States.Add(EnemyState.CHASE, new ChaseEnemyState(this));
+        States.Add(EnemyState.DEAD, new DeathEnemyState());
     }
 
     private void Awake()
     {
         Player = GameObject.Find("Player");
         agent = GetComponent<NavMeshAgent>();
+        billboard = GetComponentInChildren<SpriteBillboard>();
+        controller = GetComponent<EnemyController>();
+        EventManager.EnemyDeathEvent += DropDead;
 
         agent.updateRotation = false;
 
@@ -36,11 +45,19 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
 
     private void LateUpdate()
     {
-        if (agent.velocity.sqrMagnitude > Mathf.Epsilon)
+        if (CurrentState.StateKey != EnemyState.DEAD)
         {
-            transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
+            if (controller.Health == 0)
+            {
+                EventManager.EnemyDeath();
+            }
+
+            if (agent.velocity.sqrMagnitude > Mathf.Epsilon)
+            {
+                transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
+            }
+            //transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
         }
-        //transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
     }
 
     private void OnDrawGizmos()
@@ -48,8 +65,8 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
         // Draw a wireframe sphere to represent the detection radius in the Unity editor
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, 5f);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(new Vector3(2.31365466f, 1.338305f, -38.7388077f), 10f);
+        //Gizmos.color = Color.yellow;
+        //Gizmos.DrawWireSphere(new Vector3(2.31365466f, 1.338305f, -38.7388077f), 10f);
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, 7f);
     }
@@ -68,5 +85,12 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
             }
         }
         return false;
+    }
+
+    public void DropDead()
+    {
+        TransitionToState(EnemyState.DEAD);
+        TerminateFSM = true;
+        billboard.rotateYAxis = true;
     }
 }

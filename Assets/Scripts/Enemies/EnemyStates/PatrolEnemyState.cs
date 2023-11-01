@@ -24,6 +24,7 @@ public class PatrolState : BaseState<EnemyStateMachine.EnemyState>
         // Set a new center after done chasing, attacking etc
         center = _enemy.transform.position;
         walking = false;
+
     }
 
     public override void UpdateState()
@@ -31,30 +32,6 @@ public class PatrolState : BaseState<EnemyStateMachine.EnemyState>
         PatrolCycle();
 
         //_enemy.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-
-        if (_enemy.transform.eulerAngles.y < 300 && _enemy.transform.eulerAngles.y > 240)
-        {
-            //TODO
-            AnimationAspectManager._currentAspectKey = Aspects.LEFT;
-        }
-        
-        if (_enemy.transform.eulerAngles.y > 60 && _enemy.transform.eulerAngles.y < 130)
-        {
-            //TODO
-            AnimationAspectManager._currentAspectKey = Aspects.RIGHT;
-        }
-
-        if (_enemy.transform.eulerAngles.y < 60 || _enemy.transform.eulerAngles.y > 300)
-        {
-            //TODO
-            AnimationAspectManager._currentAspectKey = Aspects.FRONT;
-        }
-        
-        if (_enemy.transform.eulerAngles.y > 130 && _enemy.transform.eulerAngles.y < 240)
-        {
-            //TODO
-            AnimationAspectManager._currentAspectKey = Aspects.BACK;
-        }
     }
 
     public override void ExitState()

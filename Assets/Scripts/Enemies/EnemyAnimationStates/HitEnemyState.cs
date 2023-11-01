@@ -98,7 +98,7 @@ public class HitEnemyState : BaseAnimationState<EnemyAnimationFSM.EnemyAnimation
         // TODO
         if (timer > staggerTime)
         {
-            return EnemyAnimationFSM.EnemyAnimation.IDLE;
+            return EnemyAnimationFSM.EnemyAnimation.WALK;
         }
         return EnemyAnimationFSM.EnemyAnimation.HIT;
 
