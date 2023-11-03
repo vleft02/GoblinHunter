@@ -19,7 +19,7 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
     void InitStates()
     {
         States.Add(EnemyState.ATTACK, new AttackEnemyState());
-        States.Add(EnemyState.PATROL, new PatrolState(this));
+        States.Add(EnemyState.PATROL, new PatrolEnemyState(this));
         States.Add(EnemyState.CHASE, new ChaseEnemyState(this));
     }
 
@@ -49,7 +49,7 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, 5f);
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(new Vector3(2.31365466f, 1.338305f, -38.7388077f), 10f);
+        Gizmos.DrawWireSphere(PatrolEnemyState.nextWaypoint, 1f);
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, 7f);
     }
@@ -61,9 +61,14 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
 
         foreach (Collider hit in hits)
         {
-            if (hit.CompareTag("Player"))
+            Vector3 playerPosition = hit.transform.position;
+
+            // Check if the player's position is on the NavMesh
+            NavMeshHit navHit;
+            if (NavMesh.SamplePosition(playerPosition, out navHit, 1.0f, NavMesh.AllAreas) && hit.CompareTag("Player"))
             {
-                // An object with the playerTag is inside the detection radius
+                // The player is on the NavMesh, you can proceed with your logic here
+                // For example, trigger an event, follow the player, etc.
                 return true;
             }
         }

@@ -48,7 +48,8 @@ public class ChaseEnemyState : BaseState<EnemyStateMachine.EnemyState>
 
     public override void UpdateState()
     {
-        // Chase the player
+/*        Debug.Log("Chase");
+*/        // Chase the player
         _enemy.Agent.SetDestination(_enemy.Player.transform.position);
     }
 }
