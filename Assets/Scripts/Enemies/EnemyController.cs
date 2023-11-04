@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour, Hittable
 {
-    [SerializeField]float health;
+    [SerializeField] private float health = 100;
+
+    public float Health { get => health; set => Health = health; }
+
     [SerializeField] float damage;
 
     public void InitEnemy()

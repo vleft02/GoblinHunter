@@ -27,7 +27,7 @@ public class PlayerAnimationFSM : AnimationStateManager<PlayerAnimation>
         CurrentState = States[PlayerAnimation.IDLE];
         EventManager.AttackEvent += Attack;
         EventManager.EquipWeaponEvent += Equip;
-        EventManager.PlayerHitEvent += GetHit;
+/*        EventManager.PlayerHitEvent += GetHit;*/
     }
 
     private void Attack() 

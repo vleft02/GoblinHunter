@@ -82,7 +82,9 @@
     <Compile Include="Assets\Scripts\Animation\PlayerStates\AttackState.cs" />
     <Compile Include="Assets\Scripts\Hittable.cs" />
     <Compile Include="Assets\Scripts\Weapon\Axe.cs" />
+    <Compile Include="Assets\Scripts\ChatBubble.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyAnimationStates\HitEnemyState.cs" />
+    <Compile Include="Assets\Scripts\Enemies\EnemyStates\DeathEnemyState.cs" />
     <Compile Include="Assets\Scripts\Interactables\Door.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyController.cs" />
     <Compile Include="Assets\Scripts\EventManager.cs" />
@@ -97,6 +99,7 @@
     <Compile Include="Assets\Scripts\Enemies\EnemyStates\ChaseEnemyState.cs" />
     <Compile Include="Assets\Scripts\Kill.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimationFSM.cs" />
+    <Compile Include="Assets\Scripts\Enemies\EnemyAnimationStates\ToDeathEnemyState.cs" />
     <Compile Include="Assets\Scripts\Animation\BaseAnimationState.cs" />
     <Compile Include="Assets\Scripts\Animation\AnimationAspectManager.cs" />
     <Compile Include="Assets\Input\PlayerInput.cs" />

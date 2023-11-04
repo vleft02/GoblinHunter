@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class StateManager<EState> : MonoBehaviour where EState : Enum
@@ -11,6 +12,8 @@ public abstract class StateManager<EState> : MonoBehaviour where EState : Enum
 
     protected bool isTransitionState = false;
 
+    protected bool TerminateFSM;
+
     void Start()
     {
         CurrentState.EnterState();
@@ -18,24 +21,28 @@ public abstract class StateManager<EState> : MonoBehaviour where EState : Enum
 
     void Update()
     {
-        EState nextState = CurrentState.GetNextState();
-        
-        if (!isTransitionState)
+        if (!TerminateFSM)
         {
-            if (nextState.Equals(CurrentState.StateKey))
+            EState nextState = CurrentState.GetNextState();
+        
+            if (!isTransitionState)
             {
-                CurrentState.UpdateState();
-            }
-            else
-            {
-                //Transition to next State
-                TransitionToState(nextState);
+                if (nextState.Equals(CurrentState.StateKey))
+                {
+                    CurrentState.UpdateState();
+                }
+                else
+                {
+                    //Transition to next State
+                    TransitionToState(nextState);
 
+                }
             }
         }
+
     }
 
-    void TransitionToState(EState stateKey)
+    protected void TransitionToState(EState stateKey)
     {
         isTransitionState = true;
         CurrentState.ExitState();
@@ -58,4 +65,6 @@ public abstract class StateManager<EState> : MonoBehaviour where EState : Enum
     {
         CurrentState.OnTriggerExit(other);  
     }
+
+    
 }

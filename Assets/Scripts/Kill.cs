@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class Kill : MonoBehaviour
 {
+    [SerializeField] float time;
+    [SerializeField] float damage;
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<PlayerController>().TakeDamage(150);
+        Invoke("Hit", time);
     }
 
     // Update is called once per frame
-    void Update()
+    private void Hit()
     {
+        GetComponent<PlayerController>().TakeDamage(damage);
     }
 }

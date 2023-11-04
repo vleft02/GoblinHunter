@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class PatrolEnemyState : BaseState<EnemyStateMachine.EnemyState>
 {
     private EnemyStateMachine _enemy;
-    private float walking_radius = 10;
+    private float walking_radius = 10f;
     private float speed = 1.0f;
     private Vector3 center;
     private bool walking;
@@ -24,12 +24,16 @@ public class PatrolEnemyState : BaseState<EnemyStateMachine.EnemyState>
         // Set a new center after done chasing, attacking etc
         center = _enemy.transform.position;
         walking = false;
+
     }
 
     public override void UpdateState()
     {
-/*        Debug.Log("Patrol");
-*/        PatrolCycle();
+        PatrolCycle();
+
+        //_enemy.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+
+  
     }
 
     public override void ExitState()
@@ -42,6 +46,7 @@ public class PatrolEnemyState : BaseState<EnemyStateMachine.EnemyState>
         if (!walking)
         {
             nextWaypoint = GenerateRandomPointIn3DSpace(center, walking_radius);
+            _enemy.Agent.isStopped = false;
             _enemy.Agent.SetDestination(nextWaypoint);
             walking = true;
         }

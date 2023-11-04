@@ -89,7 +89,13 @@ public class Player : MonoBehaviour
 
     private void LateUpdate()
     {
-        _rotate.Rotate(_onFoot.Look.ReadValue<Vector2>());
+        _currentRotate.Rotate(_onFoot.Look.ReadValue<Vector2>());
+
+        _currentRotate.CameraTilt(_onFoot.Movement.ReadValue<Vector2>());
+       
+
+
+
     }
 
     private void OnEnable()
