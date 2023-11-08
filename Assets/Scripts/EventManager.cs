@@ -12,10 +12,34 @@ public static class EventManager /*: MonoBehaviour*/
     
     public static event Action<Hittable> EnemyHitEvent;
 
+    public static event Action EnemyDeathEvent;
+
     public static event Action PlayerHitEvent;
 
     public static event Action PlayerDeathEvent;
 
+    public static event Action EnemyAttackEvent;
+/*    public static event Action AttackWaitInAttackEnemy;
+*/
+    public static event Action EnemyIdleEvent;
+    public static event Action EnemyWaitInIdleEvent;
+
+    public static event Action EnemyWalkEvent;
+
+    public static void EnemyWaitInIdle()
+    {
+        EnemyWaitInIdleEvent?.Invoke();
+    }
+
+    public static void WalkEnemy()
+    {
+        EnemyWalkEvent?.Invoke();
+    }
+
+    public static void IdleEnemy()
+    {
+        EnemyIdleEvent?.Invoke();
+    }
 
     public static void AttackPerformed()
     {
@@ -28,10 +52,16 @@ public static class EventManager /*: MonoBehaviour*/
     }
 
     public static void EnemyHitPerformed(Hittable enemy)
-    { 
+    {
         EnemyHitEvent?.Invoke(enemy);
         enemy.TakeDamage(WeaponManager._currentWeapon.GetWeaponDamage());
     }
+
+    public static void EnemyDeath()
+    {
+        EnemyDeathEvent?.Invoke();
+    }
+
     public static void PlayerDeath()
     {
         PlayerDeathEvent?.Invoke();
@@ -41,4 +71,14 @@ public static class EventManager /*: MonoBehaviour*/
     {
         PlayerHitEvent?.Invoke();
     }
+    
+    public static void EnemyAttackPerform()
+    {
+        EnemyAttackEvent?.Invoke();
+    }
+
+/*    public static void EnemyWaitInAttack()
+    {
+        AttackWaitInAttackEnemy?.Invoke();
+    }*/
 }

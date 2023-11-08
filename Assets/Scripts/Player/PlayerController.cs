@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour, Hittable
     private float regenRate = 5;
     /*    private float lastRegenTime =0;*/
     [SerializeField] public  float stamina;
-    private float defense=1.0f;
+    private float defense = 1.0f;
 
     [Header("Controller")]
     [SerializeField] private float _speed = 5f;

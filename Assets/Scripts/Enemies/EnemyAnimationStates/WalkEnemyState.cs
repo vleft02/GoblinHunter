@@ -24,9 +24,6 @@ public class WalkEnemyState : BaseAnimationState<EnemyAnimationFSM.EnemyAnimatio
         walkState[Aspects.LEFT_BACK] = new AnimationClip(Animator.StringToHash("WalkLeftBack"), 0f);
         walkState[Aspects.RIGHT_FRONT] = new AnimationClip(Animator.StringToHash("WalkRightFront"), 0f);
         walkState[Aspects.RIGHT_BACK] = new AnimationClip(Animator.StringToHash("WalkRightBack"), 0f);
-
-
-
     }
 
     private void ChangeAnimation(Aspects aspect)

@@ -7,29 +7,30 @@ using UnityEngine.AI;
 public class PatrolEnemyState : BaseState<EnemyStateMachine.EnemyState>
 {
     private EnemyStateMachine _enemy;
-    private float walking_radius = 10;
-    private float speed = 1.0f;
+    private float walking_radius = 10f;
     private Vector3 center;
-    private bool walking;
     static public Vector3 nextWaypoint;
     private float detection_radius = 4f;
+    private float _walkingSpeed = 1.0f;
     public PatrolEnemyState(EnemyStateMachine enemy, EnemyStateMachine.EnemyState key = EnemyStateMachine.EnemyState.PATROL): base(key) 
     {
         _enemy = enemy;
-        _enemy.Agent.speed = speed;
     }
 
     public override void EnterState()
     {
         // Set a new center after done chasing, attacking etc
         center = _enemy.transform.position;
-        walking = false;
+        _enemy.Agent.isStopped = true;
     }
 
     public override void UpdateState()
     {
-/*        Debug.Log("Patrol");
-*/        PatrolCycle();
+        PatrolCycle();
+
+        //_enemy.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+
+  
     }
 
     public override void ExitState()
@@ -39,17 +40,22 @@ public class PatrolEnemyState : BaseState<EnemyStateMachine.EnemyState>
 
     private void PatrolCycle()
     {
-        if (!walking)
+        if (_enemy.Agent.isStopped)
         {
+            // Continue
             nextWaypoint = GenerateRandomPointIn3DSpace(center, walking_radius);
+            _enemy.Agent.speed = _walkingSpeed;
+            EventManager.WalkEnemy();
+            _enemy.Agent.isStopped = false;
+            _enemy._isIdling = false;
             _enemy.Agent.SetDestination(nextWaypoint);
-            walking = true;
         }
         else
         {
-            if (Vector3.Distance(_enemy.transform.position, nextWaypoint) < 0.5)
+            if (Vector3.Distance(_enemy.transform.position, nextWaypoint) < 0.5 && !_enemy._isIdling)
             {
-                walking = false;
+                _enemy.Agent.speed = 0;
+                EventManager.EnemyWaitInIdle();
             }
         }
     }

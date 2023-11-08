@@ -11,6 +11,8 @@ public abstract class AnimationStateManager<EState> : MonoBehaviour where EState
 
     protected AnimationAspectManager AspectManager;
 
+    protected bool TerminateFSM = false;
+
     protected BaseAnimationState<EState> CurrentState;
     private bool isTransitionState = false;
 
@@ -92,6 +94,9 @@ public abstract class AnimationStateManager<EState> : MonoBehaviour where EState
 
     void Update()
     {
-        UpdateAnimation();
+        if (!TerminateFSM)
+        {
+            UpdateAnimation();
+        }
     }
 }

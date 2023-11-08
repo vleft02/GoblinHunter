@@ -1,14 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem.XR;
 
 public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
 {
     public enum EnemyState
     {
-        ATTACK, PATROL, CHASE
+        ATTACK, PATROL, CHASE, DEAD
+    }
+
+    private SpriteBillboard billboard;
+    private EnemyController controller;
+    private bool _isAttacking = false;
+
+    public bool _isIdling = false;
+    public bool isAttacking
+    {
+        get => _isAttacking;
+        set => _isAttacking = value;
     }
 
     private NavMeshAgent agent;
@@ -18,17 +31,23 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
 
     void InitStates()
     {
-        States.Add(EnemyState.ATTACK, new AttackEnemyState());
+        States.Add(EnemyState.ATTACK, new AttackEnemyState(this));
         States.Add(EnemyState.PATROL, new PatrolEnemyState(this));
         States.Add(EnemyState.CHASE, new ChaseEnemyState(this));
+        States.Add(EnemyState.DEAD, new DeathEnemyState(this));
     }
 
     private void Awake()
     {
         Player = GameObject.Find("Player");
         agent = GetComponent<NavMeshAgent>();
-
+        billboard = GetComponentInChildren<SpriteBillboard>();
+        controller = GetComponent<EnemyController>();
+        EventManager.EnemyDeathEvent += DropDead;
+        EventManager.EnemyAttackEvent += StartAttack;
+        EventManager.EnemyWaitInIdleEvent += StartIdle;
         agent.updateRotation = false;
+        Agent.isStopped = true;
 
         InitStates();
         CurrentState = States[EnemyState.PATROL];
@@ -36,11 +55,18 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
 
     private void LateUpdate()
     {
-        if (agent.velocity.sqrMagnitude > Mathf.Epsilon)
+        if (CurrentState.StateKey != EnemyState.DEAD)
         {
-            transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
+            if (controller.Health == 0)
+            {
+            }
+
+            if (agent.velocity.sqrMagnitude > Mathf.Epsilon)
+            {
+                transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
+            }
+            //transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
         }
-        //transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
     }
 
     private void OnDrawGizmos()
@@ -63,9 +89,9 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
         {
             Vector3 playerPosition = hit.transform.position;
 
-            // Check if the player's position is on the NavMesh
+            // Check if the player's position is on the NavMesh: 2f is enough distance but we have a problem when the player is out of bounds
             NavMeshHit navHit;
-            if (NavMesh.SamplePosition(playerPosition, out navHit, 1.0f, NavMesh.AllAreas) && hit.CompareTag("Player"))
+            if (NavMesh.SamplePosition(playerPosition, out navHit, 2f, NavMesh.AllAreas) && hit.CompareTag("Player"))
             {
                 // The player is on the NavMesh, you can proceed with your logic here
                 // For example, trigger an event, follow the player, etc.
@@ -73,5 +99,60 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
             }
         }
         return false;
+    }
+
+    public void DropDead()
+    {
+        GetComponent<Collider>().enabled = false;
+/*        TransitionToState(EnemyState.DEAD);*/        
+        TerminateFSM = true;
+        billboard.rotateYAxis = true;
+        // After he dies, just drop
+        agent.speed = 0;
+    }
+
+    /// <summary>
+    /// Starts Attack function for the enemy from the AttackEnemyState
+    /// </summary>
+    public void StartAttack()
+    {
+        StartCoroutine(AttackAndWait());
+    }
+    /// <summary>
+    /// Starts Idle&Wait Coroutine
+    /// </summary>
+    public void StartIdle()
+    {
+        StartCoroutine(IdleAndWait());
+    }
+
+    /// <summary>
+    /// Enables the attack animation event and attacks the player
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator AttackAndWait()
+    {
+        isAttacking = true;
+
+        // Perform the attack action here (e.g. deal damage, etc.)
+        Debug.Log("Enemy is attacking!");
+
+/*        EventManager.EnemyAttackPerform();
+*/
+        // Wait for the specified attack interval as long as the animation is and a little more
+        yield return new WaitForSeconds(2f);
+
+        isAttacking = false;
+    }
+
+    public IEnumerator IdleAndWait()
+    {
+        Agent.speed = 0;
+        _isIdling = true;
+        EventManager.IdleEnemy();
+        // Wait for the specified idle interval
+        yield return new WaitForSeconds(5f);
+
+        Agent.isStopped = true;
     }
 }
