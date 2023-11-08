@@ -5,6 +5,7 @@ using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem.XR;
+using static EnemyAnimationFSM;
 
 public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
 {
@@ -52,10 +53,10 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
     {
         if (CurrentState.StateKey != EnemyState.DEAD)
         {
-            if (controller.Health == 0)
-            {
-                EventManager.EnemyDeath();
-            }
+            //if (controller.Health == 0)
+            //{
+            //    EventManager.EnemyDeath();
+            //}
 
             if (agent.velocity.sqrMagnitude > Mathf.Epsilon)
             {
@@ -97,13 +98,16 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
         return false;
     }
 
-    public void DropDead()
+    public void DropDead(Hittable enemy)
     {
-        TransitionToState(EnemyState.DEAD);
-        TerminateFSM = true;
-        billboard.rotateYAxis = true;
-        // After he dies, just drop
-        agent.speed = 0;
+        if (gameObject.GetComponent<Hittable>() == enemy)
+        {
+            TransitionToState(EnemyState.DEAD);
+            TerminateFSM = true;
+            billboard.rotateYAxis = true;
+            // After he dies, just drop
+            agent.speed = 0;
+        }
     }
 
     public IEnumerator AttackAndWait()

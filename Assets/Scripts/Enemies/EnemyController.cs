@@ -31,6 +31,11 @@ public class EnemyController : MonoBehaviour, Hittable
         Debug.Log("Health After: " + health);
     }
 
+    public bool HasZeroHealth()
+    {
+        return health == 0;
+    }
+
     void Start()
     {
         
