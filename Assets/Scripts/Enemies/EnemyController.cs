@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UnityEditor.Search;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour, Hittable
@@ -22,6 +24,8 @@ public class EnemyController : MonoBehaviour, Hittable
         if (health > amount)
         {
             health -= amount;
+            MoveBack();
+            /*ShowHitEffect();*/
         }
         else
         {
@@ -30,6 +34,11 @@ public class EnemyController : MonoBehaviour, Hittable
             EventManager.EnemyDeath();
         }
         Debug.Log("Health After: " + health);
+    }
+
+    private void MoveBack()
+    {
+        gameObject.transform.Translate(100 * Time.deltaTime * GameObject.Find("Main Camera").GetComponent<Transform>().forward, Space.World);
     }
 
     void Start()
@@ -41,5 +50,6 @@ public class EnemyController : MonoBehaviour, Hittable
     {
         /*if ()*/
     }
+
 
 }

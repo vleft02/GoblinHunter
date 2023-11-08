@@ -23,7 +23,6 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
         get => _isAttacking;
         set => _isAttacking = value;
     }
-
     private NavMeshAgent agent;
     public NavMeshAgent Agent { get => agent; }
     public GameObject Player;
