@@ -17,6 +17,8 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
     private SpriteBillboard billboard;
     private EnemyController controller;
     private bool _isAttacking = false;
+
+    public bool _isIdling = false;
     public bool isAttacking
     {
         get => _isAttacking;
@@ -32,7 +34,7 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
         States.Add(EnemyState.ATTACK, new AttackEnemyState(this));
         States.Add(EnemyState.PATROL, new PatrolEnemyState(this));
         States.Add(EnemyState.CHASE, new ChaseEnemyState(this));
-        States.Add(EnemyState.DEAD, new DeathEnemyState());
+        States.Add(EnemyState.DEAD, new DeathEnemyState(this));
     }
 
     private void Awake()
@@ -42,8 +44,10 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
         billboard = GetComponentInChildren<SpriteBillboard>();
         controller = GetComponent<EnemyController>();
         EventManager.EnemyDeathEvent += DropDead;
-
+        EventManager.EnemyAttackEvent += StartAttack;
+        EventManager.EnemyWaitInIdleEvent += StartIdle;
         agent.updateRotation = false;
+        Agent.isStopped = true;
 
         InitStates();
         CurrentState = States[EnemyState.PATROL];
@@ -53,10 +57,6 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
     {
         if (CurrentState.StateKey != EnemyState.DEAD)
         {
-            //if (controller.Health == 0)
-            //{
-            //    EventManager.EnemyDeath();
-            //}
 
             if (agent.velocity.sqrMagnitude > Mathf.Epsilon)
             {
@@ -105,20 +105,54 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
             TransitionToState(EnemyState.DEAD);
             TerminateFSM = true;
             billboard.rotateYAxis = true;
+            GetComponent<Collider>().enabled = false;
             // After he dies, just drop
             agent.speed = 0;
         }
     }
 
+    /// <summary>
+    /// Starts Attack function for the enemy from the AttackEnemyState
+    /// </summary>
+    public void StartAttack()
+    {
+        StartCoroutine(AttackAndWait());
+    }
+    /// <summary>
+    /// Starts Idle&Wait Coroutine
+    /// </summary>
+    public void StartIdle()
+    {
+        StartCoroutine(IdleAndWait());
+    }
+
+    /// <summary>
+    /// Enables the attack animation event and attacks the player
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator AttackAndWait()
     {
         isAttacking = true;
-        // Perform the attack action here (e.g., play animation, deal damage, etc.)
+
+        // Perform the attack action here (e.g. deal damage, etc.)
         Debug.Log("Enemy is attacking!");
 
-        // Wait for the specified attack interval
-        yield return new WaitForSeconds(4f);
+/*        EventManager.EnemyAttackPerform();
+*/
+        // Wait for the specified attack interval as long as the animation is and a little more
+        yield return new WaitForSeconds(2f);
 
         isAttacking = false;
+    }
+
+    public IEnumerator IdleAndWait()
+    {
+        Agent.speed = 0;
+        _isIdling = true;
+        EventManager.IdleEnemy();
+        // Wait for the specified idle interval
+        yield return new WaitForSeconds(5f);
+
+        Agent.isStopped = true;
     }
 }

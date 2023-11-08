@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\SpriteBillboard.cs" />
     <Compile Include="Assets\Scripts\Goblin\GoblinStateMachine.cs" />
+    <Compile Include="Assets\Prefabs\VFX\Hit\CFX_AutoDestructShuriken.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyAnimationFSM.cs" />
     <Compile Include="Assets\Scripts\Interactables\AxeInteractable.cs" />
     <Compile Include="Assets\Scripts\Animation\PlayerStates\UnequipState.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="Assets\Scripts\Animation\AnimationAspectManager.cs" />
     <Compile Include="Assets\Input\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\Goblin\GoblinAnimationFSM.cs" />
+    <Compile Include="Assets\Scripts\Effect\Effects.cs" />
     <Compile Include="Assets\Scripts\Animation\PlayerStates\HitState.cs" />
     <Compile Include="Assets\Scripts\Utils.cs" />
     <Compile Include="Assets\Scripts\Goblin\GoblinAnimationStates\GoblinAttackState.cs" />

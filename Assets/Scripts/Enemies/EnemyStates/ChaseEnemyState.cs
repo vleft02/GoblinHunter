@@ -5,17 +5,20 @@ using UnityEngine;
 public class ChaseEnemyState : BaseState<EnemyStateMachine.EnemyState>
 {
     private float chase_radius = 7f;
-    private float speed = 1f;
+    private float speed = 2f;
     private float combat_radius = 2f;
     private EnemyStateMachine _enemy;
     public ChaseEnemyState(EnemyStateMachine enemy, EnemyStateMachine.EnemyState key = EnemyStateMachine.EnemyState.CHASE) : base(key)
     {
         _enemy = enemy;
-        _enemy.Agent.speed = speed;
     }
 
     public override void EnterState()
     {
+        _enemy.Agent.isStopped = false;
+        _enemy.Agent.speed = speed;
+        // Play The Walk Animation
+        EventManager.WalkEnemy();
     }
 
     public override void ExitState()
@@ -53,9 +56,7 @@ public class ChaseEnemyState : BaseState<EnemyStateMachine.EnemyState>
 
     public override void UpdateState()
     {
-        /*        Debug.Log("Chase");
-        */        // Chase the player
-        _enemy.Agent.isStopped = false;
+        // Don't just chase, find the best way
         _enemy.Agent.SetDestination(_enemy.Player.transform.position);
     }
 }

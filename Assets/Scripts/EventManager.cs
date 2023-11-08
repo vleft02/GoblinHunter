@@ -18,6 +18,28 @@ public static class EventManager /*: MonoBehaviour*/
 
     public static event Action PlayerDeathEvent;
 
+    public static event Action EnemyAttackEvent;
+/*    public static event Action AttackWaitInAttackEnemy;
+*/
+    public static event Action EnemyIdleEvent;
+    public static event Action EnemyWaitInIdleEvent;
+
+    public static event Action EnemyWalkEvent;
+
+    public static void EnemyWaitInIdle()
+    {
+        EnemyWaitInIdleEvent?.Invoke();
+    }
+
+    public static void WalkEnemy()
+    {
+        EnemyWalkEvent?.Invoke();
+    }
+
+    public static void IdleEnemy()
+    {
+        EnemyIdleEvent?.Invoke();
+    }
 
     public static void AttackPerformed()
     {
@@ -53,4 +75,14 @@ public static class EventManager /*: MonoBehaviour*/
     {
         PlayerHitEvent?.Invoke();
     }
+    
+    public static void EnemyAttackPerform()
+    {
+        EnemyAttackEvent?.Invoke();
+    }
+
+/*    public static void EnemyWaitInAttack()
+    {
+        AttackWaitInAttackEnemy?.Invoke();
+    }*/
 }

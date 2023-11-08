@@ -19,6 +19,8 @@ public class AttackEnemyState : BaseState<EnemyStateMachine.EnemyState>
 
     public override void EnterState()
     {
+        _enemy.Agent.isStopped = true;
+        _enemy.Agent.speed = 0;
     }
 
     public override void ExitState()
@@ -79,10 +81,10 @@ public class AttackEnemyState : BaseState<EnemyStateMachine.EnemyState>
         {
 *//*            enemy.ContinueAttacking();
 *//*      }*/
-        _enemy.Agent.isStopped = true;
+
         if (!_enemy.isAttacking)
         {
-            _enemy.StartCoroutine(_enemy.AttackAndWait());
+            EventManager.EnemyAttackPerform();
         }
     }
 

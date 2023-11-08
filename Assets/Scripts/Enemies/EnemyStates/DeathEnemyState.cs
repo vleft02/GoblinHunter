@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class DeathEnemyState : BaseState<EnemyStateMachine.EnemyState>
 {
+    private EnemyStateMachine _enemy;
 
-
-    public DeathEnemyState(EnemyStateMachine.EnemyState key = EnemyStateMachine.EnemyState.DEAD)
-        : base(key) { }
+    public DeathEnemyState(EnemyStateMachine enemy, EnemyStateMachine.EnemyState key = EnemyStateMachine.EnemyState.DEAD)
+        : base(key) 
+    {
+        _enemy = enemy;
+    }
 
     public override void EnterState()
     {
-
+        _enemy.Agent.speed = 0;
     }
 
     public override void ExitState()

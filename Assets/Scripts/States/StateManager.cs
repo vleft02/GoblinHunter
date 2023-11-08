@@ -65,6 +65,4 @@ public abstract class StateManager<EState> : MonoBehaviour where EState : Enum
     {
         CurrentState.OnTriggerExit(other);  
     }
-
-    
 }
