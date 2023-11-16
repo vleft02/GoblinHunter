@@ -1,20 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.EditorTools;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem.XR;
+using static EnemyAnimationFSM;
 
 public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
 {
+
     public enum EnemyState
     {
         ATTACK, PATROL, CHASE, DEAD
     }
 
     private SpriteBillboard billboard;
-    private EnemyController controller;
+    public EnemyController controller;
     private bool _isAttacking = false;
 
     public bool _isIdling = false;
@@ -44,7 +47,6 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
         controller = GetComponent<EnemyController>();
         EventManager.EnemyDeathEvent += DropDead;
         EventManager.EnemyAttackEvent += StartAttack;
-        EventManager.EnemyWaitInIdleEvent += StartIdle;
         agent.updateRotation = false;
         Agent.isStopped = true;
 
@@ -56,9 +58,6 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
     {
         if (CurrentState.StateKey != EnemyState.DEAD)
         {
-            if (controller.Health == 0)
-            {
-            }
 
             if (agent.velocity.sqrMagnitude > Mathf.Epsilon)
             {
@@ -100,14 +99,17 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
         return false;
     }
 
-    public void DropDead()
+    public void DropDead(Hittable enemy)
     {
-        GetComponent<Collider>().enabled = false;
-/*        TransitionToState(EnemyState.DEAD);*/        
-        TerminateFSM = true;
-        billboard.rotateYAxis = true;
-        // After he dies, just drop
-        agent.speed = 0;
+        if (gameObject.GetComponent<Hittable>() == enemy)
+        {
+            TransitionToState(EnemyState.DEAD);
+            TerminateFSM = true;
+            billboard.rotateYAxis = true;
+            GetComponent<Collider>().enabled = false;
+            // After he dies, just drop
+            agent.speed = 0;
+        }
     }
 
     /// <summary>
@@ -148,7 +150,6 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
     {
         Agent.speed = 0;
         _isIdling = true;
-        EventManager.IdleEnemy();
         // Wait for the specified idle interval
         yield return new WaitForSeconds(5f);
 
