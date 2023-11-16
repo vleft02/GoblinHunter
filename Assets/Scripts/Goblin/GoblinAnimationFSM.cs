@@ -5,6 +5,8 @@ using static EnemyAnimationFSM;
 
 public class GoblinAnimationFSM : AnimationStateManager<GoblinAnimationFSM.GoblinAnimation>
 {
+    private GoblinStateMachine stateMachine;
+
     public enum GoblinAnimation
     {
         IDLE, WALK, HIT, TO_DEATH, ATTACK
@@ -12,16 +14,17 @@ public class GoblinAnimationFSM : AnimationStateManager<GoblinAnimationFSM.Gobli
 
     void InitStates()
     {
-        States.Add(GoblinAnimation.IDLE, new GoblinIdleState(AspectManager));
-        //States.Add(GoblinAnimation.WALK, new WalkEnemyState(AspectManager));
-        States.Add(GoblinAnimation.HIT, new GoblinHitState(AspectManager));
+        States.Add(GoblinAnimation.IDLE, new GoblinIdleState(AspectManager, stateMachine));
+        States.Add(GoblinAnimation.WALK, new GoblinWalkState(AspectManager, stateMachine));
+        States.Add(GoblinAnimation.HIT, new GoblinHitState(AspectManager, stateMachine));
         States.Add(GoblinAnimation.TO_DEATH, new GoblinToDeathState(AspectManager));
-        States.Add(GoblinAnimation.ATTACK, new GoblinAttackState(AspectManager));
+        States.Add(GoblinAnimation.ATTACK, new GoblinAttackState(AspectManager, stateMachine));
 
     }
 
     private void Awake()
     {
+        stateMachine = GetComponent<GoblinStateMachine>();
         AspectManager = GetComponent<AnimationAspectManager>();
         EventManager.EnemyHitEvent += GetHit;
         EventManager.EnemyDeathEvent += ToDeathAnimation;
@@ -53,5 +56,25 @@ public class GoblinAnimationFSM : AnimationStateManager<GoblinAnimationFSM.Gobli
         }
     }
 
+    public void EndAttackAnimation()
+    {
+        stateMachine.isAttacking = false;
+
+
+    }
+
+    private void LateUpdate()
+    {
+        //if (CurrentState.StateKey == GoblinAnimation.WALK)
+        //{
+        //    _animator.speed = stateMachine.Agent.desiredVelocity.magnitude * 0.5f;
+
+        //}
+        //else
+        //{
+        //    _animator.speed = 1f;
+        //}
+
+    }
 
 }

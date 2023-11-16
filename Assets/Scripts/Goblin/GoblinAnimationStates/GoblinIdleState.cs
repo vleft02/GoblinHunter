@@ -7,13 +7,16 @@ public class GoblinIdleState : BaseAnimationState<GoblinAnimation>
 {
     private Dictionary<Aspects, AnimationClip> idleState = new Dictionary<Aspects, AnimationClip>();
 
-    public GoblinIdleState(AnimationAspectManager _aspectManager, GoblinAnimation key = GoblinAnimation.IDLE)
+    private GoblinStateMachine _stateMachine;
+
+    public GoblinIdleState(AnimationAspectManager _aspectManager, GoblinStateMachine stateMachine, GoblinAnimation key = GoblinAnimation.IDLE)
         : base(key)
     {
         // TODO
         Id = 0;
 
         AspectManager = _aspectManager;
+        _stateMachine = stateMachine;
 
         idleState[Aspects.FRONT] = new AnimationClip(Animator.StringToHash("Idle"), 0f);
         idleState[Aspects.LEFT] = new AnimationClip(Animator.StringToHash("IdleLeft"), 0f);
@@ -63,7 +66,16 @@ public class GoblinIdleState : BaseAnimationState<GoblinAnimation>
     public override GoblinAnimation GetNextState()
     {
         // TODO
+        if (_stateMachine.isAttacking)
+        {
+            return GoblinAnimation.ATTACK;
+        }
 
+        if (_stateMachine.Agent.velocity.magnitude > 0)
+        {
+            return GoblinAnimation.WALK;
+        }
+        
         return GoblinAnimation.IDLE;
 
     }

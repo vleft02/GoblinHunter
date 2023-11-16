@@ -60,11 +60,13 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\SpriteBillboard.cs" />
     <Compile Include="Assets\Scripts\Goblin\GoblinStateMachine.cs" />
+    <Compile Include="Assets\Scripts\Goblin\GoblinAnimationStates\GoblinWalkState.cs" />
     <Compile Include="Assets\Prefabs\VFX\Hit\CFX_AutoDestructShuriken.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyAnimationFSM.cs" />
     <Compile Include="Assets\Scripts\Interactables\AxeInteractable.cs" />
     <Compile Include="Assets\Scripts\Animation\PlayerStates\UnequipState.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovementManager.cs" />
+    <Compile Include="Assets\Scripts\Goblin\GoblinStates\GoblinChaseState.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyStateMachine.cs" />
     <Compile Include="Assets\Scripts\Goblin\GoblinAnimationStates\GoblinHitState.cs" />
     <Compile Include="Assets\Scripts\Weapon\WeaponManager.cs" />
@@ -97,6 +99,7 @@
     <Compile Include="Assets\Scripts\Interactables\DaggersInteractable.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyAnimationStates\WalkEnemyState.cs" />
     <Compile Include="Assets\Scripts\States\BaseState.cs" />
+    <Compile Include="Assets\Scripts\Goblin\GoblinStates\GoblinAttackLogicState.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Interactables\Cube.cs" />
     <Compile Include="Assets\Scripts\Animation\PlayerStates\EquipState.cs" />
@@ -104,13 +107,15 @@
     <Compile Include="Assets\Scripts\OutllneEffect.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyStates\ChaseEnemyState.cs" />
     <Compile Include="Assets\Scripts\Kill.cs" />
+    <Compile Include="Assets\Scripts\Goblin\GoblinStates\GoblinPatrolState.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimationFSM.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyAnimationStates\ToDeathEnemyState.cs" />
     <Compile Include="Assets\Scripts\Animation\BaseAnimationState.cs" />
+    <Compile Include="Assets\Scripts\Goblin\GoblinStates\GoblinDeathState.cs" />
     <Compile Include="Assets\Scripts\Animation\AnimationAspectManager.cs" />
     <Compile Include="Assets\Input\PlayerInput.cs" />
-    <Compile Include="Assets\Scripts\Goblin\GoblinAnimationFSM.cs" />
     <Compile Include="Assets\Scripts\Effect\Effects.cs" />
+    <Compile Include="Assets\Scripts\Goblin\GoblinAnimationFSM.cs" />
     <Compile Include="Assets\Scripts\Animation\PlayerStates\HitState.cs" />
     <Compile Include="Assets\Scripts\Utils.cs" />
     <Compile Include="Assets\Scripts\Goblin\GoblinAnimationStates\GoblinAttackState.cs" />

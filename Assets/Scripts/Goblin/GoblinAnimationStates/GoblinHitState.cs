@@ -7,6 +7,8 @@ public class GoblinHitState : BaseAnimationState<GoblinAnimation>
 {
     private Dictionary<Aspects, AnimationClip> hitState = new Dictionary<Aspects, AnimationClip>();
 
+    private GoblinStateMachine _stateMachine;
+
     private SpriteRenderer sprite;
     private Transform enemyTransform;
     private float staggerTime;
@@ -16,11 +18,13 @@ public class GoblinHitState : BaseAnimationState<GoblinAnimation>
 
     private Material flashMaterial;
     private Material originalMaterial;
-    public GoblinHitState(AnimationAspectManager _aspectManager, GoblinAnimation key = GoblinAnimation.HIT)
+    public GoblinHitState(AnimationAspectManager _aspectManager, GoblinStateMachine stateMachine, GoblinAnimation key = GoblinAnimation.HIT)
         : base(key)
     {
         // TODO
         Id = 0;
+
+        _stateMachine = stateMachine;
 
         //sprite renderer
         sprite = _aspectManager.gameObject.GetComponentInChildren<SpriteRenderer>();
@@ -85,6 +89,16 @@ public class GoblinHitState : BaseAnimationState<GoblinAnimation>
         // TODO
         if (timer > staggerTime)
         {
+            if (_stateMachine.isAttacking)
+            {
+                return GoblinAnimation.ATTACK;
+            }
+
+            if (_stateMachine.Agent.velocity.magnitude > 0)
+            {
+                return GoblinAnimation.WALK;
+            }
+
             return GoblinAnimation.IDLE;
         }
         return GoblinAnimation.HIT;

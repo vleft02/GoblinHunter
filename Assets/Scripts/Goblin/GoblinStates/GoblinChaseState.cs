@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChaseEnemyState : BaseState<EnemyStateMachine.EnemyState>
+public class GoblinChaseState : BaseState<GoblinStateMachine.GoblinState>
 {
-    private float chase_radius = 7f;
     private float speed = 2f;
-    private float combat_radius = 2f;
-    private EnemyStateMachine _enemy;
-    public ChaseEnemyState(EnemyStateMachine enemy, EnemyStateMachine.EnemyState key = EnemyStateMachine.EnemyState.CHASE) : base(key)
+    private GoblinStateMachine _enemy;
+    public GoblinChaseState(GoblinStateMachine enemy, GoblinStateMachine.GoblinState key = GoblinStateMachine.GoblinState.CHASE) : base(key)
     {
         _enemy = enemy;
     }
@@ -22,20 +20,22 @@ public class ChaseEnemyState : BaseState<EnemyStateMachine.EnemyState>
 
     public override void ExitState()
     {
+
     }
 
-    public override EnemyStateMachine.EnemyState GetNextState()
+    public override GoblinStateMachine.GoblinState GetNextState()
     {
-        if (_enemy.PlayerDetected(combat_radius))
+        if (_enemy.PlayerDetected(_enemy.combat_radius))
         {
-            return EnemyStateMachine.EnemyState.ATTACK;
+            Debug.Log("Enter Attack");
+            return GoblinStateMachine.GoblinState.ATTACK;
         }
-        if (!_enemy.PlayerDetected(chase_radius))
+        if (!_enemy.PlayerDetected(_enemy.chase_radius))
         {
-            return EnemyStateMachine.EnemyState.PATROL;
+            return GoblinStateMachine.GoblinState.PATROL;
         }
 
-        return EnemyStateMachine.EnemyState.CHASE;
+        return GoblinStateMachine.GoblinState.CHASE;
     }
 
     public override void OnTriggerEnter(Collider other)

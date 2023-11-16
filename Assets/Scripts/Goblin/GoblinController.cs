@@ -8,7 +8,7 @@ public class GoblinController : MonoBehaviour, Hittable
 
     public float Health { get => health; set => Health = health; }
 
-    [SerializeField] float damage;
+    [SerializeField] public float damage = 3f;
 
     public void InitEnemy()
     {
@@ -34,4 +34,5 @@ public class GoblinController : MonoBehaviour, Hittable
     {
         return health == 0;
     }
+
 }

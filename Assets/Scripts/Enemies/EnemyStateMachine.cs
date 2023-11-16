@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.EditorTools;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,13 +10,14 @@ using static EnemyAnimationFSM;
 
 public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
 {
+
     public enum EnemyState
     {
         ATTACK, PATROL, CHASE, DEAD
     }
 
     private SpriteBillboard billboard;
-    private EnemyController controller;
+    public EnemyController controller;
     private bool _isAttacking = false;
 
     public bool _isIdling = false;
@@ -45,7 +47,6 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
         controller = GetComponent<EnemyController>();
         EventManager.EnemyDeathEvent += DropDead;
         EventManager.EnemyAttackEvent += StartAttack;
-        EventManager.EnemyWaitInIdleEvent += StartIdle;
         agent.updateRotation = false;
         Agent.isStopped = true;
 
@@ -149,7 +150,6 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
     {
         Agent.speed = 0;
         _isIdling = true;
-        EventManager.IdleEnemy();
         // Wait for the specified idle interval
         yield return new WaitForSeconds(5f);
 

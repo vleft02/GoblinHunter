@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PatrolEnemyState : BaseState<EnemyStateMachine.EnemyState>
+public class GoblinPatrolState : BaseState<GoblinStateMachine.GoblinState>
 {
-    private EnemyStateMachine _enemy;
-    private float walking_radius = 10f;
+    private GoblinStateMachine _enemy;
     private Vector3 center;
     static public Vector3 nextWaypoint;
-    private float detection_radius = 4f;
-    private float _walkingSpeed = 1.0f;
-    public PatrolEnemyState(EnemyStateMachine enemy, EnemyStateMachine.EnemyState key = EnemyStateMachine.EnemyState.PATROL): base(key) 
+    private float _walkingSpeed = 2.0f;
+    private float walking_radius = 10f;
+    public GoblinPatrolState(GoblinStateMachine enemy, GoblinStateMachine.GoblinState key = GoblinStateMachine.GoblinState.PATROL) : base(key)
     {
         _enemy = enemy;
     }
@@ -30,7 +28,7 @@ public class PatrolEnemyState : BaseState<EnemyStateMachine.EnemyState>
 
         //_enemy.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
 
-  
+
     }
 
     public override void ExitState()
@@ -53,25 +51,26 @@ public class PatrolEnemyState : BaseState<EnemyStateMachine.EnemyState>
         {
             if (Vector3.Distance(_enemy.transform.position, nextWaypoint) < 0.5 && !_enemy._isIdling)
             {
-                _enemy.Agent.speed = 0;
+                _enemy.StartIdle();
+
             }
         }
     }
 
-    public override EnemyStateMachine.EnemyState GetNextState()
+    public override GoblinStateMachine.GoblinState GetNextState()
     {
-        if (_enemy.PlayerDetected(detection_radius))
+        if (_enemy.PlayerDetected(_enemy.chase_radius))
         {
-            return EnemyStateMachine.EnemyState.CHASE;
+            return GoblinStateMachine.GoblinState.CHASE;
         }
-        return EnemyStateMachine.EnemyState.PATROL;
+        return GoblinStateMachine.GoblinState.PATROL;
     }
 
-    public override void OnTriggerEnter(Collider other){}
+    public override void OnTriggerEnter(Collider other) { }
 
-    public override void OnTriggerExit(Collider other){}
+    public override void OnTriggerExit(Collider other) { }
 
-    public override void OnTriggerStay(Collider other){}
+    public override void OnTriggerStay(Collider other) { }
 
     private Vector3 GenerateRandomPointIn3DSpace(Vector3 centerPosition, float radius)
     {
@@ -90,4 +89,5 @@ public class PatrolEnemyState : BaseState<EnemyStateMachine.EnemyState>
         } while (!NavMesh.SamplePosition(randomPoint, out hit, radius, NavMesh.AllAreas));
         return new Vector3(hit.position.x, randomPoint.y, hit.position.z); ;
     }
+
 }

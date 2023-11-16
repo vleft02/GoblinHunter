@@ -48,8 +48,10 @@ public class PlayerController : MonoBehaviour, Hittable
     public void Awake()
     {
         _player = GetComponent<CharacterController>();
+        EventManager.PlayerHitEvent += TakeDamage;
+
     }
-    
+
     public void Start()
     {
         HitEffectEmmiter = GameObject.Find("HitEffect");
@@ -59,8 +61,8 @@ public class PlayerController : MonoBehaviour, Hittable
         _player = GetComponent<CharacterController>();
         PlayerMovementManager._isGrounded = true;
         PlayerMovementManager._isRunning = false;
-/*        MovementSound = gameObject.GetComponent<AudioSource>();
-        MovementSound = gameObject.GetComponent<AudioSource>();*/
+        /*        MovementSound = gameObject.GetComponent<AudioSource>();
+                MovementSound = gameObject.GetComponent<AudioSource>();*/
 
         soundChannels = gameObject.GetComponents<AudioSource>();
         MovementSound = soundChannels[0];
@@ -127,7 +129,7 @@ public class PlayerController : MonoBehaviour, Hittable
         if (stamina>WeaponManager._currentWeapon.GetStaminaConsumption())
         {
             //Move Attack Sound Effects to animation
-            Invoke("PlayAttackSound", WeaponManager._currentWeapon.GetTimeTillHit());
+            //Invoke("PlayAttackSound", WeaponManager._currentWeapon.GetTimeTillHit());
             stamina -= WeaponManager._currentWeapon.GetStaminaConsumption();
         }
 
@@ -149,7 +151,6 @@ public class PlayerController : MonoBehaviour, Hittable
         {
             Debug.Log("Health Before: " + health);
             health -= amount*defense;
-            EventManager.PlayerTakeHit();
         }
         else
         {
@@ -207,5 +208,4 @@ public class PlayerController : MonoBehaviour, Hittable
 
         MovementSound.enabled = true;
     }
-
 }
