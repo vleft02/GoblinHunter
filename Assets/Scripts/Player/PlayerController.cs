@@ -191,7 +191,7 @@ public class PlayerController : MonoBehaviour, Hittable
         BloodEffect.Stop(); BloodEffect.Play();
     }
 
-    private void PlayEquipSound() 
+    public void PlayEquipSound() 
     {
         EquipSound.enabled = true;
         EquipSound.Play();
