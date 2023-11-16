@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.VFX;
 
 
 //Pithano Onoma PlayerController
@@ -37,7 +38,9 @@ public class PlayerController : MonoBehaviour, Hittable
     public PlayerInput _playerInput;
     public PlayerInput.OnFootActions _onFoot;
     public ParticleSystem HitEffect;
+    public VisualEffect BloodEffect;
     public GameObject HitEffectEmmiter;
+    public GameObject BloodEffectEmmiter;
 
     [Header("Sound Effects")]
     [SerializeField] AudioClip walkEffect;
@@ -54,8 +57,10 @@ public class PlayerController : MonoBehaviour, Hittable
 
     public void Start()
     {
-        HitEffectEmmiter = GameObject.Find("HitEffect");
+/*        HitEffectEmmiter = GameObject.Find("HitEffect");
+        BloodEffectEmmiter = GameObject.Find("Blood_Vfx");*/
         HitEffect = HitEffectEmmiter.GetComponent<ParticleSystem>();
+        BloodEffect = BloodEffectEmmiter.GetComponent<VisualEffect>();
         EventManager.AttackEvent += Attack;
         EventManager.EquipWeaponEvent += PlayEquipSound;
         _player = GetComponent<CharacterController>();
@@ -129,7 +134,7 @@ public class PlayerController : MonoBehaviour, Hittable
         if (stamina>WeaponManager._currentWeapon.GetStaminaConsumption())
         {
             //Move Attack Sound Effects to animation
-            //Invoke("PlayAttackSound", WeaponManager._currentWeapon.GetTimeTillHit());
+            /*Invoke("PlayAttackSound", WeaponManager._currentWeapon.GetTimeTillHit());*/
             stamina -= WeaponManager._currentWeapon.GetStaminaConsumption();
         }
 
@@ -177,10 +182,13 @@ public class PlayerController : MonoBehaviour, Hittable
 
 
     //metafora sto player Interact isos i ylopoihsh se kapoio manager
-    public void PlayVFX(Vector3 hittablePos)
+    public void PlayVFX(Transform HittableTransform)
     {
-        HitEffectEmmiter.transform.position = hittablePos + new Vector3(0,1,0);
+        HitEffectEmmiter.transform.position = HittableTransform.position+ new Vector3(0,1,0);
         HitEffect.Stop(); HitEffect.Play();
+        BloodEffectEmmiter.transform.position = HittableTransform.position+ new Vector3(0, 1, 0);
+        BloodEffectEmmiter.transform.rotation = HittableTransform.rotation;
+        BloodEffect.Stop(); BloodEffect.Play();
     }
 
     private void PlayEquipSound() 
@@ -199,7 +207,7 @@ public class PlayerController : MonoBehaviour, Hittable
 
     private void PlaySound(AudioClip clip) 
     {
-        MovementSound.volume = 1f;
+        MovementSound.volume = 0.7f;
         MovementSound.clip = clip;
         if (!MovementSound.isPlaying)
         {
