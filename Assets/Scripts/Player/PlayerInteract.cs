@@ -180,6 +180,7 @@ public class PlayerInteract : MonoBehaviour
     }
     public void InvokeEnemyHit()
     {
+        EventManager.EnemyHitPerformed(target.GetComponent<Hittable>());
         StartCoroutine(Effects.Flash(target.GetComponentInChildren<SpriteRenderer>(), 0.5f));
         GetComponent<PlayerController>().PlayVFX(target.GetComponent<Transform>());
         GetComponent<PlayerController>().PlayEquipSound();
