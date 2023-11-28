@@ -52,7 +52,10 @@ public class GoblinStateMachine : StateManager<GoblinStateMachine.GoblinState>
         InitStates();
         CurrentState = States[GoblinState.PATROL];
     }
-
+    private void OnDisable()
+    {
+        EventManager.EnemyDeathEvent -= DropDead;
+    }
     private void LateUpdate()
     {
         if (CurrentState.StateKey != GoblinState.DEAD)

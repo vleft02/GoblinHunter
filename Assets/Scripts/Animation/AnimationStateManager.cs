@@ -84,7 +84,7 @@ public abstract class AnimationStateManager<EState> : MonoBehaviour where EState
     }
 
 
-    void Start()
+    void OnEnable()
     {
         _animator = GetComponent<Animator>();
 

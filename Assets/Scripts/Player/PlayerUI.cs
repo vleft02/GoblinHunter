@@ -32,6 +32,13 @@ public class PlayerUI : MonoBehaviour
         EventManager.TogglePause += TogglePauseMenu;
         EventManager.ToggleEquipMenu += ToggleRadialMenu;
     }
+    private void OnDisable()
+    {
+        EventManager.PlayerDeathEvent -= DeathUI;
+        EventManager.PlayerHitEffectEvent -= PlayDamageVfx;
+        EventManager.TogglePause -= TogglePauseMenu;
+        EventManager.ToggleEquipMenu -= ToggleRadialMenu;
+    }
 
     private void ToggleRadialMenu()
     {
@@ -63,8 +70,8 @@ public class PlayerUI : MonoBehaviour
     void Update()
     {
 
-        healthBar.value = GetComponent<PlayerController>().health;
-        staminaBar.value = GetComponent<PlayerController>().stamina;
+        healthBar.value = GetComponent<PlayerController>().player.health;
+        staminaBar.value = GetComponent<PlayerController>().player.stamina;
 
     }
 

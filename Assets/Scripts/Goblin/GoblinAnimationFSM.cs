@@ -32,6 +32,12 @@ public class GoblinAnimationFSM : AnimationStateManager<GoblinAnimationFSM.Gobli
         CurrentState = States[GoblinAnimation.IDLE];
     }
 
+    private void OnDisable()
+    {
+        EventManager.EnemyHitEvent -= GetHit;
+        EventManager.EnemyDeathEvent -= ToDeathAnimation;
+    }
+
     public Transform GetTransform()
     {
         return transform;

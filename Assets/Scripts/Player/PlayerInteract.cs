@@ -183,7 +183,7 @@ public class PlayerInteract : MonoBehaviour
         EventManager.EnemyHitPerformed(target.GetComponent<Hittable>());
         StartCoroutine(Effects.Flash(target.GetComponentInChildren<SpriteRenderer>(), 0.5f));
         GetComponent<PlayerController>().PlayVFX(target.GetComponent<Transform>());
-        GetComponent<PlayerController>().PlayEquipSound();
+        GetComponent<PlayerController>().PlayImpactSound();
 
     }
 

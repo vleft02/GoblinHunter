@@ -14,12 +14,8 @@ public class PlayerController : MonoBehaviour, Hittable
     public Vector3 _moveDir;
     private Vector3 _velocity;
 
-    [SerializeField] public float health;
-    //stamina
-    [SerializeField] private float maxStamina;
     private float regenRate = 5;
     /*    private float lastRegenTime =0;*/
-    [SerializeField] public float stamina;
 
     private float defense=1.0f;
     AudioSource MovementSound;
@@ -41,11 +37,13 @@ public class PlayerController : MonoBehaviour, Hittable
     public VisualEffect BloodEffect;
     public GameObject HitEffectEmmiter;
     public GameObject BloodEffectEmmiter;
-
+    public PlayerLogic player;
     [Header("Sound Effects")]
     [SerializeField] AudioClip walkEffect;
     [SerializeField] AudioClip runEffect;
     [SerializeField] AudioClip attackEffect;
+    [SerializeField] AudioClip EquipEffect;
+    [SerializeField] AudioClip impactEffect;
     AudioClip currentClip;
 
     public void Awake()
@@ -57,6 +55,14 @@ public class PlayerController : MonoBehaviour, Hittable
 
     public void Start()
     {
+
+        player = new PlayerLogic();
+        if (SaveSystem.currentSave != null) 
+        {
+            player.fillData(SaveSystem.currentSave);
+        }
+
+
         EventManager.TogglePause += PauseSound;
 
         HitEffect = HitEffectEmmiter.GetComponent<ParticleSystem>();
@@ -77,7 +83,13 @@ public class PlayerController : MonoBehaviour, Hittable
         AttackSound.enabled = false;
         EquipSound.enabled = false;
     }
-
+    private void OnDisable()
+    {
+        EventManager.PlayerHitEvent -= TakeDamage;
+        EventManager.EquipWeaponEvent -= PlayEquipSound;
+        EventManager.TogglePause -= PauseSound;
+        EventManager.AttackEvent -= Attack;
+    }
     void Update()
     {
  /*       _playerController.Move(_onFoot.Movement.ReadValue<Vector2>());
@@ -130,11 +142,10 @@ public class PlayerController : MonoBehaviour, Hittable
 
     public void Attack()
     {
-        if (stamina>WeaponManager._currentWeapon.GetStaminaConsumption())
+        if (player.stamina >WeaponManager._currentWeapon.GetStaminaConsumption())
         {
             //Move Attack Sound Effects to animation
-            /*Invoke("PlayAttackSound", WeaponManager._currentWeapon.GetTimeTillHit());*/
-            stamina -= WeaponManager._currentWeapon.GetStaminaConsumption();
+            player.stamina -= WeaponManager._currentWeapon.GetStaminaConsumption();
         }
 
     }
@@ -151,31 +162,31 @@ public class PlayerController : MonoBehaviour, Hittable
 
     public void TakeDamage(float amount)
     {
-        if (health > amount)
+        if (player.health > amount)
         {
-            Debug.Log("Health Before: " + health);
-            health -= amount*defense;
+            Debug.Log("Health Before: " + player.health);
+            player.health -= amount*defense;
         }
         else
         {
-            health = 0;
+            player.health = 0;
             EventManager.PlayerDeath();
         }
-        Debug.Log("Health After: " + health);
+        Debug.Log("Health After: " + player.health);
     }
 
     public bool HasZeroHealth()
     {
-        return health == 0;
+        return player.health == 0;
     }
 
     
     public void ReplenishStamina() 
     {
-        if (stamina<maxStamina) 
+        if (player.stamina<player.maxStamina) 
         {
             //frame rate independent stamina regen
-            stamina = Mathf.Clamp(stamina + Time.deltaTime*regenRate , 0, maxStamina);
+            player.stamina = Mathf.Clamp(player.stamina + Time.deltaTime*regenRate , 0, player.maxStamina);
         }
     }
 
@@ -205,14 +216,21 @@ public class PlayerController : MonoBehaviour, Hittable
 
     public void PlayEquipSound() 
     {
+        EquipSound.clip = EquipEffect;
+        EquipSound.enabled = true;
+        EquipSound.Play();
+    }
+    public void PlayImpactSound() 
+    {
+        EquipSound.clip = impactEffect;
         EquipSound.enabled = true;
         EquipSound.Play();
     }
 
-
     //Tha ginete meso animation
     private void PlayAttackSound()
     {
+        AttackSound.clip = attackEffect;
         AttackSound.enabled = true;
         AttackSound.Play();
     }

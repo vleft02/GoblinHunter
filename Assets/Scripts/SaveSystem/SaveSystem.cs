@@ -6,29 +6,36 @@ using System;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public static class SaveSystem 
 {
-
+    public static PlayerData currentSave;
     public static List<string> savePaths;
 
     public static int counter = 0;
     /// <summary>
     /// Used To Test the Saving System
     /// </summary>
-    public static void Save() 
+    public static void Save(PlayerLogic player, Transform transform) 
     {
+        if (savePaths==null) 
+        {
+            savePaths = new List<string>();
+        }
+
         Debug.Log("Saving");
 
         BinaryFormatter bf = new BinaryFormatter();
         string path = Application.persistentDataPath + "/playerName" + DateTime.Now.ToString("MM-dd-yyyy HH-mm") + counter+".bin";
         FileStream stream = new FileStream(path, FileMode.Create);
-        PlayerData data = new PlayerData();
+        PlayerData data = new PlayerData(player, transform,WeaponManager.weapons,WeaponManager._currentWeapon);
         counter++;
         bf.Serialize(stream, data);
         stream.Close();
         savePaths.Add(path);
         SavePaths();
+        currentSave = data;
     }
     public static void SavePaths() 
     {
@@ -86,7 +93,9 @@ public static class SaveSystem
         
         stream.Close();
 
-        //PlayerData fortoma se game manager kai loadNextScene
+        SceneManager.LoadScene(data.location);
 
+        currentSave = data;
+        
     }
 }

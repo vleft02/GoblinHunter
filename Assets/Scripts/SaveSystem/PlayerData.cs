@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class PlayerData
@@ -64,20 +65,20 @@ public class PlayerData
     }
 
 
-    public PlayerData(PlayerLogic player,string location, Vector3 position, Vector3 rotation, Dictionary<PlayerWeapon,Weapon>  weapons)
+    public PlayerData(PlayerLogic player, Transform transform, Dictionary<PlayerWeapon,Weapon>  weapons, Weapon currentWeapon)
     {
         this.playerName = player.playerName;
         health = player.health;
         stamina = player.stamina;
         //First spawn Position in the game
         this.position = new float[3];
-        this.position[0] = position.x;
-        this.position[1] = position.y;
-        this.position[2] = position.z;
+        this.position[0] = transform.position.x;
+        this.position[1] = transform.position.y;
+        this.position[2] = transform.position.z;
         this.rotation = new float[3];
-        this.rotation[0] = 0;
-        this.rotation[1] = 0;
-        this.rotation[2] = 0;
+        this.rotation[0] = transform.rotation.eulerAngles.x;
+        this.rotation[1] = transform.rotation.eulerAngles.y;
+        this.rotation[2] = transform.rotation.eulerAngles.z;
         //Only Fists Available in the Begining
         this.weapons = new int[4];
         var enumerator = weapons.GetEnumerator();
@@ -87,7 +88,7 @@ public class PlayerData
             if (enumerator.Current.Value != null)
             {
                 this.weapons[index] = 1;
-                if (WeaponManager._currentWeapon == enumerator.Current.Value) 
+                if (currentWeapon == enumerator.Current.Value) 
                 {
                     this.currentWeapon = index;
                 }
@@ -98,7 +99,7 @@ public class PlayerData
 
         kills = 0;
 
-        this.location = location;
+        this.location = SceneManager.GetActiveScene().name;
     }
 
 }

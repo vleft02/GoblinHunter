@@ -52,6 +52,12 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
         CurrentState = States[EnemyState.PATROL];
     }
 
+    private void OnDisable()
+    {
+        EventManager.EnemyDeathEvent -= DropDead;
+        EventManager.EnemyAttackEvent -= StartAttack;
+    }
+
     private void LateUpdate()
     {
         if (CurrentState.StateKey != EnemyState.DEAD)

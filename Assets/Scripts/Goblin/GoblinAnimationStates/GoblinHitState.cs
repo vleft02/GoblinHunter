@@ -50,7 +50,7 @@ public class GoblinHitState : BaseAnimationState<GoblinAnimation>
 
     public override void EnterState()
     {
-        timer = 0;        
+      timer = 0;        
         ChangeAnimation(Aspects.FRONT);
 
         enemyTransform.Translate(100 * Time.deltaTime * -enemyTransform.forward, Space.World);

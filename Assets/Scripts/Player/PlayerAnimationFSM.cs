@@ -29,6 +29,11 @@ public class PlayerAnimationFSM : AnimationStateManager<PlayerAnimation>
         EventManager.EquipWeaponEvent += Equip;
 /*        EventManager.PlayerHitEvent += GetHit;*/
     }
+    private void OnDisable()
+    {
+        EventManager.AttackEvent -= Attack;
+        EventManager.EquipWeaponEvent -= Equip;
+    }
 
     private void Attack() 
     {

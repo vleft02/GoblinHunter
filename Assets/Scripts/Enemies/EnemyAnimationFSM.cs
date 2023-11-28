@@ -28,9 +28,17 @@ public class EnemyAnimationFSM : AnimationStateManager<EnemyAnimationFSM.EnemyAn
         CurrentState = States[EnemyAnimation.WALK];
     }
 
+    private void OnDisable()
+    {
+        EventManager.EnemyHitEvent -= GetHit;
+        EventManager.EnemyDeathEvent -= ToDeathAnimation;
+        EventManager.EnemyAttackEvent -= ToAttackAnimation;
+    }
     public Transform GetTransform() {
         return transform;
     }
+
+
 
     public void GetHit(Hittable enemy)
     {

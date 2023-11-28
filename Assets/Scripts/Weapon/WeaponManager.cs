@@ -16,10 +16,11 @@ public class WeaponManager
     public static PlayerWeapon _currentWeaponKey { get; private set; }
     public static bool _changeWeapon = false;
 
-    public static Dictionary<PlayerWeapon, Weapon> weapons = new Dictionary<PlayerWeapon, Weapon>();
+    public static Dictionary<PlayerWeapon, Weapon> weapons;
 
-    public static void initWeapons()
+    public static void InitWeapons()
     {
+        weapons = new Dictionary<PlayerWeapon, Weapon>();
         weapons.Add(PlayerWeapon.HANDS, null);
         weapons.Add(PlayerWeapon.DAGGERS, null);
         weapons.Add(PlayerWeapon.SWORD, null);
@@ -28,6 +29,43 @@ public class WeaponManager
         _currentWeapon = weapons[PlayerWeapon.HANDS];
         _previousWeapon = _currentWeapon;
 
+
+    }
+    public static void InitWeapons(int[] saveWeapons, int currentWeapon)
+    {
+        weapons = new Dictionary<PlayerWeapon, Weapon>();
+        if (saveWeapons != null) { 
+        
+            if (saveWeapons[0] == 1) 
+            {
+                weapons[PlayerWeapon.HANDS] = new Hands();
+            }
+            if (saveWeapons[1] == 1)
+            {
+                weapons[PlayerWeapon.DAGGERS] = new Daggers();
+            }
+            if (saveWeapons[2] == 1)
+            {
+                weapons[PlayerWeapon.SWORD] = new Sword();
+            }
+            if (saveWeapons[3] == 1)
+            {
+                weapons[PlayerWeapon.AXE] = new Axe();
+            }
+            
+            var enumerator = weapons.GetEnumerator();
+            int index = 0;
+            while (enumerator.MoveNext())
+            {
+                if (currentWeapon == index) 
+                {
+                    _currentWeapon = enumerator.Current.Value;
+                }
+                index++;
+            }
+            _previousWeapon = _currentWeapon;
+
+        }
 
     }
 
