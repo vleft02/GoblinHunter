@@ -48,9 +48,9 @@ public class EnemyAnimationFSM : AnimationStateManager<EnemyAnimationFSM.EnemyAn
         }
     }
 
-    public void ToDeathAnimation(Hittable enemy)
+    public void ToDeathAnimation(GameObject enemy)
     {
-        if (gameObject.GetComponent<Hittable>() == enemy && !TerminateFSM)
+        if (gameObject == enemy && !TerminateFSM)
         {
             TransitionToState(EnemyAnimation.TO_DEATH);
             TerminateFSM = true;

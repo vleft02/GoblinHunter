@@ -13,7 +13,7 @@ public static class EventManager /*: MonoBehaviour*/
     
     public static event Action<Hittable> EnemyHitEvent;
 
-    public static event Action<Hittable> EnemyDeathEvent;
+    public static event Action<GameObject> EnemyDeathEvent;
 
     public static event Action PlayerHitEffectEvent;
     public static event Action<float> PlayerHitEvent;
@@ -41,14 +41,14 @@ public static class EventManager /*: MonoBehaviour*/
     {
         EnemyHitEvent?.Invoke(enemy);
         enemy.TakeDamage(WeaponManager._currentWeapon.GetWeaponDamage());
-        if (enemy.HasZeroHealth())
+/*        if (enemy.HasZeroHealth())
         {
             //death
             EnemyDeath(enemy);
-        }
+        }*/
     }
 
-    public static void EnemyDeath(Hittable enemy)
+    public static void EnemyDeath(GameObject enemy)
     {
         EnemyDeathEvent?.Invoke(enemy);
     }

@@ -34,6 +34,10 @@ public class WeaponManager
     public static void InitWeapons(int[] saveWeapons, int currentWeapon)
     {
         weapons = new Dictionary<PlayerWeapon, Weapon>();
+        weapons.Add(PlayerWeapon.HANDS, null);
+        weapons.Add(PlayerWeapon.DAGGERS, null);
+        weapons.Add(PlayerWeapon.SWORD, null);
+        weapons.Add(PlayerWeapon.AXE, null);
         if (saveWeapons != null) { 
         
             if (saveWeapons[0] == 1) 
@@ -59,11 +63,13 @@ public class WeaponManager
             {
                 if (currentWeapon == index) 
                 {
-                    _currentWeapon = enumerator.Current.Value;
+                    /*_currentWeapon = enumerator.Current.Value;*/
+                    ChangeWeapon(enumerator.Current.Value);
                 }
                 index++;
             }
-            _previousWeapon = _currentWeapon;
+            /*_previousWeapon = _currentWeapon;*/
+            /*ChangeWeapon(currentWeapon);*/
 
         }
 

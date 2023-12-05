@@ -9,6 +9,7 @@ using UnityEngine.Windows;
 using UnityEngine.AI;
 using UnityEditor;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerController), typeof(PlayerRotate))]
 public class Player : MonoBehaviour
@@ -55,15 +56,14 @@ public class Player : MonoBehaviour
     {
         /* WeaponManager.InitWeapons(SaveSystem.currentSave.weapons, SaveSystem.currentSave.currentWeapon*/
         _onFoot.Enable();
-        if (SaveSystem.currentSave == null)
+/*        if (SaveSystem.newArea || SaveSystem.currentSave == null)
         {
             WeaponManager.InitWeapons();
-        }
-        else 
-        {
+        }*/
+/*        else 
+        {*/
             WeaponManager.InitWeapons(SaveSystem.currentSave.weapons, SaveSystem.currentSave.currentWeapon);
-        }
-
+      /*  }*/
         EventManager.TogglePause += ChangeInput;
         EventManager.ToggleEquipMenu += ChangeInput;
     }
@@ -98,7 +98,6 @@ public class Player : MonoBehaviour
         _onFoot.WeaponSlot2.performed -= ctx => WeaponManager.ChangeWeapon(2);
         _onFoot.WeaponSlot3.performed -= ctx => WeaponManager.ChangeWeapon(3);
         _onFoot.WeaponSlot4.performed -= ctx => WeaponManager.ChangeWeapon(4);
-
 
         EventManager.TogglePause -= ChangeInput;
         EventManager.ToggleEquipMenu -= ChangeInput;
@@ -144,5 +143,10 @@ public class Player : MonoBehaviour
         _onFoot.WeaponSlot4.performed += ctx => WeaponManager.ChangeWeapon(4);
 
     }
+
+
+ 
+
+
 
 }

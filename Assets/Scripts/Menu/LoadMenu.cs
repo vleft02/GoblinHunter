@@ -39,7 +39,7 @@ public class LoadMenu : MonoBehaviour
                     GameObject saveSlot = Instantiate(SaveSlotPrefab);
                     TextMeshProUGUI[] textFields = saveSlot.GetComponentsInChildren<TextMeshProUGUI>();
                     textFields[0].text = data.playerName;
-                    textFields[2].text = "1";
+                    textFields[2].text = data.time;
                     textFields[4].text = data.location;
                     textFields[6].text = data.kills.ToString();
                     textFields[8].text = path;

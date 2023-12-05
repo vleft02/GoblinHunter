@@ -15,7 +15,7 @@ public class SaveSlot : MonoBehaviour
             File.Delete(path);
         }
         SaveSystem.savePaths.Remove(path);
-        SaveSystem.SavePaths();
+        SaveSystem.StoreSavePaths();
         LoadMenu.RefreshSaveList.Invoke();
     }
     public void LoadSlot(TextMeshProUGUI path)

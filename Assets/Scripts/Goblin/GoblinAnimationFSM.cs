@@ -53,9 +53,9 @@ public class GoblinAnimationFSM : AnimationStateManager<GoblinAnimationFSM.Gobli
     }
     
     
-    public void ToDeathAnimation(Hittable enemy)
+    public void ToDeathAnimation(GameObject enemy)
     {
-        if (gameObject.GetComponent<Hittable>() == enemy && !TerminateFSM)
+        if (gameObject == enemy && !TerminateFSM)
         {
             TransitionToState(GoblinAnimation.TO_DEATH);
             TerminateFSM = true;

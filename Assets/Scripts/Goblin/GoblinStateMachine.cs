@@ -101,9 +101,9 @@ public class GoblinStateMachine : StateManager<GoblinStateMachine.GoblinState>
         return false;
     }
 
-    public void DropDead(Hittable enemy)
+    public void DropDead(GameObject enemy)
     {
-        if (gameObject.GetComponent<Hittable>() == enemy)
+        if (gameObject == enemy)
         {
             TransitionToState(GoblinState.DEAD);
             TerminateFSM = true;

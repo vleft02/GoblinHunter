@@ -103,9 +103,9 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
         return false;
     }
 
-    public void DropDead(Hittable enemy)
+    public void DropDead(GameObject enemy)
     {
-        if (gameObject.GetComponent<Hittable>() == enemy)
+        if (gameObject == enemy)
         {
             TransitionToState(EnemyState.DEAD);
             TerminateFSM = true;

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 674045928767647184}
   - component: {fileID: 2392695666511957483}
   - component: {fileID: 5080118313532637533}
+  - component: {fileID: 8221746155455539454}
   m_Layer: 10
   m_Name: Goblin
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 4064779591154642302}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -12.34, y: 1.459, z: -46.00969}
+  m_LocalPosition: {x: 0, y: 1.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -88,7 +89,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 2.2400513, y: 2.203814, z: 0.535099}
@@ -152,7 +153,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.04
-  m_Speed: 0.9
+  m_Speed: 2
   m_Acceleration: 30
   avoidancePriority: 50
   m_AngularSpeed: 360
@@ -164,6 +165,30 @@ NavMeshAgent:
   m_BaseOffset: 1.4
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!205 &8221746155455539454
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4064779591154642302}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 1
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.19938031
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!1 &4765016656477175901
 GameObject:
   m_ObjectHideFlags: 0

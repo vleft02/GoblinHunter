@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour, Hittable
     {
 
         player = new PlayerLogic();
+       
         if (SaveSystem.currentSave != null) 
         {
             player.fillData(SaveSystem.currentSave);

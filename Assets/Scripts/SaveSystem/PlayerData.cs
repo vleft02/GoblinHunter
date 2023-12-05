@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,8 +16,9 @@ public class PlayerData
     public int currentWeapon;
     public int kills;
     public string location;
+    public string time;
 
-    public PlayerData() 
+/*    public PlayerData() 
     {
         playerName = "Test";
         health = 100;
@@ -37,7 +39,8 @@ public class PlayerData
         currentWeapon = 0;
         kills = 999;
         location = "Serres";
-    }
+        this.time = DateTime.Now.ToString("dd/MM HH:mm");
+    }*/
 
     public PlayerData(string playerName)
     {
@@ -62,6 +65,8 @@ public class PlayerData
         currentWeapon = 0;
         kills = 0;
         location = "Forest";
+        this.time = DateTime.Now.ToString("dd/MM HH:mm");
+
     }
 
 
@@ -100,6 +105,37 @@ public class PlayerData
         kills = 0;
 
         this.location = SceneManager.GetActiveScene().name;
+        this.time = DateTime.Now.ToString("dd/MM HH:mm"); 
+    }
+
+    public PlayerData(PlayerLogic player, Dictionary<PlayerWeapon, Weapon> weapons, Weapon currentWeapon)
+    {
+        this.playerName = player.playerName;
+        health = player.health;
+        stamina = player.stamina;
+        this.weapons = new int[4];
+        var enumerator = weapons.GetEnumerator();
+        int index = 0;
+        while (enumerator.MoveNext())
+        {
+            if (enumerator.Current.Value != null)
+            {
+                this.weapons[index] = 1;
+                if (currentWeapon == enumerator.Current.Value)
+                {
+                    this.currentWeapon = index;
+                }
+            }
+            index++;
+        }
+
+
+        kills = 0;
+
+        this.location = SceneManager.GetActiveScene().name;
+        this.time = DateTime.Now.ToString("dd/MM HH:mm");
     }
 
 }
+
+

@@ -29,8 +29,9 @@ public class GoblinController : MonoBehaviour, Hittable
         }
         else
         {
-            health = 0;
-            //death
+            EventManager.EnemyDeath(this.gameObject);
+            /* health = 0;
+            //death*/
         }
         Debug.Log("Health After: " + health);
     }
