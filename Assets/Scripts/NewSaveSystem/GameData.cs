@@ -6,6 +6,10 @@ using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+
+using Random = UnityEngine.Random;
+
+
 [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
 public class GameData
 {
@@ -90,7 +94,7 @@ public class GameData
         areasData[2].SetAreaName("Dungeon");
         areasData[2].SetPlayerPosition(new Vector3(0, 0, 0));
         areasData[2].SetPlayerRotation(new Vector3(90, 0, 0));
-        areasData[2].SetPlayerSeed(1235);
+        areasData[2].SetPlayerSeed(Random.Range(0,99999));
         areasData[0].SetVisited(false);
 
         currentArea = areasData[0];
