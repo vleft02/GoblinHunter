@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Door : Interactable
+public class OpenCloseObject : Interactable
 {
     private bool _doorOpen = false;
     private bool _interact = false;
+    public string prompt_message = "Press E to open the door";
     public string closed = "Closed";
     public string close = "Close";
     public string opened = "Opened";
@@ -104,6 +105,6 @@ public class Door : Interactable
 
     public override string GetPromptMessage()
     {
-        return "Press E to open the door";
+        return prompt_message;
     }
 }

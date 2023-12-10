@@ -174,24 +174,31 @@ public class DungeonGenerator : MonoBehaviour
 
                         Vector3 position = gameRoom.transform.position;
                         
-                        int numberOfEnemies = Random.Range(1, maxNumEnemies);
-                        for (int k = 0; k <= numberOfEnemies; k++) 
+                        // On the last room or on the start room
+                        if ( (i == 0 && j == 0) || (i == size.x - 1 && j == size.y - 1))
                         {
-                            enemies.Add(new EnemyData("Enemy" + enemies.Count + k, 100, 0, position));
+                            newRoom.UpdateRoom(currentCell.status);
+                            newRoom.name = "Room " + i + "-" + j;
+                            continue;
                         }
-                        /*
-                            enemiesPerRoom.Add((i + j * size.x), numberOfEnemies);
-
-                        if (numberOfEnemies != 0)
+                        else
                         {
-                            SpawnEnemies(gameRoom, numberOfEnemies);
-                        }*/
+                            int numberOfEnemies = Random.Range(1, maxNumEnemies);
+                            for (int k = 0; k <= numberOfEnemies; k++)
+                            {
+                                enemies.Add(new EnemyData("Enemy" + enemies.Count + k, 100, 0, position));
+                            }
+                            newRoom.UpdateRoom(currentCell.status);
+                            newRoom.name = "Room " + i + "-" + j;
+                            /*
+                                enemiesPerRoom.Add((i + j * size.x), numberOfEnemies);
+
+                            if (numberOfEnemies != 0)
+                            {
+                                SpawnEnemies(gameRoom, numberOfEnemies);
+                            }*/
+                        }
                     }
-
-                    newRoom.UpdateRoom(currentCell.status);
-                    newRoom.name = "Room " + i + "-" + j;
-
-
                 }
             }
         }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -273,7 +273,7 @@ MonoBehaviour:
   enemy: {fileID: 4064779591154642302, guid: 6530f76c17f9ffa4d97ff8cd864e8f37, type: 3}
   seed: 0
   chest: {fileID: 2496566051739496556, guid: 6bea611e5408b3f4c8e85a8ab6b10c8b, type: 3}
-  size: {x: 4, y: 4}
+  size: {x: 3, y: 3}
   startPos: 0
   rooms:
   - room: {fileID: 6745010234115698429, guid: 0d8c5508129d642448ea14da83797119, type: 3}
@@ -284,6 +284,14 @@ MonoBehaviour:
     minPosition: {x: 0, y: 0}
     maxPosition: {x: 0, y: 0}
     obligatory: 0
+  - room: {fileID: 6895375303076456958, guid: b7977fad220e9ce44a05277f739f07a9, type: 3}
+    minPosition: {x: 0, y: 0}
+    maxPosition: {x: 0, y: 0}
+    obligatory: 1
+  - room: {fileID: 5862746086682215369, guid: e97e37ca2e8750b4b81581e29ea400bc, type: 3}
+    minPosition: {x: 2, y: 2}
+    maxPosition: {x: 2, y: 2}
+    obligatory: 1
   corridorsObjects:
   - {fileID: 3122460133571711881, guid: 60aa2c52819a2eb4abbf5eb08902e66e, type: 3}
   offset: {x: 40, y: 40}
