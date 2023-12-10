@@ -27,9 +27,9 @@ public class PlayerController : MonoBehaviour, Hittable
 
     [Header("Controller")]
     [SerializeField] private float _speed = 5f;
-    public float _runningSpeed = 1000f;
-    public float _jumpHeight = 2f;
-    public float _gravity = -9.8f;
+    public float _runningSpeed;
+    public float _jumpHeight = 2.5f;
+    public float _gravity = -6f;
 
     public PlayerInput _playerInput;
     public PlayerInput.OnFootActions _onFoot;
@@ -58,8 +58,6 @@ public class PlayerController : MonoBehaviour, Hittable
 
         player = new PlayerLogic();
         player.health = PlayerProfile.gameData.playerData.health;
-   
-
 
         EventManager.TogglePause += PauseSound;
 
@@ -80,6 +78,10 @@ public class PlayerController : MonoBehaviour, Hittable
         MovementSound.enabled = false;
         AttackSound.enabled = false;
         EquipSound.enabled = false;
+
+        _jumpHeight = 2.5f;
+        _gravity = -8f;
+        _runningSpeed = 12f;
     }
     private void OnDisable()
     {
@@ -90,57 +92,67 @@ public class PlayerController : MonoBehaviour, Hittable
     }
     void Update()
     {
- /*       _playerController.Move(_onFoot.Movement.ReadValue<Vector2>());
-        _playerController.ReplenishStamina();
-        if (PlayerMovementManager._isGrounded)
-        {
-            if (_onFoot.Attack.triggered)
-            {
-                if (PlayerMovementManager.CanAttack())
-                {
-                   PlayerMovementManager.AttackPerformed(WeaponManager._currentWeapon.ATTACK.Duration);
-                   _playerController.Attack();
-                }
-            }
-        }*/
+        /*       _playerController.Move(_onFoot.Movement.ReadValue<Vector2>());
+               _playerController.ReplenishStamina();
+               if (PlayerMovementManager._isGrounded)
+               {
+                   if (_onFoot.Attack.triggered)
+                   {
+                       if (PlayerMovementManager.CanAttack())
+                       {
+                          PlayerMovementManager.AttackPerformed(WeaponManager._currentWeapon.ATTACK.Duration);
+                          _playerController.Attack();
+                       }
+                   }
+               }*/
+
+        PlayerMovementManager._isGrounded = _player.isGrounded;
     }
 
     public virtual void Move(Vector2 input)
     {
         _moveDir.x = input.x;
         _moveDir.z = input.y;
+        _moveDir.y = _velocity.y;
+        float _movementSpeed = 1f;
 
-        if (PlayerMovementManager._isGrounded)
+        if (_moveDir.x == 0 && _moveDir.z == 0)
         {
-            if (_moveDir.x == 0 && _moveDir.z == 0)
-            {
-                StartCoroutine(Effects.StartFade(MovementSound, 0.2f, 0.0f));
+            StartCoroutine(Effects.StartFade(MovementSound, 0.2f, 0.0f));
 
-            }
-            else if (PlayerMovementManager._isRunning)
-            {
-                _player.Move(transform.TransformDirection(_moveDir) * _runningSpeed * Time.deltaTime);
-                PlaySound(runEffect);
-            }
-            else
-            {
-                _player.Move(transform.TransformDirection(_moveDir) * _speed * Time.deltaTime);
-                PlaySound(walkEffect);
-            }
+        }
+        else if (PlayerMovementManager._isRunning)
+        {
+            _movementSpeed = _runningSpeed;
+            PlaySound(runEffect);
+        }
+        else
+        {
+            _movementSpeed = _speed;
+            PlaySound(walkEffect);
         }
 
         _velocity.y += _gravity * Time.deltaTime;
-        if (PlayerMovementManager._isGrounded && _velocity.y < 0)
+        if (PlayerMovementManager._isGrounded && _velocity.y < 0f)
         {
             _velocity.y = -2f;
         }
+
+        _moveDir.x *= _movementSpeed;
+        _moveDir.z *= _movementSpeed;
+        _moveDir.y *= _speed;
+
+        _player.Move(transform.TransformDirection(_moveDir) * Time.deltaTime);
+
         PlayerProfile.UpdatePosition(gameObject.transform.position);
+
+        Debug.Log("velocity.y: " + _velocity.y);
     }
 
 
     public void Attack()
     {
-        if (player.stamina >WeaponManager._currentWeapon.GetStaminaConsumption())
+        if (player.stamina > WeaponManager._currentWeapon.GetStaminaConsumption())
         {
             //Move Attack Sound Effects to animation
             player.stamina -= WeaponManager._currentWeapon.GetStaminaConsumption();
@@ -149,12 +161,11 @@ public class PlayerController : MonoBehaviour, Hittable
     }
 
 
-
     public void Jump()
     {
         if (PlayerMovementManager._isGrounded)
         {
-            _velocity.y = Mathf.Sqrt(-3.0f * _gravity * _jumpHeight);
+            _velocity.y = Mathf.Sqrt((-0.4f) * _gravity * _jumpHeight);
         }
     }
 
