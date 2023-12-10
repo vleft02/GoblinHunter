@@ -150,7 +150,7 @@ public class DungeonGenerator : MonoBehaviour
                     {
                         if (availableRooms.Count > 0)
                         {
-                            randomRoom = availableRooms[Random.Range(0, availableRooms.Count)];
+                            randomRoom = availableRooms[Random.Range(0, availableRooms.Count - 1)];
                         }
                         else
                         {
@@ -166,6 +166,8 @@ public class DungeonGenerator : MonoBehaviour
                         // Chest room has no enemies
                         gameRoom = Instantiate(chest, new Vector3(2 * i * offset.x, 0, 2 * -j * offset.y), Quaternion.identity, transform);
                         newRoom = gameRoom.GetComponent<RoomBehaviour>();
+                        newRoom.UpdateRoom(currentCell.status);
+                        newRoom.name = "Room " + i + "-" + j;
                     }
                     else
                     {
@@ -211,19 +213,17 @@ public class DungeonGenerator : MonoBehaviour
             int rowEnd = tuple.Item2 / size.x;
             int colEnd = tuple.Item2 % size.x;
 
-            GameObject corridor;
+            GameObject corridor = corridorsObjects[Random.Range(0, corridorsObjects.Count() - 1)];
 
             if (corridors[tuple])
             {
                 //Horizontal
-                corridor = corridorsObjects[0];
                 var newCorridor = Instantiate(corridor, new Vector3(Mathf.Abs((colStart * offset.x * 2) + (colEnd * offset.x * 2)) / 2, 0, -rowStart * 2 * offset.y), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
                 newCorridor.name = "Corridor " + tuple.Item1 + "->" + tuple.Item2;
             }
             else
             {
                 //Vertical
-                corridor = corridorsObjects[0];
                 var newCorridor = Instantiate(corridor, new Vector3(2 * colStart * offset.x, 0, -Mathf.Abs((rowStart * offset.x * 2) + (rowEnd * offset.x * 2)) / 2), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
                 newCorridor.name = "Corridor " + tuple.Item1 + "->" + tuple.Item2;
                 newCorridor.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
