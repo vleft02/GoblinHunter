@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class OpenCloseObject : Interactable
 {
+
+    [SerializeField] bool locked;
     private bool _doorOpen = false;
     private bool _interact = false;
     public string prompt_message = "Press E to open the door";
@@ -99,8 +102,26 @@ public class OpenCloseObject : Interactable
 
     public override void Interact()
     {
-        _interact = true;
-        Debug.Log("Interact with " + gameObject.name);
+        if (locked) 
+        {
+            if (PlayerProfile.gameData.currentArea.HasKey())
+            {
+                _interact = true;
+                Debug.Log("Interact with " + gameObject.name);
+                prompt_message = "Press E to Open";
+
+            }
+            else 
+            {
+                prompt_message = "You need a Key";
+            }
+        }
+        else 
+        {
+            _interact = true;
+            Debug.Log("Interact with " + gameObject.name);
+        }
+
     }
 
     public override string GetPromptMessage()

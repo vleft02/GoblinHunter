@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Door : Interactable
 {
+
+    
     private bool _doorOpen = false;
     private bool _interact = false;
     public string closed = "Closed";
@@ -98,6 +100,7 @@ public class Door : Interactable
 
     public override void Interact()
     {
+
         _interact = true;
         Debug.Log("Interact with " + gameObject.name);
     }

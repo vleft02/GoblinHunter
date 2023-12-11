@@ -328,6 +328,8 @@ public class DungeonGenerator : MonoBehaviour
             }
 
         }
+        // Set the North side of Starting room to true
+        board[0].status[0] = true;
     }
 
     int FindFurthestRoom()

@@ -7,14 +7,24 @@ using UnityEngine.SceneManagement;
 public class AreaChangeInteractable : Interactable
 {
     [SerializeField] string targetLocation;
+    [SerializeField] bool unlocked;
+    string message = "Press E to Enter ";
     public override string GetPromptMessage()
     {
-       return "Press E to Enter "+ targetLocation;
+       return message+targetLocation;
     }
 
     public override void Interact()
     {
-        PlayerProfile.SetCurrentArea(targetLocation);
-        SceneManager.LoadScene(targetLocation);
+        if (PlayerProfile.gameData.currentArea.HasKey() || unlocked)
+        {
+            message = message + targetLocation;
+            PlayerProfile.SetCurrentArea(targetLocation);
+            SceneManager.LoadScene(targetLocation);
+        }
+        else 
+        {
+            message = "You need a key to enter the ";
+        }
     }
 }

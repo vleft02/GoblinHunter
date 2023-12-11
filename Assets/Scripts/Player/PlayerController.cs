@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour, Hittable
 
         PlayerProfile.UpdatePosition(gameObject.transform.position);
 
-        Debug.Log("velocity.y: " + _velocity.y);
+        /*Debug.Log("velocity.y: " + _velocity.y);*/
     }
 
 

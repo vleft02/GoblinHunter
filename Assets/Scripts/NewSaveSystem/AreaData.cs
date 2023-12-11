@@ -19,12 +19,20 @@ public class AreaData /*: AreaData*/
     private List<EnemyData> enemies;
     [JsonProperty]
     private bool visited;
+    [JsonProperty]
+    private bool hasKey;
 
     public AreaData() 
     {
         enemies = new List<EnemyData>();
         playerPosition = new float[3];
         playerRotation = new float[3];
+        hasKey = false;
+    }
+
+    public void SetKey(bool key) 
+    {
+        hasKey = key;
     }
     public void SetAreaName(string name)
     {
@@ -65,6 +73,11 @@ public class AreaData /*: AreaData*/
     public bool Visited() 
     {
         return visited;
+    }
+
+    public bool HasKey() 
+    {
+        return hasKey;
     }
     public string GetAreaName()
     {
