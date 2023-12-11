@@ -82,7 +82,7 @@ public class GameData
         
 
         areasData[0].SetAreaName("Forest");
-        areasData[0].SetPlayerPosition(new Vector3(5,0.5f,-30));
+        areasData[0].SetPlayerPosition(new Vector3(-1484.8f, 0.5f, 7.53f));
         areasData[0].SetPlayerRotation(new Vector3(90,0,0));
         areasData[0].SetVisited(false);
         areasData[0].SetKey(true);

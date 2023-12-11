@@ -11,7 +11,6 @@ public class GameRuntimeManager : MonoBehaviour
 {
     [SerializeField] GameObject Player;
     [SerializeField] List<GameObject> EnemyPrefabs;
-    [SerializeField] Vector3 playerSpawn;
     [SerializeField] GameObject Terrain;
     [SerializeField] bool ProceduralGen;
     Dictionary<string, GameObject> enemies;
