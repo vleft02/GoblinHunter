@@ -16,8 +16,8 @@ public class PlayerLogic
     {
         this.playerName = "Test";
         this.health = 100;
-        this.stamina = 100;
-        this.maxStamina = 100;
+        this.stamina = 50;
+        this.maxStamina = 50;
     }
 
 

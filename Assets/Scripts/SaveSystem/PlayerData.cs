@@ -19,7 +19,7 @@ public class PlayerData
     {
         this.playerName = playerName;
         health = 100;
-        stamina = 100;
+        stamina = 50;
         weapons = new int[4];
         weapons[0] = 1;
         weapons[1] = 0;

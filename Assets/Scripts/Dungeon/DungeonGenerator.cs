@@ -89,6 +89,7 @@ public class DungeonGenerator : MonoBehaviour
 
         //Define the new seed
         Random.seed = PlayerProfile.gameData.currentArea.GetPlayerSeed();
+        //Random.seed = 0;
 
         //Start the DFS for the 1st time
         MazeGenerator();

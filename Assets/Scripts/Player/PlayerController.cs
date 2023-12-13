@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour, Hittable
     public Vector3 _moveDir;
     private Vector3 _velocity;
 
-    private float regenRate = 5;
+    public float regenRate = 3f;
     /*    private float lastRegenTime =0;*/
 
     private float defense=1.0f;
@@ -192,7 +192,7 @@ public class PlayerController : MonoBehaviour, Hittable
     }
 
     
-    public void ReplenishStamina() 
+    public void ReplenishStamina()
     {
         if (player.stamina<player.maxStamina) 
         {
