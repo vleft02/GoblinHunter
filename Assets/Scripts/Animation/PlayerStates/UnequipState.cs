@@ -36,10 +36,10 @@ public class UnequipState : BaseAnimationState<PlayerAnimationFSM.PlayerAnimatio
     public override void ExitState()
     {
 
-        if (WeaponManager._changeWeapon)
+/*        if (WeaponManager._changeWeapon)
         {
             WeaponManager._changeWeapon = false;
-        }
+        }*/
 
         // TODO
         ////Unequip Weapon Could possilbly move it behind camera instead of using Destroy

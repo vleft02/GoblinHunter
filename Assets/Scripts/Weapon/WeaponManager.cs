@@ -77,26 +77,35 @@ public class WeaponManager
 
     public static void ChangeWeapon(Weapon weapon)
     {
-        if (_currentWeapon != null)
+
+
+        if (!_changeWeapon)
         {
-            /*_changeWeapon = true;*/
+            _changeWeapon = true;
+            if (_currentWeapon != null)
+            {
+                /*_changeWeapon = true;*/
 
-            _previousWeapon = _currentWeapon;
-            EventManager.EquipWeapon();
+                _previousWeapon = _currentWeapon;
+                EventManager.EquipWeapon();
+            }
+            _currentWeapon = weapon;
+
+            if (weapons[weapon.getWeapon()] == null)
+            {
+                //EventManager.EquipWeapon();
+                weapons[weapon.getWeapon()] = _currentWeapon;
+            }
+            _changeWeapon = false;
+            PlayerProfile.UpdateWeapons(weapons, _currentWeapon);
         }
-        _currentWeapon = weapon;
-
-        if (weapons[weapon.getWeapon()] == null)
-        {
-            //EventManager.EquipWeapon();
-            weapons[weapon.getWeapon()] = _currentWeapon;
-        }
-        PlayerProfile.UpdateWeapons(weapons,_currentWeapon);
-
     }
 
     public static void ChangeWeapon(int weaponSlot)
     {
+        if (!_changeWeapon) 
+        {
+            _changeWeapon = true;
             var enumerator = weapons.GetEnumerator();
             int weaponPosition = 1;
             while (weaponPosition <= weaponSlot)
@@ -107,19 +116,27 @@ public class WeaponManager
 
             Weapon weapon = enumerator.Current.Value;
             enumerator.Dispose();
-
-        if (weapon != null && weapon!=_currentWeapon)
-        {
-            if (_currentWeapon != null)
+            if (_currentWeapon == weapon) 
             {
-                /*_changeWeapon = true;*/
-                _previousWeapon = _currentWeapon;
-                _currentWeapon = weapon;
-                EventManager.EquipWeapon();
+                _changeWeapon = false;
+                return;
             }
+            else if (weapon != null && weapon != _currentWeapon)
+            {
+                if (_currentWeapon != null)
+                {
+
+                    /*_changeWeapon = true;*/
+                    _previousWeapon = _currentWeapon;
+                    _currentWeapon = weapon;
+                    EventManager.EquipWeapon();
+                }
+            }
+
+            PlayerProfile.UpdateWeapons(weapons, _currentWeapon);
+           
         }
 
-        PlayerProfile.UpdateWeapons(weapons,_currentWeapon);
     }
 
 

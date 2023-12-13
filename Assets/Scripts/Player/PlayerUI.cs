@@ -117,12 +117,16 @@ public class PlayerUI : MonoBehaviour
     public void DeathUI() 
     {
         _crosshair.enabled = false;
-        Invoke("ShowDeathScreen",2.3f);
+        Invoke("ShowDeathScreen",1.5f);
     }
 
-    public void ShowDeathScreen() 
+    public void ShowDeathScreen()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         deathScreen.SetActive(true);
+        Time.timeScale = 0f;
+        
     }
 
     private void TogglePauseMenu() 
