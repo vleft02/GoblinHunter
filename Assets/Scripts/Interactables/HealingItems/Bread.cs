@@ -17,7 +17,6 @@ public class Bread : Interactable
     public override string GetPromptMessage()
     {
         return "";
-
     }
 
     public override void Interact()
@@ -25,7 +24,7 @@ public class Bread : Interactable
         _playerUI.PlayHealthVFX();
 
         // Increase Health
-
+        
         // Destroy Item
 
     }
