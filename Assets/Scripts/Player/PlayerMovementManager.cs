@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerMovementManager : MonoBehaviour
 {
+
+
     public static bool _isGrounded { get; set; }
     public static bool _isRunning { get; set; }
     public static bool _isAttacking { get; set; }
@@ -12,15 +14,22 @@ public class PlayerMovementManager : MonoBehaviour
     //public bool IsGrounded {get => _isGrounded, }
     private static float attackCooldown = 0;
     private static float timer = 0;
+    private static bool _isStaminaEnough = false;
 
-     void Update()
+    void Update()
     {
         timer += Time.deltaTime;
     }
 
-    public static bool CanAttack() 
+    public static void setIsStaminaEnough(bool canAttack)
     {
-        if (timer >= attackCooldown)
+        _isStaminaEnough = canAttack;
+    }
+
+
+    public static bool CanAttack()
+    {
+        if (timer >= attackCooldown && _isStaminaEnough)
         {
             attackCooldown = 0;
             return true;

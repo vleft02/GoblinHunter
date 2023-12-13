@@ -38,7 +38,7 @@ public class PlayerAnimationFSM : AnimationStateManager<PlayerAnimation>
         EventManager.EquipWeaponEvent -= Equip;
     }
 
-    private void Attack() 
+    private void Attack()
     {
         if (CurrentState == States[PlayerAnimation.IDLE])
         {

@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.ProBuilder.Shapes;
+using UnityEngine.UI;
 
 public static class Effects
 {
@@ -37,7 +39,7 @@ public static class Effects
     {
         float currentTime = 0;
         Material originalMaterial = sprite.material;
-        Material flashMaterial = Object.Instantiate(sprite.material);
+        Material flashMaterial = UnityEngine.Object.Instantiate(sprite.material);
         Color flashColor = flashMaterial.color * 4;
         flashMaterial.color = flashColor;
         bool flash = true;
@@ -57,6 +59,38 @@ public static class Effects
             yield return null;
         }
         sprite.material = originalMaterial;
+        yield break;
+    }
+    
+    public static IEnumerator FlashStaminaEffect(UnityEngine.UI.Image image, float duration, Action callback) 
+    {
+        float currentTime = 0;
+        Color originalColor = image.color;
+        Color flashColor = Color.red;
+        bool flash = true;
+        //int counter = 0;
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            if (flash)
+            {
+                image.color = flashColor;
+                flash = false;
+                //counter++;
+            }
+            else //if (counter > 1)
+            {
+                image.color = originalColor;
+                flash = true;
+            }
+            yield return null;
+        }
+
+        image.color = originalColor;
+
+        callback();
+
         yield break;
     }
 

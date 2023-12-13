@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using UnityEngine.VFX;
 
 
@@ -28,8 +29,11 @@ public class PlayerController : MonoBehaviour, Hittable
     [Header("Controller")]
     [SerializeField] private float _speed = 5f;
     public float _runningSpeed;
+    public float _runningStaminaConsumption;
     public float _jumpHeight = 2.5f;
     public float _gravity = -6f;
+    private bool _waitForRegen;
+    private bool _noStaminaEffect;
 
     public PlayerInput _playerInput;
     public PlayerInput.OnFootActions _onFoot;
@@ -60,10 +64,10 @@ public class PlayerController : MonoBehaviour, Hittable
         player.health = PlayerProfile.gameData.playerData.health;
 
         EventManager.TogglePause += PauseSound;
+        EventManager.CanAttackEvent += canAttack;
 
         HitEffect = HitEffectEmmiter.GetComponent<ParticleSystem>();
         BloodEffect = BloodEffectEmmiter.GetComponent<VisualEffect>();
-        EventManager.AttackEvent += Attack;
         
         EventManager.EquipWeaponEvent += PlayEquipSound;
         _player = GetComponent<CharacterController>();
@@ -82,14 +86,20 @@ public class PlayerController : MonoBehaviour, Hittable
         _jumpHeight = 2.5f;
         _gravity = -8f;
         _runningSpeed = 12f;
+        _runningStaminaConsumption = 0.5f;
+
+        _waitForRegen = false;
+        _noStaminaEffect = false;
     }
     private void OnDisable()
     {
         EventManager.PlayerHitEvent -= TakeDamage;
         EventManager.EquipWeaponEvent -= PlayEquipSound;
         EventManager.TogglePause -= PauseSound;
-        EventManager.AttackEvent -= Attack;
+        EventManager.CanAttackEvent -= canAttack;
+
     }
+
     void Update()
     {
         /*       _playerController.Move(_onFoot.Movement.ReadValue<Vector2>());
@@ -121,15 +131,39 @@ public class PlayerController : MonoBehaviour, Hittable
             StartCoroutine(Effects.StartFade(MovementSound, 0.2f, 0.0f));
 
         }
-        else if (PlayerMovementManager._isRunning)
+        else if (PlayerMovementManager._isRunning && player.stamina > 0 && !_waitForRegen)
         {
             _movementSpeed = _runningSpeed;
+            player.stamina -= _runningStaminaConsumption;
             PlaySound(runEffect);
         }
         else
         {
+            if (player.stamina == 0)
+            {
+                _waitForRegen = true;
+            }
+            else if (player.stamina == player.maxStamina)
+            {
+                _noStaminaEffect = false;
+                _waitForRegen = false;
+            }
+
             _movementSpeed = _speed;
             PlaySound(walkEffect);
+        }
+
+        if (_waitForRegen && !_noStaminaEffect && 
+           PlayerMovementManager._isRunning && (_moveDir.x != 0 || _moveDir.z != 0))
+        {
+            _noStaminaEffect = true;
+            StartCoroutine(
+                Effects.FlashStaminaEffect(
+                    GameObject.Find("Fill Stamina").GetComponent<Image>(),
+                    0.2f,
+                    () => { _noStaminaEffect = false; } 
+                )
+            );
         }
 
         _velocity.y += _gravity * Time.deltaTime;
@@ -150,16 +184,32 @@ public class PlayerController : MonoBehaviour, Hittable
     }
 
 
-    public void Attack()
+    public void canAttack()
     {
-        if (player.stamina > WeaponManager._currentWeapon.GetStaminaConsumption())
+        if (player.stamina > WeaponManager._currentWeapon.GetStaminaConsumption() && !_waitForRegen)
         {
             //Move Attack Sound Effects to animation
             player.stamina -= WeaponManager._currentWeapon.GetStaminaConsumption();
+            PlayerMovementManager.setIsStaminaEnough(true);
+        }
+        else
+        {
+            if (_waitForRegen && !_noStaminaEffect)
+            {
+                _noStaminaEffect = true;
+                StartCoroutine(
+                    Effects.FlashStaminaEffect(
+                        GameObject.Find("Fill Stamina").GetComponent<Image>(),
+                        0.2f,
+                        () => { _noStaminaEffect = false; }
+                    )
+                );
+            }
+
+            PlayerMovementManager.setIsStaminaEnough(false);
         }
 
     }
-
 
     public void Jump()
     {

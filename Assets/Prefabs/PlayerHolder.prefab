@@ -1415,6 +1415,7 @@ MonoBehaviour:
   regenRate: 3
   _speed: 8
   _runningSpeed: 10
+  _runningStaminaConsumption: 0
   _jumpHeight: 2
   _gravity: -9.8
   HitEffect: {fileID: 0}
@@ -2034,7 +2035,7 @@ GameObject:
   - component: {fileID: 6909303075668042106}
   - component: {fileID: 831042267289984115}
   m_Layer: 5
-  m_Name: Fill
+  m_Name: Fill Stamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
