@@ -150,7 +150,7 @@ public class DungeonGenerator : MonoBehaviour
                     {
                         if (availableRooms.Count > 0)
                         {
-                            randomRoom = availableRooms[Random.Range(0, availableRooms.Count - 1)];
+                            randomRoom = availableRooms[Random.Range(0, availableRooms.Count)];
                         }
                         else
                         {
@@ -213,7 +213,7 @@ public class DungeonGenerator : MonoBehaviour
             int rowEnd = tuple.Item2 / size.x;
             int colEnd = tuple.Item2 % size.x;
 
-            GameObject corridor = corridorsObjects[Random.Range(0, corridorsObjects.Count() - 1)];
+            GameObject corridor = corridorsObjects[Random.Range(0, corridorsObjects.Count())];
 
             if (corridors[tuple])
             {
