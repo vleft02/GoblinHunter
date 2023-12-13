@@ -110,6 +110,7 @@ public class PlayerInteract : MonoBehaviour
     {
         if (_player._onFoot.Attack.triggered)
         {
+            EventManager.CheckAttack();
             if (PlayerMovementManager.CanAttack())
             {
                 PlayerMovementManager.AttackPerformed(WeaponManager._currentWeapon.ATTACK.Duration);

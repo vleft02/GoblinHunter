@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public static class EventManager /*: MonoBehaviour*/
 {
     public static event Action AttackEvent;
+    public static event Action CanAttackEvent;
 
     public static event Action EquipWeaponEvent;
     
@@ -30,6 +31,11 @@ public static class EventManager /*: MonoBehaviour*/
     public static void AttackPerformed()
     {
         AttackEvent?.Invoke();
+    }
+
+    public static void CheckAttack()
+    {
+        CanAttackEvent?.Invoke();
     }
 
     public static void EquipWeapon()
