@@ -7,7 +7,7 @@ public class Kill : MonoBehaviour
     [SerializeField] float time;
     [SerializeField] float damage;
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         Invoke("Hit", time);
     }

@@ -277,9 +277,12 @@ public class PlayerController : MonoBehaviour, Hittable
 
     public void PlayEquipSound() 
     {
-        EquipSound.clip = EquipEffect;
-        EquipSound.enabled = true;
-        EquipSound.Play();
+        if (!WeaponManager._changeWeapon) 
+        {
+            EquipSound.clip = EquipEffect;
+            EquipSound.enabled = true;
+            EquipSound.Play();
+        }
     }
     public void PlayImpactSound() 
     {

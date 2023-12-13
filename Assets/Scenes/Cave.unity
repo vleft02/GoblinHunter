@@ -4699,6 +4699,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3882587033344203246, guid: de072453d6abd9945b9827c2c3b809b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.148
+      objectReference: {fileID: 0}
+    - target: {fileID: 3882587033344203246, guid: de072453d6abd9945b9827c2c3b809b5, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.46
       objectReference: {fileID: 0}
@@ -6193,7 +6197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1834841249659454679, guid: d65d937f643878d4a974a8ed0d77e2e1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.2
+      value: 0.013
       objectReference: {fileID: 0}
     - target: {fileID: 1834841249659454679, guid: d65d937f643878d4a974a8ed0d77e2e1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6223,9 +6227,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7903741792948259267, guid: d65d937f643878d4a974a8ed0d77e2e1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.99888
+      objectReference: {fileID: 0}
+    - target: {fileID: 7903741792948259267, guid: d65d937f643878d4a974a8ed0d77e2e1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1241
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 458970897515463824, guid: d65d937f643878d4a974a8ed0d77e2e1, type: 3}
     - {fileID: 5717271059738093556, guid: d65d937f643878d4a974a8ed0d77e2e1, type: 3}
+    - {fileID: 7132036866557586486, guid: d65d937f643878d4a974a8ed0d77e2e1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -7552,7 +7565,7 @@ GameObject:
   - component: {fileID: 923898428}
   - component: {fileID: 923898430}
   m_Layer: 6
-  m_Name: entrance
+  m_Name: Forest Entrance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7607,7 +7620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLocation: Forest
-  unlocked: 0
+  unlocked: 1
 --- !u!1 &926741800
 GameObject:
   m_ObjectHideFlags: 0
@@ -22293,7 +22306,6 @@ MonoBehaviour:
   Player: {fileID: 5555513789912647946, guid: 183bf20174574684baf3a54db137b13f, type: 3}
   EnemyPrefabs:
   - {fileID: 4064779591154642302, guid: a281a12ed9eadd844a8bde469f4ee3ae, type: 3}
-  playerSpawn: {x: 0, y: 0, z: 0}
   Terrain: {fileID: 743479987}
   ProceduralGen: 0
 --- !u!1 &1781541757
@@ -23263,7 +23275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1875182513}
   m_Layer: 0
-  m_Name: WestSide
+  m_Name: Dungeon Entrance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24332,7 +24344,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6534347502814029905, guid: de072453d6abd9945b9827c2c3b809b5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.23
+      value: 2.095
       objectReference: {fileID: 0}
     - target: {fileID: 6534347502814029905, guid: de072453d6abd9945b9827c2c3b809b5, type: 3}
       propertyPath: m_LocalPosition.z

@@ -48,7 +48,7 @@ public class PlayerAnimationFSM : AnimationStateManager<PlayerAnimation>
 
     private void Equip() 
     {
-        if (CurrentState == States[PlayerAnimation.IDLE]) 
+        if (CurrentState == States[PlayerAnimation.IDLE] && WeaponManager._changeWeapon == true) 
         {
             TransitionToState(PlayerAnimation.UNEQUIP);
         }

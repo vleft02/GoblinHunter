@@ -34,7 +34,7 @@ public class EquipState : BaseAnimationState<PlayerAnimationFSM.PlayerAnimation>
 
     public override void ExitState()
     {
-
+       
     }
 
     public override PlayerAnimationFSM.PlayerAnimation GetNextState()

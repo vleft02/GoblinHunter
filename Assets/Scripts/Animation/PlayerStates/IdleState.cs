@@ -15,6 +15,7 @@ public class IdleState : BaseAnimationState<PlayerAnimationFSM.PlayerAnimation>
 
     public override void EnterState()
     {
+        WeaponManager._changeWeapon = false;
         if (WeaponManager._currentWeapon != null)
         {
             if (Id != WeaponManager._currentWeapon.IDLE.State)
@@ -53,11 +54,11 @@ public class IdleState : BaseAnimationState<PlayerAnimationFSM.PlayerAnimation>
             PlayerMovementManager._isAttacking = false;
             return PlayerAnimationFSM.PlayerAnimation.ATTACK;
         }*/
-
+/*
         if (WeaponManager._changeWeapon)
         {
             return PlayerAnimationFSM.PlayerAnimation.UNEQUIP;
-        }
+        }*/
 
         return PlayerAnimationFSM.PlayerAnimation.IDLE;
     }
