@@ -28,12 +28,11 @@ public class GameRuntimeManager : MonoBehaviour
 
     private void SpawnPlayer()
     {
-
+        Vector3 playerPos = new Vector3(PlayerProfile.gameData.currentArea.GetPlayerPosition()[0], PlayerProfile.gameData.currentArea.GetPlayerPosition()[1], PlayerProfile.gameData.currentArea.GetPlayerPosition()[2]);
+        Vector3 playerRotation = new Vector3(PlayerProfile.gameData.currentArea.GetPlayerRotation()[0], PlayerProfile.gameData.currentArea.GetPlayerRotation()[1], PlayerProfile.gameData.currentArea.GetPlayerRotation()[2]);
         playerInstance = Instantiate(Player);
-
-        GameObject.Find("Player").transform.position = new Vector3(PlayerProfile.gameData.currentArea.GetPlayerPosition()[0], PlayerProfile.gameData.currentArea.GetPlayerPosition()[1], PlayerProfile.gameData.currentArea.GetPlayerPosition()[2]);
-        GameObject.Find("Player").transform.rotation.eulerAngles.Set(PlayerProfile.gameData.currentArea.GetPlayerRotation()[0], PlayerProfile.gameData.currentArea.GetPlayerRotation()[1], PlayerProfile.gameData.currentArea.GetPlayerRotation()[2]);
-    
+        GameObject.Find("Player").transform.position = playerPos;
+        GameObject.Find("Camera Holder").transform.rotation.eulerAngles.Set(playerRotation.x, playerRotation.y, playerRotation.z);
     }
 
     private void SpawnEnemies()
