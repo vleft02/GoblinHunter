@@ -1323,6 +1323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1286436717188821756}
+  - component: {fileID: 6859531390649807074}
   - component: {fileID: 7753705321393212180}
   - component: {fileID: 7859037492854632313}
   - component: {fileID: 5204003527741591002}
@@ -1332,7 +1333,6 @@ GameObject:
   - component: {fileID: 983049488335547524}
   - component: {fileID: 2922135884630017501}
   - component: {fileID: 8228954065235617361}
-  - component: {fileID: 6859531390649807074}
   - component: {fileID: 3709715062021387425}
   - component: {fileID: 8775713231484281547}
   - component: {fileID: 6536385894164830685}
@@ -1362,6 +1362,18 @@ Transform:
   - {fileID: 550136523393284725}
   m_Father: {fileID: 7201214231980110310}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6859531390649807074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4325341676441248389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cac5ca669e028964cacb1a1dbc146429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7753705321393212180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1552,18 +1564,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 1, z: 0}
   m_TimeToStationary: 0.5
---- !u!114 &6859531390649807074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4325341676441248389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cac5ca669e028964cacb1a1dbc146429, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3709715062021387425
 MonoBehaviour:
   m_ObjectHideFlags: 0

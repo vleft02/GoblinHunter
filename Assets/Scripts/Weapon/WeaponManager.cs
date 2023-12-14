@@ -63,14 +63,11 @@ public class WeaponManager
             {
                 if (currentWeapon == index) 
                 {
-                    /*_currentWeapon = enumerator.Current.Value;*/
                     ChangeWeapon(enumerator.Current.Value);
                 }
                 index++;
             }
-            /*_previousWeapon = _currentWeapon;*/
-            /*ChangeWeapon(currentWeapon);*/
-
+            
         }
 
     }
@@ -82,22 +79,27 @@ public class WeaponManager
         if (!_changeWeapon)
         {
             _changeWeapon = true;
-            if (_currentWeapon != null)
-            {
-                /*_changeWeapon = true;*/
 
-                _previousWeapon = _currentWeapon;
-                EventManager.EquipWeapon();
+            if(_currentWeapon == weapon)
+            {
+                _changeWeapon = false;
+                return;
             }
+            
+            _previousWeapon = _currentWeapon;
             _currentWeapon = weapon;
+
+            if (_previousWeapon == null) 
+            {
+                _previousWeapon= new Hands();
+            }
 
             if (weapons[weapon.getWeapon()] == null)
             {
-                //EventManager.EquipWeapon();
                 weapons[weapon.getWeapon()] = _currentWeapon;
             }
-            _changeWeapon = false;
             PlayerProfile.UpdateWeapons(weapons, _currentWeapon);
+            EventManager.EquipWeapon();
         }
     }
 
@@ -125,8 +127,6 @@ public class WeaponManager
             {
                 if (_currentWeapon != null)
                 {
-
-                    /*_changeWeapon = true;*/
                     _previousWeapon = _currentWeapon;
                     _currentWeapon = weapon;
                     EventManager.EquipWeapon();

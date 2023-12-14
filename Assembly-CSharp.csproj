@@ -107,6 +107,7 @@
     <Compile Include="Assets\Scripts\ChatBubble.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyAnimationStates\HitEnemyState.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyStates\DeathEnemyState.cs" />
+    <Compile Include="Assets\Scripts\Menu\CreditsMenu.cs" />
     <Compile Include="Assets\Scripts\Interactables\Door.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyController.cs" />
     <Compile Include="Assets\Scripts\EventManager.cs" />

@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using TMPro;
 using UnityEngine;
 using Newtonsoft.Json;
+using System.Runtime.InteropServices.ComTypes;
 
 public class LoadMenu : MonoBehaviour
 {
@@ -25,24 +26,26 @@ public class LoadMenu : MonoBehaviour
         if (SaveManager.GetSaveFilePaths() != null)
         {
             GameObject loadList = GameObject.Find("LoadList");
+          
+            
+            
             foreach (Transform child in loadList.transform)
             {
                 Destroy(child.gameObject);
             }
-            foreach (string path in SaveManager.GetSaveFilePaths())
+
+            for (int i = SaveManager.GetSaveFilePaths().Count-1; i >= 0; i--) 
             {
+                string path = SaveManager.GetSaveFilePaths()[i];
                 if (File.Exists(path))
                 {
-                    /*                        BinaryFormatter bf = new BinaryFormatter();
-                                         FileStream stream = new FileStream(path, FileMode.Open);
-                                         GameData data = bf.Deserialize(stream) as GameData;*/
+                    
 
                     string loadedJsonData = File.ReadAllText(path);
 
                     var settings = new JsonSerializerSettings();
                     settings.Converters.Add(new Vector3Converter());
                     GameData data = JsonConvert.DeserializeObject<GameData>(loadedJsonData, settings);
-                    /*GameData data = JsonUtility.FromJson<GameData>(loadedJsonData);*/
 
 
                     GameObject saveSlot = Instantiate(SaveSlotPrefab);
@@ -55,13 +58,47 @@ public class LoadMenu : MonoBehaviour
                     saveSlot.transform.SetParent(loadList.transform);
                     saveSlot.transform.localScale = Vector3.one;
 
-                    /*stream.Close();*/
+                    
+                }
+                else
+                {
+                    Debug.Log("File Missing");
+                }
+
+            }
+           /* foreach (string path in SaveManager.GetSaveFilePaths())
+            {
+                if (File.Exists(path))
+                {
+                    *//*                        BinaryFormatter bf = new BinaryFormatter();
+                                         FileStream stream = new FileStream(path, FileMode.Open);
+                                         GameData data = bf.Deserialize(stream) as GameData;*//*
+
+                    string loadedJsonData = File.ReadAllText(path);
+
+                    var settings = new JsonSerializerSettings();
+                    settings.Converters.Add(new Vector3Converter());
+                    GameData data = JsonConvert.DeserializeObject<GameData>(loadedJsonData, settings);
+                    *//*GameData data = JsonUtility.FromJson<GameData>(loadedJsonData);*//*
+
+
+                    GameObject saveSlot = Instantiate(SaveSlotPrefab);
+                    TextMeshProUGUI[] textFields = saveSlot.GetComponentsInChildren<TextMeshProUGUI>();
+                    textFields[0].text = data.playerData.playerName;
+                    textFields[2].text = data.time;
+                    textFields[4].text = data.currentArea.GetAreaName();
+                    textFields[6].text = data.playerData.kills.ToString();
+                    textFields[8].text = path;
+                    saveSlot.transform.SetParent(loadList.transform);
+                    saveSlot.transform.localScale = Vector3.one;
+
+                    *//*stream.Close();*//*
                 }
                 else 
                 {
                     Debug.Log("File Missing");
                 }
-            }
+            }*/
 
         }
         else 

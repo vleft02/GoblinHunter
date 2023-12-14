@@ -39,7 +39,7 @@ public class PlayerRotate : MonoBehaviour
         rotateHorizontal();
 
         initialRotation = _cameraHolder.localRotation;
-        PlayerProfile.UpdateRotation(gameObject.transform.rotation.eulerAngles);
+        PlayerProfile.UpdateRotation(gameObject.transform.localRotation.eulerAngles);
 
     }
 
