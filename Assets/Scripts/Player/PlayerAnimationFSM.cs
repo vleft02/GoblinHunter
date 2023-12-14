@@ -5,6 +5,7 @@ using static EnemyStateMachine;
 using UnityEngine.AI;
 using static PlayerAnimationFSM;
 using static EnemyAnimationFSM;
+using System.Security.Cryptography;
 
 public class PlayerAnimationFSM : AnimationStateManager<PlayerAnimation>
 {
@@ -32,6 +33,7 @@ public class PlayerAnimationFSM : AnimationStateManager<PlayerAnimation>
         EventManager.PlayerDeathEvent += ToDeathAnimation;
 /*        EventManager.PlayerHitEvent += GetHit;*/
     }
+
     private void OnDisable()
     {
         EventManager.AttackEvent -= Attack;

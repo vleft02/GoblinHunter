@@ -34,7 +34,7 @@ public class GameRuntimeManager : MonoBehaviour
         playerInstance = Instantiate(Player,playerPos,Quaternion.identity);
         /*GameObject.Find("Player").transform.position = playerPos;*/
         GameObject.Find("Player").transform.localPosition = Vector3.zero;
-        GameObject.Find("Camera Holder").transform.rotation.eulerAngles.Set(playerRotation.x, playerRotation.y, playerRotation.z);
+        GameObject.Find("Player").transform.localRotation = Quaternion.Euler(playerRotation);
     }
 
     private void SpawnEnemies()
