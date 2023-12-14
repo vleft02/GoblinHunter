@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.UI;
 using UnityEngine.VFX;
 
@@ -15,20 +16,24 @@ public class PlayerController : MonoBehaviour, Hittable
     public Vector3 _moveDir;
     private Vector3 _velocity;
 
-    public float regenRate = 3f;
+    public float regenRate = 7f;
     /*    private float lastRegenTime =0;*/
 
     private float defense=1.0f;
     AudioSource MovementSound;
     AudioSource AttackSound;
     AudioSource EquipSound;
+    AudioSource BreathingSound;
 
     AudioSource[] soundChannels;
 
 
     [Header("Controller")]
-    [SerializeField] private float _speed = 5f;
+    public float _currentSpeed;
+    public float _maxVelocity;
+    public float _speed = 5f;
     public float _runningSpeed;
+    public float _tiredSpeed;
     public float _runningStaminaConsumption;
     public float _jumpHeight = 2.5f;
     public float _gravity = -6f;
@@ -48,6 +53,7 @@ public class PlayerController : MonoBehaviour, Hittable
     [SerializeField] AudioClip attackEffect;
     [SerializeField] AudioClip EquipEffect;
     [SerializeField] AudioClip impactEffect;
+    [SerializeField] AudioClip tiredEffect;
     AudioClip currentClip;
 
     public void Awake()
@@ -78,18 +84,26 @@ public class PlayerController : MonoBehaviour, Hittable
         MovementSound = soundChannels[0];
         AttackSound = soundChannels[1];
         EquipSound = soundChannels[2];
+        BreathingSound = soundChannels[3];
         
         MovementSound.enabled = false;
         AttackSound.enabled = false;
         EquipSound.enabled = false;
+        BreathingSound.enabled = false;
 
+        _velocity = Vector3.zero;
+
+        _currentSpeed = 0f;
         _jumpHeight = 2.5f;
         _gravity = -8f;
         _runningSpeed = 12f;
-        _runningStaminaConsumption = 0.5f;
+        _tiredSpeed = 2f;
+        _runningStaminaConsumption = 0.2f;
 
         _waitForRegen = false;
         _noStaminaEffect = false;
+
+        _maxVelocity = _currentSpeed;
     }
     private void OnDisable()
     {
@@ -124,16 +138,14 @@ public class PlayerController : MonoBehaviour, Hittable
         _moveDir.x = input.x;
         _moveDir.z = input.y;
         _moveDir.y = _velocity.y;
-        float _movementSpeed = 1f;
 
         if (_moveDir.x == 0 && _moveDir.z == 0)
         {
             StartCoroutine(Effects.StartFade(MovementSound, 0.2f, 0.0f));
-
         }
         else if (PlayerMovementManager._isRunning && player.stamina > 0 && !_waitForRegen)
         {
-            _movementSpeed = _runningSpeed;
+            _currentSpeed = _runningSpeed;
             player.stamina -= _runningStaminaConsumption;
             PlaySound(runEffect);
         }
@@ -141,6 +153,7 @@ public class PlayerController : MonoBehaviour, Hittable
         {
             if (player.stamina == 0)
             {
+                PlayBreathingSound();
                 _waitForRegen = true;
             }
             else if (player.stamina == player.maxStamina)
@@ -149,7 +162,12 @@ public class PlayerController : MonoBehaviour, Hittable
                 _waitForRegen = false;
             }
 
-            _movementSpeed = _speed;
+            if (_waitForRegen) _currentSpeed = _tiredSpeed;
+            else
+            {
+                _currentSpeed = _speed;
+            }
+            
             PlaySound(walkEffect);
         }
 
@@ -166,27 +184,73 @@ public class PlayerController : MonoBehaviour, Hittable
             );
         }
 
+
         _velocity.y += _gravity * Time.deltaTime;
         if (PlayerMovementManager._isGrounded && _velocity.y < 0f)
         {
             _velocity.y = -2f;
         }
 
-        _moveDir.x *= _movementSpeed;
-        _moveDir.z *= _movementSpeed;
-        _moveDir.y *= _speed;
+        _maxVelocity = _currentSpeed;
 
-        _player.Move(transform.TransformDirection(_moveDir) * Time.deltaTime);
+        if (_moveDir.x == 0)
+        {
+            if (Mathf.Abs(_velocity.x) > 0)
+            {
+                _velocity.x += (-_velocity.normalized.x) * _currentSpeed * Time.deltaTime * 8f;
+            }
+            else
+            {
+                _velocity.x = 0f;
+            }
+        }
+        else 
+        {
+            if (Mathf.Abs(_velocity.x) < _maxVelocity)
+            {
+                _velocity.x += _moveDir.x * _currentSpeed * Time.deltaTime * 2f;
+            }
+            else
+            {
+                _velocity.x = _moveDir.x * _maxVelocity;
+            }
+        }
+
+        if (_moveDir.z == 0)
+        {
+            if (Mathf.Abs(_velocity.z) > 0)
+            {
+                _velocity.z += (-_velocity.normalized.z) * _currentSpeed * Time.deltaTime * 8f;
+            }
+            else
+            {
+                _velocity.z = 0f;
+            }
+        }
+        else 
+        {
+            if (Mathf.Abs(_velocity.z) < _maxVelocity)
+            {
+                _velocity.z += _moveDir.z * _currentSpeed * Time.deltaTime * 2f;
+            }
+            else
+            {
+                _velocity.z = _moveDir.z * _maxVelocity;
+            }
+        }
+
+        //Debug.Log("Velocity: " + _velocity);
+
+        _player.Move(transform.TransformDirection(_velocity) * Time.deltaTime);
 
         PlayerProfile.UpdatePosition(gameObject.transform.position);
 
-        /*Debug.Log("velocity.y: " + _velocity.y);*/
     }
-
 
     public void canAttack()
     {
-        if (player.stamina > WeaponManager._currentWeapon.GetStaminaConsumption() && !_waitForRegen)
+        //enable for stamina consumption while punching
+        if (player.stamina > WeaponManager._currentWeapon.GetStaminaConsumption()) //&& !_waitForRegen)
         {
             //Move Attack Sound Effects to animation
             player.stamina -= WeaponManager._currentWeapon.GetStaminaConsumption();
@@ -194,6 +258,9 @@ public class PlayerController : MonoBehaviour, Hittable
         }
         else
         {
+            //enable for stamina consumption while punching
+            //bug: no stamina consumption when player stays still and punches, need to move!
+            /*
             if (_waitForRegen && !_noStaminaEffect)
             {
                 _noStaminaEffect = true;
@@ -205,6 +272,7 @@ public class PlayerController : MonoBehaviour, Hittable
                     )
                 );
             }
+            */
 
             PlayerMovementManager.setIsStaminaEnough(false);
         }
@@ -253,11 +321,12 @@ public class PlayerController : MonoBehaviour, Hittable
 
     public void PauseSound()
     {
-        if (MovementSound.enabled || AttackSound.enabled || EquipSound.enabled)
+        if (MovementSound.enabled || AttackSound.enabled || EquipSound.enabled  || BreathingSound.enabled)
         {
             MovementSound.enabled = false;
             AttackSound.enabled = false;
             EquipSound.enabled = false;
+            BreathingSound.enabled = false;
         }
         else 
         {
@@ -291,6 +360,14 @@ public class PlayerController : MonoBehaviour, Hittable
         EquipSound.Play();
     }
 
+    public void PlayBreathingSound()
+    {
+        BreathingSound.clip = tiredEffect;
+        BreathingSound.enabled = true;
+        BreathingSound.volume = 0.9f;
+        BreathingSound.Play();
+    }
+
     //Tha ginete meso animation
     private void PlayAttackSound()
     {
@@ -299,10 +376,10 @@ public class PlayerController : MonoBehaviour, Hittable
         AttackSound.Play();
     }
 
-    private void PlaySound(AudioClip clip)
+    private void PlaySound(AudioClip clip, float volume=0.7f)
     {
         MovementSound.enabled = true;
-        MovementSound.volume = 0.7f;
+        MovementSound.volume = volume;
         MovementSound.clip = clip;
         if (!MovementSound.isPlaying)
         {
