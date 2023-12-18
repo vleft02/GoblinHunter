@@ -7,7 +7,7 @@ using UnityEngine;
 public class OpenCloseObject : Interactable
 {
 
-    [SerializeField] bool locked;
+    [SerializeField] bool locked = false;
     private bool _doorOpen = false;
     private bool _interact = false;
     public string prompt_message = "Press E to open the door";
@@ -111,7 +111,7 @@ public class OpenCloseObject : Interactable
                 prompt_message = "Press E to Open";
 
             }
-            else 
+            else
             {
                 prompt_message = "You need a Key";
             }
@@ -120,6 +120,7 @@ public class OpenCloseObject : Interactable
         {
             _interact = true;
             Debug.Log("Interact with " + gameObject.name);
+            prompt_message = "Press E to Open";
         }
 
     }
