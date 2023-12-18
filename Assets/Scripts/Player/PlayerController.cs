@@ -94,8 +94,8 @@ public class PlayerController : MonoBehaviour, Hittable
         _velocity = Vector3.zero;
 
         _currentSpeed = 0f;
-        _jumpHeight = 2.5f;
-        _gravity = -8f;
+        _jumpHeight = 10f;
+        _gravity = -20f;
         _runningSpeed = 12f;
         _tiredSpeed = 2f;
         _runningStaminaConsumption = 0.2f;
