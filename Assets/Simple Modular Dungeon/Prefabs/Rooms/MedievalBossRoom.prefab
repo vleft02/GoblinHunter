@@ -178,6 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6754058467436589810}
   - component: {fileID: 858574695326175389}
+  - component: {fileID: -5863153300131851274}
   m_Layer: 0
   m_Name: MedievalBossRoom
   m_TagString: Untagged
@@ -239,6 +240,30 @@ MonoBehaviour:
   - {fileID: 3976049015037652946}
   - {fileID: 755611843167182219}
   - {fileID: 1472173279602352671}
+--- !u!205 &-5863153300131851274
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5862746086682215369}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!1 &6620945575993535783
 GameObject:
   m_ObjectHideFlags: 0
