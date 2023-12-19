@@ -67,7 +67,7 @@ public class GameRuntimeManager : MonoBehaviour
 
     public void DisableGameObjects()
     {
-        Time.timeScale = 1f;
+        /*Time.timeScale = 1f;*/
         Destroy(playerInstance);
         playerInstance = null;
         foreach (var entry in enemies)

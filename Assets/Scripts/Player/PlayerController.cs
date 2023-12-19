@@ -17,16 +17,12 @@ public class PlayerController : MonoBehaviour, Hittable
     private Vector3 _velocity;
 
     public float regenRate = 7f;
-    /*    private float lastRegenTime =0;*/
 
     private float defense=1.0f;
-    AudioSource MovementSound;
-    AudioSource AttackSound;
-    AudioSource EquipSound;
-    AudioSource BreathingSound;
 
-    AudioSource[] soundChannels;
-
+    PlayerSFX playerSFX;
+    PlayerVFX playerVFX;
+    public PlayerLogic player;
 
     [Header("Controller")]
     public float _currentSpeed;
@@ -42,11 +38,12 @@ public class PlayerController : MonoBehaviour, Hittable
 
     public PlayerInput _playerInput;
     public PlayerInput.OnFootActions _onFoot;
-    public ParticleSystem HitEffect;
-    public VisualEffect BloodEffect;
+    
+    [Header("Visual Effects")]
     public GameObject HitEffectEmmiter;
     public GameObject BloodEffectEmmiter;
-    public PlayerLogic player;
+    
+    
     [Header("Sound Effects")]
     [SerializeField] AudioClip walkEffect;
     [SerializeField] AudioClip runEffect;
@@ -54,7 +51,7 @@ public class PlayerController : MonoBehaviour, Hittable
     [SerializeField] AudioClip EquipEffect;
     [SerializeField] AudioClip impactEffect;
     [SerializeField] AudioClip tiredEffect;
-    AudioClip currentClip;
+    [SerializeField] AudioClip HurtEffect;
 
     public void Awake()
     {
@@ -72,25 +69,20 @@ public class PlayerController : MonoBehaviour, Hittable
         EventManager.TogglePause += PauseSound;
         EventManager.CanAttackEvent += canAttack;
 
-        HitEffect = HitEffectEmmiter.GetComponent<ParticleSystem>();
-        BloodEffect = BloodEffectEmmiter.GetComponent<VisualEffect>();
-        
+
+        playerVFX = new PlayerVFX(HitEffectEmmiter, BloodEffectEmmiter);
+
         EventManager.EquipWeaponEvent += PlayEquipSound;
         _player = GetComponent<CharacterController>();
         PlayerMovementManager._isGrounded = true;
         PlayerMovementManager._isRunning = false;
 
-        soundChannels = gameObject.GetComponents<AudioSource>();
-        MovementSound = soundChannels[0];
-        AttackSound = soundChannels[1];
-        EquipSound = soundChannels[2];
-        BreathingSound = soundChannels[3];
-        
-        MovementSound.enabled = false;
-        AttackSound.enabled = false;
-        EquipSound.enabled = false;
-        BreathingSound.enabled = false;
 
+        
+        AudioSource[] soundChannels = gameObject.GetComponents<AudioSource>();
+        playerSFX = new PlayerSFX(soundChannels[0], soundChannels[1], soundChannels[2], soundChannels[3], soundChannels[4]);
+  /*      playerSFX.Initialize(soundChannels[0], soundChannels[1], soundChannels[2], soundChannels[3]);
+*/
         _velocity = Vector3.zero;
 
         _currentSpeed = 0f;
@@ -116,20 +108,6 @@ public class PlayerController : MonoBehaviour, Hittable
 
     void Update()
     {
-        /*       _playerController.Move(_onFoot.Movement.ReadValue<Vector2>());
-               _playerController.ReplenishStamina();
-               if (PlayerMovementManager._isGrounded)
-               {
-                   if (_onFoot.Attack.triggered)
-                   {
-                       if (PlayerMovementManager.CanAttack())
-                       {
-                          PlayerMovementManager.AttackPerformed(WeaponManager._currentWeapon.ATTACK.Duration);
-                          _playerController.Attack();
-                       }
-                   }
-               }*/
-
         PlayerMovementManager._isGrounded = _player.isGrounded;
     }
 
@@ -141,13 +119,13 @@ public class PlayerController : MonoBehaviour, Hittable
 
         if (_moveDir.x == 0 && _moveDir.z == 0)
         {
-            StartCoroutine(Effects.StartFade(MovementSound, 0.2f, 0.0f));
+            FadeOutMovementSound();
         }
         else if (PlayerMovementManager._isRunning && player.stamina > 0 && !_waitForRegen)
         {
             _currentSpeed = _runningSpeed;
             player.stamina -= _runningStaminaConsumption;
-            PlaySound(runEffect);
+            PlayMovementSound(runEffect);
         }
         else
         {
@@ -168,7 +146,7 @@ public class PlayerController : MonoBehaviour, Hittable
                 _currentSpeed = _speed;
             }
             
-            PlaySound(walkEffect);
+            PlayMovementSound(walkEffect);
         }
 
         if (_waitForRegen && !_noStaminaEffect && 
@@ -294,6 +272,7 @@ public class PlayerController : MonoBehaviour, Hittable
             Debug.Log("Health Before: " + player.health);
             player.health -= amount*defense;
             PlayerProfile.UpdatePlayerHealth(player.health);
+            playerSFX.PlayFromHurtSound(HurtEffect);
         }
         else
         {
@@ -321,71 +300,41 @@ public class PlayerController : MonoBehaviour, Hittable
 
     public void PauseSound()
     {
-        if (MovementSound.enabled || AttackSound.enabled || EquipSound.enabled  || BreathingSound.enabled)
-        {
-            MovementSound.enabled = false;
-            AttackSound.enabled = false;
-            EquipSound.enabled = false;
-            BreathingSound.enabled = false;
-        }
-        else 
-        {
-            MovementSound.enabled = true;
-        }
+        playerSFX.TogglePauseSounds();
     }
 
-    //metafora sto player Interact isos i ylopoihsh se kapoio manager
     public void PlayVFX(Transform HittableTransform)
     {
-        HitEffectEmmiter.transform.position = HittableTransform.position+ new Vector3(0,0.5f,0);
-        HitEffect.Stop(); HitEffect.Play();
-        BloodEffectEmmiter.transform.position = HittableTransform.position+ new Vector3(0, 0.5f, 0);
-        BloodEffectEmmiter.transform.rotation = HittableTransform.rotation;
-        BloodEffect.Stop(); BloodEffect.Play();
+        playerVFX.PlayAttackVFX(HittableTransform);
     }
 
     public void PlayEquipSound() 
     {
-
-            EquipSound.clip = EquipEffect;
-            EquipSound.enabled = true;
-            EquipSound.Play();
- 
+        playerSFX.PlayFromEquipSound(EquipEffect);
     }
     public void PlayImpactSound() 
     {
-        EquipSound.clip = impactEffect;
-        EquipSound.enabled = true;
-        EquipSound.Play();
+        playerSFX.PlayFromEquipSound(impactEffect);
     }
 
     public void PlayBreathingSound()
     {
-        BreathingSound.clip = tiredEffect;
-        BreathingSound.enabled = true;
-        BreathingSound.volume = 0.9f;
-        BreathingSound.Play();
+        playerSFX.PlayFromBreathingSound(tiredEffect);
     }
 
-    //Tha ginete meso animation
     private void PlayAttackSound()
     {
-        AttackSound.clip = attackEffect;
-        AttackSound.enabled = true;
-        AttackSound.Play();
+        playerSFX.PlayFromAttackSound(attackEffect);
     }
 
-    private void PlaySound(AudioClip clip, float volume=0.7f)
+    private void PlayMovementSound(AudioClip clip, float volume=0.7f)
+    { 
+        playerSFX.PlayFromMovementSound(clip,volume);
+    }
+
+    public void FadeOutMovementSound() 
     {
-        MovementSound.enabled = true;
-        MovementSound.volume = volume;
-        MovementSound.clip = clip;
-        if (!MovementSound.isPlaying)
-        {
-            MovementSound.Play();
-        }
-
-
+        StartCoroutine(Effects.StartFade(playerSFX.GetMovementSound(), 0.2f, 0.0f));
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
