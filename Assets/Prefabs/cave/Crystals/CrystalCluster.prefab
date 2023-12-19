@@ -211,6 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3956165828232469279}
   - component: {fileID: 1327292609933566085}
+  - component: {fileID: 1802267777768040581}
   m_Layer: 0
   m_Name: CrystalCluster
   m_TagString: Untagged
@@ -257,6 +258,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.24826378, y: 0.24494848, z: 0.2654153}
   m_Center: {x: 0.037674118, y: 0.052226093, z: -0.008695552}
+--- !u!205 &1802267777768040581
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5500923742646075880}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.29174894
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!1 &8695090193717795170
 GameObject:
   m_ObjectHideFlags: 0

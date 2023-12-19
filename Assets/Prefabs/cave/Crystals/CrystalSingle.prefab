@@ -246,6 +246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6474605373414813543}
   - component: {fileID: 596021246061613373}
+  - component: {fileID: 1288061875335095829}
   m_Layer: 0
   m_Name: CrystalSingle
   m_TagString: Untagged
@@ -292,6 +293,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.15475294, y: 0.21999998, z: 0.13791381}
   m_Center: {x: -0.22343451, y: -0.07000047, z: 0.23414999}
+--- !u!205 &1288061875335095829
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4943327257561156654}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!1 &6576556369668308295
 GameObject:
   m_ObjectHideFlags: 0
