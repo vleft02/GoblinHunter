@@ -34,10 +34,13 @@ public class PlayerAnimationFSM : AnimationStateManager<PlayerAnimation>
 /*        EventManager.PlayerHitEvent += GetHit;*/
     }
 
+
+
     private void OnDisable()
     {
         EventManager.AttackEvent -= Attack;
         EventManager.EquipWeaponEvent -= Equip;
+        EventManager.PlayerDeathEvent -= ToDeathAnimation;
     }
 
     private void Attack()
@@ -65,6 +68,10 @@ public class PlayerAnimationFSM : AnimationStateManager<PlayerAnimation>
     {
         if (!TerminateFSM)
         {
+            if (_animator == null)
+            {
+                _animator = GetComponent<Animator>();
+            }
             TransitionToState(PlayerAnimation.DEATH);
             TerminateFSM = true;
         }
