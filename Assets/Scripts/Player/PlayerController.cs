@@ -387,4 +387,20 @@ public class PlayerController : MonoBehaviour, Hittable
 
 
     }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+
+        if (hit.collider.GetComponent<Interactable>() != null)
+        {
+            Interactable interactable = hit.collider.GetComponent<Interactable>();
+            if (interactable.useEvents && !interactable.triggerEvent)
+            {
+                interactable.triggerEvent = true;
+                interactable.Interact();
+                interactable.GetComponent<BoxCollider>().enabled = false;
+                Debug.Log("Collide!!!");
+            }
+        }
+    }
 }

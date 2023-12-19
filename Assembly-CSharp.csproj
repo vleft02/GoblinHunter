@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerRotate.cs" />
     <Compile Include="Assets\Scripts\Goblin\GoblinController.cs" />
     <Compile Include="Assets\Scripts\Animation\AnimationStateManager.cs" />
+    <Compile Include="Assets\Scripts\InteractionEvent.cs" />
     <Compile Include="Assets\Scripts\Interactables\HealingItems\Bread.cs" />
     <Compile Include="Assets\Scripts\Interactable.cs" />
     <Compile Include="Assets\Scripts\States\StateManager.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Assets\Scripts\Animation\PlayerStates\EquipState.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
     <Compile Include="Assets\Scripts\Animation\PlayerStates\IdleState.cs" />
+    <Compile Include="Assets\Scripts\Interactables\ScreamEvent.cs" />
     <Compile Include="Assets\Scripts\NewSaveSystem\GameData.cs" />
     <Compile Include="Assets\Scripts\OutllneEffect.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyStates\ChaseEnemyState.cs" />
