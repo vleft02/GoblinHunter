@@ -336,4 +336,20 @@ public class PlayerController : MonoBehaviour, Hittable
     {
         StartCoroutine(Effects.StartFade(playerSFX.GetMovementSound(), 0.2f, 0.0f));
     }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+
+        if (hit.collider.GetComponent<Interactable>() != null)
+        {
+            Interactable interactable = hit.collider.GetComponent<Interactable>();
+            if (interactable.useEvents && !interactable.triggerEvent)
+            {
+                interactable.triggerEvent = true;
+                interactable.Interact();
+                interactable.GetComponent<BoxCollider>().enabled = false;
+                Debug.Log("Collide!!!");
+            }
+        }
+    }
 }

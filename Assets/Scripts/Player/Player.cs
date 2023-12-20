@@ -10,6 +10,7 @@ using UnityEngine.AI;
 using UnityEditor;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
+using UnityEditorInternal;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerController), typeof(PlayerRotate))]
 public class Player : MonoBehaviour
@@ -85,6 +86,8 @@ public class Player : MonoBehaviour
 
         _currentRotate.CameraTilt(_onFoot.Movement.ReadValue<Vector2>());
 
+        _currentRotate.RotateToAngles();
+
     }
 
 
@@ -108,7 +111,7 @@ public class Player : MonoBehaviour
 
     private void ChangeInput()
     {
-        if (!isDead) 
+        if (!isDead)
         {
             if (isPaused)
             {
@@ -143,9 +146,25 @@ public class Player : MonoBehaviour
         }
 
     }
-    private void TerminateInput()
+
+    public void CameraTransition(float wait_time)
     {
-        isDead = true;
+        StartCoroutine(TransitionAndWait(wait_time));
+    }
+
+    public IEnumerator TransitionAndWait(float seconds)
+    {
+
+        GameToCutSceneTransition();
+
+        yield return new WaitForSeconds(seconds);
+
+        CutSceneToGameTransition();
+
+    }
+
+    public void GameToCutSceneTransition()
+    {
         _onFoot.Attack.Disable();
         _onFoot.Movement.Disable();
         _onFoot.Interact.Disable();
@@ -156,6 +175,30 @@ public class Player : MonoBehaviour
         _onFoot.WeaponSlot4.Disable();
         _onFoot.EquipMenu.Disable();
         _onFoot.Pause.Disable();
+        _onFoot.Look.Disable();
+        _onFoot.Jump.Disable();
+    }
+
+    public void CutSceneToGameTransition()
+    {
+        _onFoot.Attack.Enable();
+        _onFoot.Movement.Enable();
+        _onFoot.Interact.Enable();
+        _onFoot.QuickSave.Enable();
+        _onFoot.WeaponSlot1.Enable();
+        _onFoot.WeaponSlot2.Enable();
+        _onFoot.WeaponSlot3.Enable();
+        _onFoot.WeaponSlot4.Enable();
+        _onFoot.EquipMenu.Enable();
+        _onFoot.Pause.Enable();
+        _onFoot.Look.Enable();
+        _onFoot.Jump.Enable();
+    }
+
+    private void TerminateInput()
+    {
+        isDead = true;
+        GameToCutSceneTransition();
         DefaultInputActions.UIActions uiActions = uiInputActions.UI;
         uiActions.Enable();
 

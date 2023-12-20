@@ -68,10 +68,12 @@ public class PlayerInteract : MonoBehaviour
                 //    outline3D._isSelected = true;
                 //}
 
-
                 // Player UI Update
-                _playerUI.crosshairInteraction();
-                _playerUI.updateText(interactable.GetPromptMessage());
+                if (interactable.useEvents)
+                {
+                    _playerUI.crosshairInteraction();
+                    _playerUI.updateText(interactable.GetPromptMessage());
+                }
 
                 if (_player._onFoot.Interact.triggered)
                 {
