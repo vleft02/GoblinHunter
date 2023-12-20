@@ -65,6 +65,11 @@ public class GameRuntimeManager : MonoBehaviour
         DisableGameObjects();
     }
 
+    private void PlayMusic()
+    {
+        gameObject.GetComponent<AudioSource>().Play();
+    }
+
     public void DisableGameObjects()
     {
         /*Time.timeScale = 1f;*/
@@ -80,6 +85,7 @@ public class GameRuntimeManager : MonoBehaviour
     {
         SpawnPlayer();
         SpawnEnemies();
+        PlayMusic();
     }
 }
 
