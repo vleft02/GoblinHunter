@@ -138,8 +138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canEndAttack: 0
   combat_radius: 2
-  patrol_radius: 10
-  chase_radius: 7
+  patrol_radius: 15
+  chase_radius: 10
   _isIdling: 0
   Player: {fileID: 0}
   path: {fileID: 0}

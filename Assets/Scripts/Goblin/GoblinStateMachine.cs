@@ -170,7 +170,7 @@ public class GoblinStateMachine : StateManager<GoblinStateMachine.GoblinState>
         Agent.speed = 0;
         _isIdling = true;
         // Wait for the specified idle interval
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
 
         Agent.isStopped = true;
     }
