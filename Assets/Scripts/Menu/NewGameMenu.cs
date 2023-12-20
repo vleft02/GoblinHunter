@@ -16,7 +16,8 @@ public class NewGameMenu : MonoBehaviour
         if (Regex.IsMatch(text, pattern) && text!=string.Empty)
         {
             PlayerProfile.NewGameData(text);
-            Invoke("LoadScene",0.6f);
+            LoadScene();
+            /*Invoke(nameof(LoadScene), 0.6f);*/
         }
         else 
         {

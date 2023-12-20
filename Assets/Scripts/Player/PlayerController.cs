@@ -283,6 +283,12 @@ public class PlayerController : MonoBehaviour, Hittable
         Debug.Log("Health After: " + player.health);
     }
 
+    public void Heal(int healingAmount)
+    {
+        player.health = Mathf.Clamp(player.health + healingAmount, 0, 100);
+    }
+
+
     public bool HasZeroHealth()
     {
         return player.health == 0;
@@ -352,4 +358,6 @@ public class PlayerController : MonoBehaviour, Hittable
             }
         }
     }
+
+ 
 }

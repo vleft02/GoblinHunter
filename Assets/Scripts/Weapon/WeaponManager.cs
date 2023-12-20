@@ -120,6 +120,12 @@ public class WeaponManager
 
             Weapon weapon = enumerator.Current.Value;
             enumerator.Dispose();
+
+            if (weapon==null)
+            {
+                _changeWeapon = false;
+                return;
+            }
             if (_currentWeapon == weapon) 
             {
                 _changeWeapon = false;

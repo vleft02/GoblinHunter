@@ -8182,6 +8182,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4224711623709093321}
     m_Modifications:
+    - target: {fileID: 496127870243147261, guid: c61b851b20f764942ab4762aba5439fd, type: 3}
+      propertyPath: healingAmount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 496127870243147261, guid: c61b851b20f764942ab4762aba5439fd, type: 3}
+      propertyPath: destroyOnPickup
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6480687208327748767, guid: c61b851b20f764942ab4762aba5439fd, type: 3}
       propertyPath: m_Name
       value: Bread (1)

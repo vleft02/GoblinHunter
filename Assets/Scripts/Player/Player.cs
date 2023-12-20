@@ -1,16 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.VFX;
-using UnityEngine.Windows;
-using UnityEngine.AI;
-using UnityEditor;
-using Unity.VisualScripting;
-using UnityEngine.SceneManagement;
-using UnityEditorInternal;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerController), typeof(PlayerRotate))]
 public class Player : MonoBehaviour
@@ -48,12 +38,14 @@ public class Player : MonoBehaviour
         _onFoot = _playerInput.OnFoot;
         _playerController = GetComponent<PlayerController>();
         _rotate = GetComponents<PlayerRotate>()[0];
-        _rotateSmooth = GetComponents<PlayerRotate>()[1];
-#if UNITY_EDITOR
+        /*_rotateSmooth = GetComponents<PlayerRotate>()[1];*/
+
+        _currentRotate = _rotate;
+/*#if UNITY_EDITOR
         _currentRotate = _rotate;
 #else
         _currentRotate = _rotateSmooth;
-#endif
+#endif*/
 
         AssignInputs();
 
