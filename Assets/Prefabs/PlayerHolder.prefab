@@ -1533,7 +1533,7 @@ MonoBehaviour:
   _speed: 8
   _runningSpeed: 10
   _tiredSpeed: 0
-  _runningStaminaConsumption: 0
+  _staminaConsumptionRate: 0
   _jumpHeight: 2
   _gravity: -9.8
   HitEffectEmmiter: {fileID: 4188942734517514025}
@@ -4319,15 +4319,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9a3334b5224b56c41b91223c61fdda08, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.8059344
+      value: -0.29
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9a3334b5224b56c41b91223c61fdda08, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.4051017
+      value: -3.22
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9a3334b5224b56c41b91223c61fdda08, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16.080246
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9a3334b5224b56c41b91223c61fdda08, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4399,15 +4399,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8380355754374377607, guid: d56344f05fcd2244ebe2b37752d3d628, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.7143784
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8380355754374377607, guid: d56344f05fcd2244ebe2b37752d3d628, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.13855124
+      value: -3.51
       objectReference: {fileID: 0}
     - target: {fileID: 8380355754374377607, guid: d56344f05fcd2244ebe2b37752d3d628, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.679823
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 8380355754374377607, guid: d56344f05fcd2244ebe2b37752d3d628, type: 3}
       propertyPath: m_LocalRotation.w

@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour, Hittable
     public float _speed = 5f;
     public float _runningSpeed;
     public float _tiredSpeed;
-    public float _runningStaminaConsumption;
+/*    public float _runningStaminaConsumption;*/
+    public float _staminaConsumptionRate;
     public float _jumpHeight = 2.5f;
     public float _gravity = -6f;
     private bool _waitForRegen;
@@ -90,8 +91,8 @@ public class PlayerController : MonoBehaviour, Hittable
         _gravity = -20f;
         _runningSpeed = 12f;
         _tiredSpeed = 2f;
-        _runningStaminaConsumption = 0.2f;
-
+        /*_runningStaminaConsumption = 0.2f;*/
+        _staminaConsumptionRate = 10f;
         _waitForRegen = false;
         _noStaminaEffect = false;
 
@@ -123,8 +124,9 @@ public class PlayerController : MonoBehaviour, Hittable
         }
         else if (PlayerMovementManager._isRunning && player.stamina > 0 && !_waitForRegen)
         {
-            _currentSpeed = _runningSpeed;
-            player.stamina -= _runningStaminaConsumption;
+            _currentSpeed = _runningSpeed;/*
+            player.stamina -= _runningStaminaConsumption;*/
+            player.stamina = Mathf.Clamp(player.stamina - Time.deltaTime * _staminaConsumptionRate, 0, player.maxStamina);
             PlayMovementSound(runEffect);
         }
         else
