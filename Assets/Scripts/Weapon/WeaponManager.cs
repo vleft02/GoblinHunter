@@ -100,6 +100,8 @@ public class WeaponManager
             }
             PlayerProfile.UpdateWeapons(weapons, _currentWeapon);
             EventManager.EquipWeapon();
+
+ 
         }
     }
 

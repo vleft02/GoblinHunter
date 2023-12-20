@@ -70,6 +70,7 @@ public class Player : MonoBehaviour
         EventManager.TogglePause += ChangeInput;
         EventManager.ToggleEquipMenu += ChangeInput;
         EventManager.PlayerDeathEvent += TerminateInput;
+        
     }
 
     private void Update()

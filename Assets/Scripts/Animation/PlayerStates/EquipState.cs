@@ -40,12 +40,16 @@ public class EquipState : BaseAnimationState<PlayerAnimationFSM.PlayerAnimation>
     public override PlayerAnimationFSM.PlayerAnimation GetNextState()
     {
         // TODO
-        
-/*        if (PlayerMovementManager._isAttacking)
+
+        /*        if (PlayerMovementManager._isAttacking)
+                {
+                    return PlayerAnimationFSM.PlayerAnimation.ATTACK;
+                }
+        */
+        if (GameObject.Find("LoadingScreen") != null)
         {
-            return PlayerAnimationFSM.PlayerAnimation.ATTACK;
+            GameObject.Find("LoadingScreen").SetActive(false);
         }
-*/
         return PlayerAnimationFSM.PlayerAnimation.IDLE;
     }
 }

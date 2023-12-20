@@ -86,6 +86,7 @@ public class GameRuntimeManager : MonoBehaviour
         SpawnPlayer();
         SpawnEnemies();
         PlayMusic();
+       /* GameObject.Find("LoadingScreen").SetActive(false);*/
     }
 }
 

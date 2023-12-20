@@ -16,7 +16,7 @@ public class NewGameMenu : MonoBehaviour
         if (Regex.IsMatch(text, pattern) && text!=string.Empty)
         {
             PlayerProfile.NewGameData(text);
-            SceneManager.LoadScene("Forest");
+            Invoke("LoadScene",0.6f);
         }
         else 
         {
@@ -25,12 +25,9 @@ public class NewGameMenu : MonoBehaviour
         PlayerName.text = string.Empty;
     }
 
-    public void Play()
+    public void LoadScene()
     {
-       /* SceneManager.LoadScene("Forest");*/
-
-        /*DEBUG*/
-        
+        SceneManager.LoadScene("Forest");
     }
 
 }
