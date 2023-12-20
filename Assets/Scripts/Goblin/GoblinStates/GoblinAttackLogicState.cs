@@ -62,38 +62,5 @@ public class GoblinAttackLogicState : BaseState<GoblinStateMachine.GoblinState>
 
     public override void UpdateState()
     {
-        // if enemy is taking frequent damage: block weight += weightChangeRate
-
-        // if enemy is low on health: block weight += weightChangeRate
-
-        // if enemy is hitting the player in sequence: attack weight += weightChangeRate
-
-        // Normalize the weights to ensure they add up to 100
-        /*float totalWeight = attackWeight + blockWeight + continueAttackWeight;
-        attackWeight /= totalWeight * 100;
-        blockWeight /= totalWeight * 100;
-        continueAttackWeight /= totalWeight * 100;
-
-        // Randomly select an action based on the adjusted weights
-        float randomValue = Random.Range(0f, 100f);
-
-        if (randomValue <= attackWeight) // Attack
-        {
-*//*            enemy.AttackPlayer();
-*//*        }
-        else if (randomValue <= attackWeight + blockWeight) // Block
-        {
-*//*            enemy.Block();
-*//*        }
-        else // Continue Attacking
-        {
-*//*            enemy.ContinueAttacking();
-*//*      }*/
-
-        //if (!_enemy.isAttacking)
-        //{
-        //    _enemy.StartAttack();
-        //}
-
     }
 }

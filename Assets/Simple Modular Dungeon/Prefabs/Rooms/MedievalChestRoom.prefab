@@ -416,7 +416,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: e253d148da5c0884c917b031c1adf4bb, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 87a6c1e8eb1a67940adfe58085037c19, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1001 &55529431002086432
 PrefabInstance:
@@ -941,6 +941,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cc70a1491c1254c978fdbd6568cb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEvents: 0
+  triggerEvent: 0
 --- !u!65 &4162307146450979384
 BoxCollider:
   m_ObjectHideFlags: 0
