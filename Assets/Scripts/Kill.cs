@@ -16,5 +16,6 @@ public class Kill : MonoBehaviour
     private void Hit()
     {
         GetComponent<PlayerController>().TakeDamage(damage);
+        gameObject.GetComponent<PlayerUI>().FadeToBlack();
     }
 }

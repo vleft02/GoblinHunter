@@ -35,6 +35,23 @@ public static class Effects
         }
         yield break;
     }
+
+
+    public static IEnumerator StartFadeWithFunction(UnityEngine.UI.Image img, float duration, float targetVolume,Action method)
+    {
+        float currentTime = 0;
+        UnityEngine.Color start = img.color;
+        /*        float start = color;*/
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            start.a = Mathf.Lerp(start.a, targetVolume, currentTime / duration);
+            img.color = start;
+            yield return null;
+        }
+        method.Invoke();
+        yield break;
+    }
     public static IEnumerator Flash(SpriteRenderer sprite, float duration) 
     {
         float currentTime = 0;

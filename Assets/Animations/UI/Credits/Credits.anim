@@ -343,7 +343,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 6
-    functionName: ReturnToMainMenu
+    functionName: ReturnToTitle
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

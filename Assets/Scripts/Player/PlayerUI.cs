@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.VFX;
 
@@ -20,6 +21,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject equipMenu;
     [SerializeField] private GameObject deathScreen;
+    [SerializeField] private GameObject blackScreen;
 
     private void Awake()
     {
@@ -127,6 +129,17 @@ public class PlayerUI : MonoBehaviour
         deathScreen.SetActive(true);
         Time.timeScale = 0f;
         
+    }
+
+    public void FadeToBlack() 
+    {
+        blackScreen.SetActive(true);
+        StartCoroutine(Effects.StartFadeWithFunction(blackScreen.GetComponent<Image>(), 3f, 1f,RollCredits));
+    }
+
+    private void RollCredits() 
+    {
+        SceneManager.LoadScene("Credits");
     }
 
     private void TogglePauseMenu() 
