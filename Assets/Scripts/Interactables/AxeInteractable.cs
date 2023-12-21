@@ -7,7 +7,7 @@ public class AxeInteractable : Interactable
     [SerializeField] bool DestroyOnPickUp;
     public override string GetPromptMessage()
     {
-        return "";
+        return "Pick Up Axe";
     }
 
     public override void Interact()

@@ -12,7 +12,7 @@ public class SwordInteractable : Interactable
 
     public override string GetPromptMessage()
     {
-        return "";
+        return "Pick Up Sword";
     }
 
     public override void Interact()

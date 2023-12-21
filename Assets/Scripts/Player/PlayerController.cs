@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour, Hittable
     PlayerVFX playerVFX;
     public PlayerLogic player;
 
+    private static float _attackCooldown = 0;
+    private static float _timer = 0;
+
     [Header("Controller")]
     public float _currentSpeed;
     public float _maxVelocity;
@@ -36,6 +39,9 @@ public class PlayerController : MonoBehaviour, Hittable
     public float _gravity = -6f;
     private bool _waitForRegen;
     private bool _noStaminaEffect;
+
+    public bool _isGrounded;
+    public bool _isRunning;
 
     public PlayerInput _playerInput;
     public PlayerInput.OnFootActions _onFoot;
@@ -68,17 +74,11 @@ public class PlayerController : MonoBehaviour, Hittable
         player.health = PlayerProfile.gameData.playerData.health;
 
         EventManager.TogglePause += PauseSound;
-        EventManager.CanAttackEvent += canAttack;
-
 
         playerVFX = new PlayerVFX(HitEffectEmmiter, BloodEffectEmmiter);
 
         EventManager.EquipWeaponEvent += PlayEquipSound;
         _player = GetComponent<CharacterController>();
-        PlayerMovementManager._isGrounded = true;
-        PlayerMovementManager._isRunning = false;
-
-
         
         AudioSource[] soundChannels = gameObject.GetComponents<AudioSource>();
         playerSFX = new PlayerSFX(soundChannels[0], soundChannels[1], soundChannels[2], soundChannels[3], soundChannels[4]);
@@ -92,24 +92,29 @@ public class PlayerController : MonoBehaviour, Hittable
         _runningSpeed = 12f;
         _tiredSpeed = 2f;
         /*_runningStaminaConsumption = 0.2f;*/
-        _staminaConsumptionRate = 10f;
+        _staminaConsumptionRate = 12f;
         _waitForRegen = false;
         _noStaminaEffect = false;
 
+        regenRate = 8f;
+
         _maxVelocity = _currentSpeed;
+
+        _isGrounded = true;
+        _isRunning = false;
     }
     private void OnDisable()
     {
         EventManager.PlayerHitEvent -= TakeDamage;
         EventManager.EquipWeaponEvent -= PlayEquipSound;
         EventManager.TogglePause -= PauseSound;
-        EventManager.CanAttackEvent -= canAttack;
-
     }
 
     void Update()
     {
-        PlayerMovementManager._isGrounded = _player.isGrounded;
+        Debug.Log("Stamina: " + player.stamina);
+        _isGrounded = _player.isGrounded;
+        _timer += Time.deltaTime;
     }
 
     public virtual void Move(Vector2 input)
@@ -122,16 +127,16 @@ public class PlayerController : MonoBehaviour, Hittable
         {
             FadeOutMovementSound();
         }
-        else if (PlayerMovementManager._isRunning && player.stamina > 0 && !_waitForRegen)
+        else if (_isRunning && player.stamina > 0 && !_waitForRegen)
         {
             _currentSpeed = _runningSpeed;/*
             player.stamina -= _runningStaminaConsumption;*/
-            player.stamina = Mathf.Clamp(player.stamina - Time.deltaTime * _staminaConsumptionRate, 0, player.maxStamina);
+            player.stamina = Mathf.Clamp(player.stamina - Time.deltaTime * _staminaConsumptionRate, -1f, player.maxStamina);
             PlayMovementSound(runEffect);
         }
         else
         {
-            if (player.stamina == 0)
+            if (player.stamina <= 0)
             {
                 PlayBreathingSound();
                 _waitForRegen = true;
@@ -152,7 +157,7 @@ public class PlayerController : MonoBehaviour, Hittable
         }
 
         if (_waitForRegen && !_noStaminaEffect && 
-           PlayerMovementManager._isRunning && (_moveDir.x != 0 || _moveDir.z != 0))
+           _isRunning && (_moveDir.x != 0 || _moveDir.z != 0))
         {
             _noStaminaEffect = true;
             StartCoroutine(
@@ -166,7 +171,7 @@ public class PlayerController : MonoBehaviour, Hittable
 
 
         _velocity.y += _gravity * Time.deltaTime;
-        if (PlayerMovementManager._isGrounded && _velocity.y < 0f)
+        if (_isGrounded && _velocity.y < 0f)
         {
             _velocity.y = -2f;
         }
@@ -227,14 +232,25 @@ public class PlayerController : MonoBehaviour, Hittable
 
     }
 
-    public void canAttack()
+    public bool canAttack()
     {
+        //if (timer >= attackCooldown && _isStaminaEnough)
+        //{
+        //    attackCooldown = 0;
+        //}
+
         //enable for stamina consumption while punching
-        if (player.stamina > WeaponManager._currentWeapon.GetStaminaConsumption()) //&& !_waitForRegen)
+        if (_timer >= _attackCooldown && 
+            player.stamina > WeaponManager._currentWeapon.GetStaminaConsumption()) //&& !_waitForRegen)
         {
+            _attackCooldown = 0;
             //Move Attack Sound Effects to animation
             player.stamina -= WeaponManager._currentWeapon.GetStaminaConsumption();
-            PlayerMovementManager.setIsStaminaEnough(true);
+
+            _timer = 0;
+            _attackCooldown = WeaponManager._currentWeapon.ATTACK.Duration + 0.1f;
+
+            return true;
         }
         else
         {
@@ -254,14 +270,14 @@ public class PlayerController : MonoBehaviour, Hittable
             }
             */
 
-            PlayerMovementManager.setIsStaminaEnough(false);
+            return false;
         }
 
     }
 
     public void Jump()
     {
-        if (PlayerMovementManager._isGrounded)
+        if (_isGrounded)
         {
             _velocity.y = Mathf.Sqrt((-0.4f) * _gravity * _jumpHeight);
         }

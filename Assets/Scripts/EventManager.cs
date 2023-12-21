@@ -33,11 +33,6 @@ public static class EventManager /*: MonoBehaviour*/
         AttackEvent?.Invoke();
     }
 
-    public static void CheckAttack()
-    {
-        CanAttackEvent?.Invoke();
-    }
-
     public static void EquipWeapon()
     {
         EquipWeaponEvent?.Invoke();

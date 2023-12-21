@@ -7,9 +7,6 @@ public record AnimationClip(int State, float Duration);
 
 public abstract class BaseAnimationState<EState> where EState : Enum
 {
-    //public WeaponManager weaponManager;
-    public PlayerMovementManager moveManager;
-
     public EState StateKey { get; set; }
     public int Id { get; set; }
     public float Duration { get; set; }

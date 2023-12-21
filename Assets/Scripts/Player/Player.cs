@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     public PlayerInput.OnFootActions _onFoot;
     public bool isPaused;
     public bool isDead;
-    private PlayerController _playerController;
+    public PlayerController _playerController;
     private PlayerRotate _rotate;
     private PlayerRotate _rotateSmooth;
     private PlayerRotate _currentRotate;
@@ -91,8 +91,8 @@ public class Player : MonoBehaviour
         _onFoot.QuickSave.performed -= ctx => SaveManager.SaveGame();
         _onFoot.Pause.performed -= ctx => EventManager.PauseEvent();
         _onFoot.EquipMenu.performed -= ctx => EventManager.EquipMenuEvent();
-        _onFoot.Run.performed -= ctx => PlayerMovementManager._isRunning = true;
-        _onFoot.Run.canceled -= ctx => PlayerMovementManager._isRunning = false;
+        _onFoot.Run.performed -= ctx => _playerController._isRunning = true;
+        _onFoot.Run.canceled -= ctx => _playerController._isRunning = false;
         _onFoot.WeaponSlot1.performed -= ctx => WeaponManager.ChangeWeapon(1);
         _onFoot.WeaponSlot2.performed -= ctx => WeaponManager.ChangeWeapon(2);
         _onFoot.WeaponSlot3.performed -= ctx => WeaponManager.ChangeWeapon(3);
@@ -202,8 +202,8 @@ public class Player : MonoBehaviour
         _onFoot.QuickSave.performed += ctx => SaveManager.SaveGame();
         _onFoot.Pause.performed += ctx => EventManager.PauseEvent();
         _onFoot.EquipMenu.performed += ctx => EventManager.EquipMenuEvent();
-        _onFoot.Run.performed += ctx => PlayerMovementManager._isRunning = true;
-        _onFoot.Run.canceled += ctx => PlayerMovementManager._isRunning = false;
+        _onFoot.Run.performed += ctx => _playerController._isRunning = true;
+        _onFoot.Run.canceled += ctx => _playerController._isRunning = false;
         _onFoot.WeaponSlot1.performed += ctx => WeaponManager.ChangeWeapon(1);
         _onFoot.WeaponSlot2.performed += ctx => WeaponManager.ChangeWeapon(2);
         _onFoot.WeaponSlot3.performed += ctx => WeaponManager.ChangeWeapon(3);

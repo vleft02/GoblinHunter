@@ -69,7 +69,7 @@ public class PlayerInteract : MonoBehaviour
                 //}
 
                 // Player UI Update
-                if (interactable.useEvents)
+                if (!interactable.useEvents)
                 {
                     _playerUI.crosshairInteraction();
                     _playerUI.updateText(interactable.GetPromptMessage());
@@ -112,10 +112,8 @@ public class PlayerInteract : MonoBehaviour
     {
         if (_player._onFoot.Attack.triggered)
         {
-            EventManager.CheckAttack();
-            if (PlayerMovementManager.CanAttack())
+            if (_player._playerController.canAttack())
             {
-                PlayerMovementManager.AttackPerformed(WeaponManager._currentWeapon.ATTACK.Duration);
                 EventManager.AttackPerformed();
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hitInfo;

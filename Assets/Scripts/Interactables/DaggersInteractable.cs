@@ -7,7 +7,7 @@ public class DaggersInteractable : Interactable
     [SerializeField] bool DestroyOnPickUp;
     public override string GetPromptMessage()
     {
-        return "";
+        return "Pick Up Daggers";
     }
 
     public override void Interact()
