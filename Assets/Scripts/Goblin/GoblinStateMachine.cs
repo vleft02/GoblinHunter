@@ -6,8 +6,8 @@ public class GoblinStateMachine : StateManager<GoblinStateMachine.GoblinState>
 {
     public bool canEndAttack = false;
     public float combat_radius = 2f;
-    public float patrol_radius = 10f;
-    public float chase_radius = 7f;
+    public float patrol_radius = 18f;
+    public float chase_radius = 12f;
 
     public enum GoblinState
     {
@@ -48,6 +48,10 @@ public class GoblinStateMachine : StateManager<GoblinStateMachine.GoblinState>
 
         //agent.updateRotation = false;
         Agent.isStopped = true;
+
+        combat_radius = 2f;
+        patrol_radius = 18f;
+        chase_radius = 12f;
 
         InitStates();
         CurrentState = States[GoblinState.PATROL];

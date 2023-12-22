@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -34,16 +34,16 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -52,9 +52,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -108,18 +108,590 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: bg-walk-front-left_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3510
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb8e4a5590cf80c47b7af58f6a978188
+      internalID: -333661480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_1
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 3510
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3cc0a93d724b764cbf2bc21d2fa98d4
+      internalID: 1545515813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_2
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 3510
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5189403c4e6d6a24c8581b22b8c46bce
+      internalID: 1619186386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_3
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 3510
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93e369c9cf9ee604a882993188703c54
+      internalID: -1018775925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2925
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65fd5d9c24f096949b67661f6ef3ff0a
+      internalID: -1567746633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_5
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2925
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8bea4787d42d01449dada62c64c1008
+      internalID: 1740236092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_6
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2925
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e85dd70c8958cee40b33870434c2ee82
+      internalID: 1279074413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_7
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 2925
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0af676ec1120fc4fa5f65c2340a51df
+      internalID: -1561068401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2340
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49a87abe6a222be4e8c065cc18713870
+      internalID: -743038427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_9
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2340
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41be99c898d9e4e439c0102f58ab698e
+      internalID: -529127305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_10
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2340
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8304890e2d2b5a4418930461f6387d36
+      internalID: -820210232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_11
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 2340
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aa108786dff67648be84d13610ddb5d
+      internalID: -512731443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1755
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4752d925b9020b14e8edceb3a20ed470
+      internalID: -1470947341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_13
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1755
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db4a2767abeeacc459684e2d29bec4b8
+      internalID: 1991559096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_14
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1755
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27847eb2ac9918149bee237315e5105a
+      internalID: -403588172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_15
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 1755
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 518bfdc2ed5e1fa4398d0e800f5f7f82
+      internalID: -1412091360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1170
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36986b09c692f184aab5110f4464994f
+      internalID: -1193935931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_17
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1170
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f60ba666e23402f4893321ed2efaf2f8
+      internalID: 2068609439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_18
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1170
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c7ad13df0bcda3468eca46c92e0a55b
+      internalID: -1039923379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_19
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 1170
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cd061d84aed0964e821063d1eba4d2a
+      internalID: 957637683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 585
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 351a055aa82ba96488dff55bf69e688a
+      internalID: -950968526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_21
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 585
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6cb744f821fe224d84836bd3080b21b
+      internalID: 2002332569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_22
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 585
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c8e14fb026a8614daef3367f2107806
+      internalID: 986320035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_23
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 585
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61e8274a54fc74e44b72c5c341cf1d15
+      internalID: 2035769403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c719e3dbfcd059c4caec7fa969027629
+      internalID: 922945561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-walk-front-left_25
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 180483d582f052043b8cbd8d665c3f82
+      internalID: -2137606964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 73c0875ffa5918f4390821c260a17810
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bg-walk-front-left_0: -333661480
+      bg-walk-front-left_1: 1545515813
+      bg-walk-front-left_10: -820210232
+      bg-walk-front-left_11: -512731443
+      bg-walk-front-left_12: -1470947341
+      bg-walk-front-left_13: 1991559096
+      bg-walk-front-left_14: -403588172
+      bg-walk-front-left_15: -1412091360
+      bg-walk-front-left_16: -1193935931
+      bg-walk-front-left_17: 2068609439
+      bg-walk-front-left_18: -1039923379
+      bg-walk-front-left_19: 957637683
+      bg-walk-front-left_2: 1619186386
+      bg-walk-front-left_20: -950968526
+      bg-walk-front-left_21: 2002332569
+      bg-walk-front-left_22: 986320035
+      bg-walk-front-left_23: 2035769403
+      bg-walk-front-left_24: 922945561
+      bg-walk-front-left_25: -2137606964
+      bg-walk-front-left_3: -1018775925
+      bg-walk-front-left_4: -1567746633
+      bg-walk-front-left_5: 1740236092
+      bg-walk-front-left_6: 1279074413
+      bg-walk-front-left_7: -1561068401
+      bg-walk-front-left_8: -743038427
+      bg-walk-front-left_9: -529127305
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -34,16 +34,16 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -52,9 +52,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -108,18 +108,502 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: bg-idle-front-right_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2925
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a24cd37b558483458f94d4718688b4d
+      internalID: 52506762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-idle-front-right_1
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2925
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13ec51c2bc7140d45aafcbc8029bf5ee
+      internalID: 1202274815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-idle-front-right_2
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2925
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62853ea11bde7884bbeb387167300792
+      internalID: -422454082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-idle-front-right_3
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 2925
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6671d6bea71b18e4ba64231fbd43f18a
+      internalID: -557045128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-idle-front-right_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2340
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba8ef0ffea854c241a7c784f9eabd28e
+      internalID: 1062864469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-idle-front-right_5
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2340
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6af604f011cc664bb99068292fe90e9
+      internalID: -833894143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-idle-front-right_6
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2340
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d89db8e5703e091408aba2dce7309452
+      internalID: 1129697056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-idle-front-right_7
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 2340
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0538649a8f5d874aad9ae579701e8ff
+      internalID: 1520737885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-idle-front-right_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1755
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d847527992698843bb21a15b2c376e0
+      internalID: -606403212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-idle-front-right_9
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1755
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cb1b234d6e6b574ea8584a984313771
+      internalID: 1220111911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-idle-front-right_10
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1755
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9168317067cc0d84485214560fdf641f
+      internalID: -383993721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-idle-front-right_11
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 1755
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39f3df1efd75fbf4591c0365a9e4b4e3
+      internalID: 836631523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-idle-front-right_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1170
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7451e10b93e63934caba86a78ad01452
+      internalID: 420714934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-idle-front-right_13
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1170
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18d7fec8997bacb4ea5331a57bcb19b4
+      internalID: -1477098603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-idle-front-right_14
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1170
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd9a7e963cf395b4e924f5d86f2c7665
+      internalID: 1722224252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-idle-front-right_15
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 1170
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24e242b97fb2a3348b0e9921058a3c86
+      internalID: -1013430035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-idle-front-right_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 585
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e7ce03e26bdb4948afa1f4dd3097720
+      internalID: -1402401993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-idle-front-right_17
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 585
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2a7791604bfc9543976dc1e57afcab9
+      internalID: 737878176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-idle-front-right_18
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 585
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d2164465c341e240b8f4b25073b6837
+      internalID: 566611027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-idle-front-right_19
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 585
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6231e66095e5a2e47af2fd6aad10a459
+      internalID: 936805798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-idle-front-right_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84f3a7fde11088248b465d2ef5604339
+      internalID: -1858955631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-idle-front-right_21
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 1024
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 925fe8a5854023a418c1effe6e18ab53
+      internalID: 1204911022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bg-idle-front-right_0: 52506762
+      bg-idle-front-right_1: 1202274815
+      bg-idle-front-right_10: -383993721
+      bg-idle-front-right_11: 836631523
+      bg-idle-front-right_12: 420714934
+      bg-idle-front-right_13: -1477098603
+      bg-idle-front-right_14: 1722224252
+      bg-idle-front-right_15: -1013430035
+      bg-idle-front-right_16: -1402401993
+      bg-idle-front-right_17: 737878176
+      bg-idle-front-right_18: 566611027
+      bg-idle-front-right_19: 936805798
+      bg-idle-front-right_2: -422454082
+      bg-idle-front-right_20: -1858955631
+      bg-idle-front-right_21: 1204911022
+      bg-idle-front-right_3: -557045128
+      bg-idle-front-right_4: 1062864469
+      bg-idle-front-right_5: -833894143
+      bg-idle-front-right_6: 1129697056
+      bg-idle-front-right_7: 1520737885
+      bg-idle-front-right_8: -606403212
+      bg-idle-front-right_9: 1220111911
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

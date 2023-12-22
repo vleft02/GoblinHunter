@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour, Hittable
 
     void Update()
     {
-        Debug.Log("Stamina: " + player.stamina);
+        //Debug.Log("Stamina: " + player.stamina);
         _isGrounded = _player.isGrounded;
         _timer += Time.deltaTime;
     }

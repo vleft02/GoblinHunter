@@ -92,7 +92,7 @@ public class PlayerRotate : MonoBehaviour
         if (_rotateToAngles)
         {
             float delta = 0.01f;
-            if (Mathf.Abs(transform.localRotation.y - rotation.y) > delta)
+            if (Mathf.Abs(Mathf.Abs(transform.localRotation.y) - rotation.y) > delta)
             {
                 transform.localRotation = Quaternion.Slerp(currentRotationHorizontal, rotation, 5f*Time.deltaTime);
             }

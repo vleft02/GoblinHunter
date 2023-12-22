@@ -35,7 +35,7 @@ public class ScreamEvent : Interactable
 
     public void RotateToScream()
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerRotate>().RotateCameraGameEvent(30f, 45f, 0f, seconds:0.5f);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerRotate>().RotateCameraGameEvent(0f, 45f, 0f, seconds:0.5f);
         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().CameraTransition(4);
 
     }
