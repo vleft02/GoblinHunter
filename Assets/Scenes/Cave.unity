@@ -23636,75 +23636,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8112843353983170393, guid: db7321b11874e2d4f931bac758bf0485, type: 3}
---- !u!1001 &1423905471
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2758822446058138530, guid: 144bc59a4286c8740bd35fc150900b7d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 222.07677
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758822446058138530, guid: 144bc59a4286c8740bd35fc150900b7d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.649
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758822446058138530, guid: 144bc59a4286c8740bd35fc150900b7d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -100.481544
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758822446058138530, guid: 144bc59a4286c8740bd35fc150900b7d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758822446058138530, guid: 144bc59a4286c8740bd35fc150900b7d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758822446058138530, guid: 144bc59a4286c8740bd35fc150900b7d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758822446058138530, guid: 144bc59a4286c8740bd35fc150900b7d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758822446058138530, guid: 144bc59a4286c8740bd35fc150900b7d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758822446058138530, guid: 144bc59a4286c8740bd35fc150900b7d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758822446058138530, guid: 144bc59a4286c8740bd35fc150900b7d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3195924558697993108, guid: 144bc59a4286c8740bd35fc150900b7d, type: 3}
-      propertyPath: m_Height
-      value: 2.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 3195924558697993108, guid: 144bc59a4286c8740bd35fc150900b7d, type: 3}
-      propertyPath: m_Radius
-      value: 0.83
-      objectReference: {fileID: 0}
-    - target: {fileID: 3195924558697993108, guid: 144bc59a4286c8740bd35fc150900b7d, type: 3}
-      propertyPath: m_BaseOffset
-      value: 0.73
-      objectReference: {fileID: 0}
-    - target: {fileID: 5836583043072675756, guid: 144bc59a4286c8740bd35fc150900b7d, type: 3}
-      propertyPath: m_Name
-      value: BigGoblin
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 144bc59a4286c8740bd35fc150900b7d, type: 3}
 --- !u!1001 &1425738849
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30126,6 +30057,7 @@ MonoBehaviour:
   Player: {fileID: 5555513789912647946, guid: 183bf20174574684baf3a54db137b13f, type: 3}
   EnemyPrefabs:
   - {fileID: 4064779591154642302, guid: a281a12ed9eadd844a8bde469f4ee3ae, type: 3}
+  - {fileID: 5836583043072675756, guid: 144bc59a4286c8740bd35fc150900b7d, type: 3}
   Terrain: {fileID: 743479987}
   ProceduralGen: 0
 --- !u!82 &1773695836
@@ -34114,4 +34046,3 @@ SceneRoots:
   - {fileID: 984581188}
   - {fileID: 1446470104}
   - {fileID: 920816584}
-  - {fileID: 1423905471}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class GoblinController : MonoBehaviour, Hittable
 {
     [SerializeField] private float health = 100;
+    [SerializeField] private bool boss = false;
 
     public float Health { get => health; set => Health = health; }
 
@@ -17,7 +18,7 @@ public class GoblinController : MonoBehaviour, Hittable
 
     public void InitEnemy()
     {
-        health = 100;
+        health = 200;
         damage = 3;
     }
 
@@ -31,6 +32,10 @@ public class GoblinController : MonoBehaviour, Hittable
         else
         {
             EventManager.EnemyDeath(this.gameObject);
+            if (boss) 
+            {
+                EventManager.BossDefeated();
+            }
             PlayerProfile.EnemyKilled(this.gameObject.name);
             PlayerProfile.EnemyKilled(this.gameObject.name);
             PlayerProfile.IncrementKills();

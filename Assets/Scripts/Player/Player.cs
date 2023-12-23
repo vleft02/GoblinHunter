@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
         EventManager.TogglePause += ChangeInput;
         EventManager.ToggleEquipMenu += ChangeInput;
         EventManager.PlayerDeathEvent += TerminateInput;
+        EventManager.BossDefeatedEvent += TerminateInput;
         
     }
 
@@ -100,6 +101,7 @@ public class Player : MonoBehaviour
 
         EventManager.TogglePause -= ChangeInput;
         EventManager.ToggleEquipMenu -= ChangeInput;
+        EventManager.BossDefeatedEvent -= TerminateInput;
     }
 
     private void ChangeInput()

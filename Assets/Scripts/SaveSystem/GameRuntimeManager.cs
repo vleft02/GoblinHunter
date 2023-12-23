@@ -46,9 +46,10 @@ public class GameRuntimeManager : MonoBehaviour
                         GameObject tempEnemy = Instantiate(EnemyPrefabs[enemy.GetEnemyType()]);
                         tempEnemy.name = enemy.GetName();
                         Vector3 spawnPos = new Vector3(enemy.GetEnemyPosition()[0], enemy.GetEnemyPosition()[1], enemy.GetEnemyPosition()[2]);
+                        tempEnemy.GetComponent<NavMeshAgent>().Warp(spawnPos);
                         tempEnemy.transform.position = spawnPos;
                         enemies.Add(tempEnemy.name, tempEnemy);
-                        tempEnemy.GetComponent<NavMeshAgent>().Warp(spawnPos);
+                       /* tempEnemy.GetComponent<NavMeshAgent>().Warp(spawnPos);*/
                     }
                 }
 /*            }*/

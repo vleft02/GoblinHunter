@@ -53,7 +53,7 @@ public class GoblinHitState : BaseAnimationState<GoblinAnimation>
       timer = 0;        
         ChangeAnimation(Aspects.FRONT);
 
-        enemyTransform.Translate(100 * Time.deltaTime * -enemyTransform.forward, Space.World);
+        enemyTransform.Translate(50 * Time.deltaTime * -enemyTransform.forward, Space.World);
     }
 
     public override void UpdateState()

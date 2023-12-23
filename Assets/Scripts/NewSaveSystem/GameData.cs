@@ -67,13 +67,14 @@ public class GameData
         enemyPositions.Add(new Vector3(422, 2, 59));
         enemyPositions.Add(new Vector3(390, 2, 63));
         enemyPositions.Add(new Vector3(44.5f, 2, 145));
+        enemyPositions.Add(new Vector3(222f, 0, -96f));
 
-        for (int i = 0; i <20; i++)
+        for (int i = 0; i < enemyPositions.Count-1; i++)
         {
             areasData[1].GetEnemies().Add(new EnemyData("Enemy"+i,100,0, enemyPositions[i]));
         }
-
-        
+        areasData[1].GetEnemies().Add(new EnemyData("EnemyBoss" , 100, 1, enemyPositions[enemyPositions.Count -1])); 
+         
 
         areasData[0].SetAreaName("Forest");
         areasData[0].SetPlayerPosition(new Vector3(-1484.8f, 0.5f, 7.53f));

@@ -462,6 +462,7 @@ MonoBehaviour:
   Player: {fileID: 5555513789912647946, guid: 183bf20174574684baf3a54db137b13f, type: 3}
   EnemyPrefabs:
   - {fileID: 4064779591154642302, guid: a281a12ed9eadd844a8bde469f4ee3ae, type: 3}
+  - {fileID: 5836583043072675756, guid: 144bc59a4286c8740bd35fc150900b7d, type: 3}
   Terrain: {fileID: 0}
   ProceduralGen: 1
 --- !u!4 &922660640
@@ -491,7 +492,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4e348b8e76c9e504e95eb9c5392ae57e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.711
   m_Pitch: 1
   Loop: 1
   Mute: 0

@@ -65,7 +65,7 @@ public class OpenCloseObject : Interactable
                 _interact = false;
                 _doorOpen = !_doorOpen;
 
-                return LockState(OPEN, 0.6f);
+                return LockState(OPEN, 0.9f);
 
             }
             return CLOSED;
@@ -77,7 +77,7 @@ public class OpenCloseObject : Interactable
                 _interact = false;
                 _doorOpen = !_doorOpen;
 
-                return LockState(CLOSE, 0.2f);
+                return LockState(CLOSE, 0.9f);
 
             }
             return OPENED;

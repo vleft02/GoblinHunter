@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 2758822446058138530}
   - component: {fileID: 8850489607649650353}
   - component: {fileID: 7811558106496940769}
+  - component: {fileID: 8716624501276949145}
+  - component: {fileID: 5592130608989780981}
   - component: {fileID: 47990978657815232}
   - component: {fileID: 6828208607854778118}
-  - component: {fileID: 8716624501276949145}
   - component: {fileID: 6107272752408183628}
   - component: {fileID: 3195924558697993108}
-  - component: {fileID: 5592130608989780981}
   m_Layer: 10
   m_Name: BigGoblin
   m_TagString: Untagged
@@ -34,7 +34,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.881724, y: 0.89, z: -59.57}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5585834572001863588}
@@ -73,39 +73,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d5740b8cbaad04ea3642398bddbe08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &47990978657815232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5836583043072675756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 806f369b0e13dd242af802c2689957d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  damage: 10
---- !u!114 &6828208607854778118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5836583043072675756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 848e04b8f8a8e7841ab185741ab081ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canEndAttack: 0
-  combat_radius: 2
-  patrol_radius: 10
-  chase_radius: 7
-  _isIdling: 0
-  Player: {fileID: 0}
-  path: {fileID: 0}
 --- !u!65 &8716624501276949145
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -127,6 +94,56 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.2997618, y: 2.592912, z: 0.63075256}
   m_Center: {x: 0.041199207, y: 0.4673972, z: 0.49467468}
+--- !u!114 &5592130608989780981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5836583043072675756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d6446be4aae3f42bb8d0241b66493c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentAspectKey: 0
+  _changeAspect: 1
+  disableAspects: 0
+  angle: 0
+--- !u!114 &47990978657815232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5836583043072675756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 806f369b0e13dd242af802c2689957d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 200
+  boss: 1
+  damage: 10
+--- !u!114 &6828208607854778118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5836583043072675756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848e04b8f8a8e7841ab185741ab081ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canEndAttack: 0
+  combat_radius: 2
+  patrol_radius: 10
+  chase_radius: 7
+  _isIdling: 0
+  Player: {fileID: 0}
+  path: {fileID: 0}
 --- !u!205 &6107272752408183628
 LODGroup:
   m_ObjectHideFlags: 0
@@ -160,7 +177,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5836583043072675756}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1.04
+  m_Radius: 0.3
   m_Speed: 2
   m_Acceleration: 30
   avoidancePriority: 50
@@ -170,25 +187,9 @@ NavMeshAgent:
   m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2.04
-  m_BaseOffset: 1.4
+  m_BaseOffset: 0.8
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5592130608989780981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5836583043072675756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30d6446be4aae3f42bb8d0241b66493c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _currentAspectKey: 0
-  _changeAspect: 0
-  disableAspects: 0
-  angle: 0
 --- !u!1 &7775698782332834434
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,8 +261,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 481382875
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -232060029, guid: 1422da14b994b68438b3dc5a12bf63ed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

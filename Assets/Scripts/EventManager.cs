@@ -25,8 +25,10 @@ public static class EventManager /*: MonoBehaviour*/
 
     public static event Action TogglePause;
     public static event Action ToggleEquipMenu;
-/*    public static event Action AttackWaitInAttackEnemy;
-*/
+
+    public static event Action BossDefeatedEvent;
+    /*    public static event Action AttackWaitInAttackEnemy;
+    */
 
     public static void AttackPerformed()
     {
@@ -78,6 +80,11 @@ public static class EventManager /*: MonoBehaviour*/
     public static void EquipMenuEvent()
     {
         ToggleEquipMenu?.Invoke();
+    }
+
+    public static void BossDefeated()
+    {
+        BossDefeatedEvent?.Invoke(); 
     }
 
     /*    public static void EnemyWaitInAttack()

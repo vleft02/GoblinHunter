@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5080118313532637533}
   - component: {fileID: 8221746155455539454}
   m_Layer: 10
-  m_Name: Goblin
+  m_Name: Goblin2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,7 +152,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4064779591154642302}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1.04
+  m_Radius: 0.3
   m_Speed: 2
   m_Acceleration: 30
   avoidancePriority: 50

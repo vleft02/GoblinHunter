@@ -33,6 +33,7 @@ public class PlayerUI : MonoBehaviour
         EventManager.PlayerHitEffectEvent += PlayDamageVfx;
         EventManager.TogglePause += TogglePauseMenu;
         EventManager.ToggleEquipMenu += ToggleRadialMenu;
+        EventManager.BossDefeatedEvent += FadeToBlack;
     }
     private void OnDisable()
     {
@@ -40,6 +41,7 @@ public class PlayerUI : MonoBehaviour
         EventManager.PlayerHitEffectEvent -= PlayDamageVfx;
         EventManager.TogglePause -= TogglePauseMenu;
         EventManager.ToggleEquipMenu -= ToggleRadialMenu;
+        EventManager.ToggleEquipMenu -= FadeToBlack;
     }
 
     private void ToggleRadialMenu()
@@ -128,12 +130,13 @@ public class PlayerUI : MonoBehaviour
         Cursor.visible = true;
         deathScreen.SetActive(true);
         Time.timeScale = 0f;
-        
     }
 
-    public void FadeToBlack() 
+    public void FadeToBlack()
     {
         blackScreen.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         StartCoroutine(Effects.StartFadeWithFunction(blackScreen.GetComponent<Image>(), 3f, 1f,RollCredits));
     }
 
