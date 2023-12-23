@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 9697225d2a0f69d40be12f038f62be0d, type: 2}
     - target: {fileID: 919132149155446097, guid: 06c9df51252419847af0d8b8bd7ebc2a, type: 3}
       propertyPath: m_Name
-      value: CaveRockPack1_Low3 (1)
+      value: Stalactite4
       objectReference: {fileID: 0}
     - target: {fileID: 4774291959640121476, guid: 06c9df51252419847af0d8b8bd7ebc2a, type: 3}
       propertyPath: m_LocalScale.x
@@ -77,5 +77,35 @@ PrefabInstance:
     - {fileID: 8934777400606672865, guid: 06c9df51252419847af0d8b8bd7ebc2a, type: 3}
     - {fileID: 65702495048144492, guid: 06c9df51252419847af0d8b8bd7ebc2a, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -7447832938208851008, guid: 06c9df51252419847af0d8b8bd7ebc2a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1837492627922275740}
   m_SourcePrefab: {fileID: 100100000, guid: 06c9df51252419847af0d8b8bd7ebc2a, type: 3}
+--- !u!1 &7589342114621823592 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7447832938208851008, guid: 06c9df51252419847af0d8b8bd7ebc2a, type: 3}
+  m_PrefabInstance: {fileID: 8210406363925942696}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1837492627922275740
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7589342114621823592}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2975970417961200381, guid: 06c9df51252419847af0d8b8bd7ebc2a, type: 3}
