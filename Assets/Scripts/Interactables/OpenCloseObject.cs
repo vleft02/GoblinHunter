@@ -8,9 +8,11 @@ public class OpenCloseObject : Interactable
 {
 
     [SerializeField] bool locked = false;
-    private bool _doorOpen = false;
+    private bool _objectOpen = false;
     private bool _interact = false;
-    public string prompt_message = "Press E to open the door";
+    private string prompt_message;
+    public string prompt_message_close = "Press E to close the door";
+    public string prompt_message_open = "Press E to open the door";
     public string closed = "Closed";
     public string close = "Close";
     public string opened = "Opened";
@@ -58,12 +60,13 @@ public class OpenCloseObject : Interactable
     {
         if (Time.time < _lockedStateTime) return _currentState;
 
-        if (!_doorOpen)
+        if (!_objectOpen)
         {
+            prompt_message = prompt_message_open;
             if (_interact)
             {
                 _interact = false;
-                _doorOpen = !_doorOpen;
+                _objectOpen = !_objectOpen;
 
                 return LockState(OPEN, 0.9f);
 
@@ -72,10 +75,11 @@ public class OpenCloseObject : Interactable
         }
         else
         {
+            prompt_message = prompt_message_close;
             if (_interact)
             {
                 _interact = false;
-                _doorOpen = !_doorOpen;
+                _objectOpen = !_objectOpen;
 
                 return LockState(CLOSE, 0.9f);
 
@@ -107,9 +111,6 @@ public class OpenCloseObject : Interactable
             if (PlayerProfile.gameData.currentArea.HasKey())
             {
                 _interact = true;
-                Debug.Log("Interact with " + gameObject.name);
-                prompt_message = "Press E to Open";
-
             }
             else
             {
@@ -119,8 +120,6 @@ public class OpenCloseObject : Interactable
         else 
         {
             _interact = true;
-            Debug.Log("Interact with " + gameObject.name);
-            prompt_message = "Press E to Open";
         }
 
     }

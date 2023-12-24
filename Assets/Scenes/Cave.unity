@@ -4752,6 +4752,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6167428945240109620, guid: 285dc2479e1f8c94bb8e873cdb3ca867, type: 3}
+      propertyPath: prompt_message_open
+      value: Press E to open the chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167428945240109620, guid: 285dc2479e1f8c94bb8e873cdb3ca867, type: 3}
+      propertyPath: prompt_message_close
+      value: Press E to close the chest
+      objectReference: {fileID: 0}
     - target: {fileID: 8247344361449143350, guid: 285dc2479e1f8c94bb8e873cdb3ca867, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -5692,6 +5700,14 @@ PrefabInstance:
     - target: {fileID: 5735865814286780559, guid: 285dc2479e1f8c94bb8e873cdb3ca867, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167428945240109620, guid: 285dc2479e1f8c94bb8e873cdb3ca867, type: 3}
+      propertyPath: prompt_message_open
+      value: Press E to open the chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167428945240109620, guid: 285dc2479e1f8c94bb8e873cdb3ca867, type: 3}
+      propertyPath: prompt_message_close
+      value: Press E to close the chest
       objectReference: {fileID: 0}
     - target: {fileID: 8247344361449143350, guid: 285dc2479e1f8c94bb8e873cdb3ca867, type: 3}
       propertyPath: m_Layer
