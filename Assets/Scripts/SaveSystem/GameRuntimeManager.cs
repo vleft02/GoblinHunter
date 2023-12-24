@@ -21,6 +21,18 @@ public class GameRuntimeManager : MonoBehaviour
   
     }
 
+    private void OnDisable()
+    {
+        DisableGameObjects();
+    }
+
+    public void Spawn()
+    {
+        SpawnPlayer();
+        SpawnEnemies();
+        DisableGore();
+        PlayMusic();
+    }
 
     private void SpawnPlayer()
     {
@@ -28,17 +40,13 @@ public class GameRuntimeManager : MonoBehaviour
         Vector3 playerRotation = new Vector3(PlayerProfile.gameData.currentArea.GetPlayerRotation()[0], PlayerProfile.gameData.currentArea.GetPlayerRotation()[1], PlayerProfile.gameData.currentArea.GetPlayerRotation()[2]);
 
         playerInstance = Instantiate(Player,playerPos,Quaternion.identity);
-        /*GameObject.Find("Player").transform.position = playerPos;*/
         GameObject.Find("Player").transform.localPosition = Vector3.zero;
         GameObject.Find("Player").transform.localRotation = Quaternion.Euler(playerRotation);
     }
 
     private void SpawnEnemies()
     {
-/*        if (ProceduralGen || Terrain.GetComponent<NavMeshSurface>() != null)
-        {*/
-/*            if (Terrain.GetComponent<NavMeshSurface>() != null) 
-            {*/
+
                 if (PlayerProfile.gameData.currentArea.GetEnemies() != null && PlayerProfile.gameData.currentArea.GetEnemies().Count != 0)
                 {
                     foreach (EnemyData enemy in PlayerProfile.gameData.currentArea.GetEnemies())
@@ -49,17 +57,9 @@ public class GameRuntimeManager : MonoBehaviour
                         tempEnemy.GetComponent<NavMeshAgent>().Warp(spawnPos);
                         tempEnemy.transform.position = spawnPos;
                         enemies.Add(tempEnemy.name, tempEnemy);
-                       /* tempEnemy.GetComponent<NavMeshAgent>().Warp(spawnPos);*/
                     }
                 }
-/*            }*/
-/*
-        }*/
 
-    }
-    private void OnDisable()
-    {
-        DisableGameObjects();
     }
 
     private void PlayMusic()
@@ -67,9 +67,19 @@ public class GameRuntimeManager : MonoBehaviour
         gameObject.GetComponent<AudioSource>().Play();
     }
 
+    private void DisableGore() 
+    {
+        if (!PlayerProfile.GetGoreEnabled()) 
+        {
+            if (GameObject.Find("Gore") != null) 
+            {
+                GameObject.Find("Gore").SetActive(false);
+            }
+        }
+    }
+
     public void DisableGameObjects()
     {
-        /*Time.timeScale = 1f;*/
         Destroy(playerInstance);
         playerInstance = null;
         foreach (var entry in enemies)
@@ -78,12 +88,6 @@ public class GameRuntimeManager : MonoBehaviour
         }
     }
 
-    public void Spawn()
-    {
-        SpawnPlayer();
-        SpawnEnemies();
-        PlayMusic();
-       /* GameObject.Find("LoadingScreen").SetActive(false);*/
-    }
+
 }
 

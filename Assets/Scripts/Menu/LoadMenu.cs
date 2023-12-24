@@ -21,6 +21,10 @@ public class LoadMenu : MonoBehaviour
         RefreshSaveList -= ShowSaveList;
     }
 
+
+    /// <summary>
+    /// We deserialize the Load files and show some data to identify the save file
+    /// </summary>
     public void ShowSaveList()
     {
         if (SaveManager.GetSaveFilePaths() != null)
@@ -66,40 +70,6 @@ public class LoadMenu : MonoBehaviour
                 }
 
             }
-           /* foreach (string path in SaveManager.GetSaveFilePaths())
-            {
-                if (File.Exists(path))
-                {
-                    *//*                        BinaryFormatter bf = new BinaryFormatter();
-                                         FileStream stream = new FileStream(path, FileMode.Open);
-                                         GameData data = bf.Deserialize(stream) as GameData;*//*
-
-                    string loadedJsonData = File.ReadAllText(path);
-
-                    var settings = new JsonSerializerSettings();
-                    settings.Converters.Add(new Vector3Converter());
-                    GameData data = JsonConvert.DeserializeObject<GameData>(loadedJsonData, settings);
-                    *//*GameData data = JsonUtility.FromJson<GameData>(loadedJsonData);*//*
-
-
-                    GameObject saveSlot = Instantiate(SaveSlotPrefab);
-                    TextMeshProUGUI[] textFields = saveSlot.GetComponentsInChildren<TextMeshProUGUI>();
-                    textFields[0].text = data.playerData.playerName;
-                    textFields[2].text = data.time;
-                    textFields[4].text = data.currentArea.GetAreaName();
-                    textFields[6].text = data.playerData.kills.ToString();
-                    textFields[8].text = path;
-                    saveSlot.transform.SetParent(loadList.transform);
-                    saveSlot.transform.localScale = Vector3.one;
-
-                    *//*stream.Close();*//*
-                }
-                else 
-                {
-                    Debug.Log("File Missing");
-                }
-            }*/
-
         }
         else 
         {
@@ -110,6 +80,11 @@ public class LoadMenu : MonoBehaviour
 
 
 }
+
+/// <summary>
+/// Due to NewtonSoft Json serializer not being able to serialize/deserialize vector3 Data 
+/// We set custom behavior
+/// </summary>
 public class Vector3Converter : JsonConverter<Vector3>
 {
     public override void WriteJson(JsonWriter writer, Vector3 value, JsonSerializer serializer)
@@ -124,22 +99,24 @@ public class Vector3Converter : JsonConverter<Vector3>
         writer.WriteEndObject();
     }
 
+
+
     public override Vector3 ReadJson(JsonReader reader, Type objectType, Vector3 existingValue, bool hasExistingValue, JsonSerializer serializer)
     {
         if (reader.TokenType == JsonToken.StartObject)
         {
-            reader.Read(); // Move to the first property
+            reader.Read(); 
             float x = float.Parse(reader.Value.ToString());
 
-            reader.Read(); // Move to the second property
-            reader.Read(); // Move to the value of the second property
+            reader.Read();
+            reader.Read(); 
             float y = float.Parse(reader.Value.ToString());
 
-            reader.Read(); // Move to the third property
-            reader.Read(); // Move to the value of the third property
+            reader.Read(); 
+            reader.Read();
             float z = float.Parse(reader.Value.ToString());
 
-            reader.Read(); // Move to EndObject
+            reader.Read();
             return new Vector3(x, y, z);
         }
         else if (reader.TokenType == JsonToken.StartArray)

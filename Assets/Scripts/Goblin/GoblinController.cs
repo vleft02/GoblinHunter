@@ -31,11 +31,11 @@ public class GoblinController : MonoBehaviour, Hittable
         }
         else
         {
-            EventManager.EnemyDeath(this.gameObject);
-            if (boss) 
+            if (boss)
             {
                 EventManager.BossDefeated();
             }
+            EventManager.EnemyDeath(this.gameObject);
             PlayerProfile.EnemyKilled(this.gameObject.name);
             PlayerProfile.EnemyKilled(this.gameObject.name);
             PlayerProfile.IncrementKills();

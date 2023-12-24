@@ -10,7 +10,15 @@ public class MainMenu : MonoBehaviour
 {
     private void OnEnable()
     {
+        CheckExistingLoadFiles();
+    }
 
+
+    /// <summary>
+    /// If there are no Load files found the Load Game Button is greyed out and unresponsive
+    /// </summary>
+    public void CheckExistingLoadFiles() 
+    {
         if (SaveManager.GetSaveFilePaths() == null)
         {
             GameObject loadButton = GameObject.Find("LoadButton");
@@ -45,7 +53,6 @@ public class MainMenu : MonoBehaviour
             loadButton.GetComponent<Image>().color = fullColor;
         }
     }
-
 
     public void Quit()
     {

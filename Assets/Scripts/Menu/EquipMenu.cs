@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
+/// <summary>
+/// Radial Menu Used to Equip/Unequip Weapons
+/// </summary>
 public class EquipMenu : MonoBehaviour
 {
 
@@ -21,7 +24,10 @@ public class EquipMenu : MonoBehaviour
         EventManager.EquipMenuEvent();
     }
 
-
+    /// <summary>
+    /// If we have the weapon that coresponds to the radial menu slot
+    /// the button is enabled and an icon of the weapon is displayed
+    /// </summary>
     public void CheckWeapons() 
     {
         var enumerator = WeaponManager.weapons.GetEnumerator();
