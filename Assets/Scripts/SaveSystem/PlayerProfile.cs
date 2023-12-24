@@ -2,13 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements.Experimental;
 
 public static class PlayerProfile
 {
     public static GameData gameData;
-   
+    private static bool goreEnabled = true;
+    private static float volume = 1f;
+
     public static void NewGameData(string playerName) 
     {
        gameData  = new GameData(playerName);
@@ -68,5 +71,24 @@ public static class PlayerProfile
     public static void SetCurrentArea(string areaName)
     {
        gameData.SetCurrentAreaData(areaName);
+    }
+
+    public static void SetGoreEnabled(bool value)
+    {
+        goreEnabled = value;
+    }
+
+    public static bool GetGoreEnabled() 
+    {
+        return goreEnabled;
+    }
+    public static void SetVolume(float input_volume)
+    {
+        volume = input_volume; 
+    }
+
+    internal static float GetVolume()
+    {
+        return volume;
     }
 }

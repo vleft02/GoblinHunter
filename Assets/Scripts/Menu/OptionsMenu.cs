@@ -3,22 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OptionsMenu : MonoBehaviour 
+public class OptionsMenu : MonoBehaviour
 {
-    //Gia metafora plhroforias sto game scene
-    float volume = 100;
-    
-    //Gia allagh tou hxou sto menu
-    //volume = AudioSource.volume
+    [SerializeField] Toggle GoreToggle;
+    [SerializeField] Toggle FullScreenToggle;
+    [SerializeField] Slider VolumeSlider;
 
-    public void ToggleFullScreen()
+    public void OnEnable()
     {
-        Screen.fullScreen = !Screen.fullScreen;
+        GoreToggle.isOn = PlayerProfile.GetGoreEnabled();
+        FullScreenToggle.isOn = Screen.fullScreen;
+        VolumeSlider.value = PlayerProfile.GetVolume();
+        
+        GoreToggle.onValueChanged.AddListener(ToggleGore);
+        FullScreenToggle.onValueChanged.AddListener(ToggleFullScreen);
+        VolumeSlider.onValueChanged.AddListener(VolumeChange);
     }
 
-    public void VolumeChange(Slider volumeSlider) 
+    private void OnDisable()
+    {
+        GoreToggle.onValueChanged.RemoveListener(ToggleGore);
+        FullScreenToggle.onValueChanged.RemoveListener(ToggleFullScreen);
+        VolumeSlider.onValueChanged.RemoveListener(VolumeChange);
+    }
+    public void ToggleFullScreen(bool value)
+    {
+        Screen.fullScreen = value;
+    }
+
+    public void ToggleGore(bool value)
+    {
+        PlayerProfile.SetGoreEnabled(value);
+    }
+
+
+    public void VolumeChange(float value) 
     { 
-        volume = volumeSlider.value;
-        Debug.Log(volume);
+        PlayerProfile.SetVolume(value);
     }
 }
