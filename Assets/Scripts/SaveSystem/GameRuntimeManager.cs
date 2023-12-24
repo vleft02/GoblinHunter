@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.Rendering;
 
 public class GameRuntimeManager : MonoBehaviour
 {
@@ -31,8 +33,25 @@ public class GameRuntimeManager : MonoBehaviour
         SpawnPlayer();
         SpawnEnemies();
         DisableGore();
+        SetVolume();
         PlayMusic();
     }
+
+    private void SetVolume()
+    {
+
+        List<GameObject> audioSourceHolderList = GameObject.FindGameObjectsWithTag("AudioPlayer").ToList();
+        audioSourceHolderList.Add(GameObject.Find("Player"));
+        foreach (GameObject audioSourceHolder in audioSourceHolderList) 
+        {
+            AudioSource[] audioSources = audioSourceHolder.GetComponents<AudioSource>();
+            foreach (AudioSource audioSource in audioSources) 
+            {
+                audioSource.volume = PlayerProfile.GetVolume();
+            }
+        }
+    }
+
 
     private void SpawnPlayer()
     {

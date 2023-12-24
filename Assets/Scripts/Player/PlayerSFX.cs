@@ -10,6 +10,7 @@ public class PlayerSFX
     private AudioSource EquipSound;
     private AudioSource BreathingSound;
     private AudioSource PlayerHurtSound;
+    private float volume;
 
     public PlayerSFX(AudioSource movementSoundSource, AudioSource attackSoundSource, AudioSource equipSoundSource, AudioSource breathingSoundSource,AudioSource playerHurtSoundSource)
     {
@@ -23,6 +24,7 @@ public class PlayerSFX
         BreathingSound.enabled = false;
         PlayerHurtSound = playerHurtSoundSource;
         PlayerHurtSound.enabled = false;
+        volume = PlayerProfile.GetVolume();
     }
 
     public void Initialize(AudioSource movementSoundSource, AudioSource attackSoundSource, AudioSource equipSoundSource, AudioSource breathingSoundSource)
@@ -72,7 +74,7 @@ public class PlayerSFX
     public void PlayFromMovementSound(AudioClip clip,float volume)
     {
         MovementSound.enabled = true;
-        MovementSound.volume = volume;
+        MovementSound.volume = this.volume;
         MovementSound.clip = clip;
         if (!MovementSound.isPlaying)
         {
