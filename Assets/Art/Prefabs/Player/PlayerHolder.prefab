@@ -1542,8 +1542,8 @@ MonoBehaviour:
   walkEffect: {fileID: 8300000, guid: 4a1b6ffc298488b48affd7fa0efd9d93, type: 3}
   runEffect: {fileID: 8300000, guid: 6c6fecf4282797b4796359d87c1e9734, type: 3}
   attackEffect: {fileID: 8300000, guid: 2026b995d8706ac46961b2d14733f311, type: 3}
-  EquipEffect: {fileID: 8300000, guid: 6c0b656f5df137f48a6f981d08713250, type: 3}
-  impactEffect: {fileID: 8300000, guid: b3490a5e10daf3d4297cfb63ec51a08c, type: 3}
+  EquipEffect: {fileID: 8300000, guid: bafe024a323bf194e8f134c35c639d1a, type: 3}
+  impactEffect: {fileID: 8300000, guid: eff353d81845f3249a69e82aeaf584aa, type: 3}
   tiredEffect: {fileID: 8300000, guid: 29b94d1a6a7f393408b0efa40051908a, type: 3}
   HurtEffect: {fileID: 8300000, guid: 61caf2456f62afc47955dab05daf441b, type: 3}
 --- !u!143 &1898201763766650918
