@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Assets\Code\Scripts\SaveSystem\PlayerProfile.cs" />
     <Compile Include="Assets\Code\Scripts\Menu\SaveSlot.cs" />
+    <Compile Include="Assets\Code\Scripts\GameIntro.cs" />
     <Compile Include="Assets\Code\Scripts\Utils.cs" />
     <Compile Include="Assets\Code\Scripts\Dungeon\RoomBehaviour.cs" />
     <Compile Include="Assets\Code\Scripts\InteractionEvent.cs" />
@@ -128,6 +129,7 @@
     <Compile Include="Assets\Code\Rendering &amp; Shaders\Outline Effect\OutlineEffect3D.cs" />
     <Compile Include="Assets\Code\Scripts\Player\PlayerLogic.cs" />
     <Compile Include="Assets\Code\Scripts\Interactables\Door.cs" />
+    <Compile Include="Assets\Code\Scripts\Effect\CameraFade.cs" />
     <Compile Include="Assets\Code\Scripts\Animation\BaseAnimationState.cs" />
     <Compile Include="Assets\Code\Scripts\Enemies\Path.cs" />
     <Compile Include="Assets\Code\Scripts\Enemies\EnemyStates\PatrolEnemyState.cs" />

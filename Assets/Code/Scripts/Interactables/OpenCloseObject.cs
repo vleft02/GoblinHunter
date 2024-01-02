@@ -27,17 +27,21 @@ public class OpenCloseObject : Interactable
     private int CLOSE;
     private int OPEN;
     private int OPENED;
-    
+
     private Animator _animator;
 
     private float _lockedStateTime;
 
     private int _currentState;
+    public bool _playIntro;
+    private GameIntro _gameIntro;
 
     // Start is called before the first frame update
     void Start()
     {
-       // _promptMessage = "Press E to open the door";
+        _gameIntro = GameObject.Find("Player").GetComponent<GameIntro>();
+
+        // _promptMessage = "Press E to open the door";
         _animator = GetComponent<Animator>();
         CLOSED = Animator.StringToHash(closed);
         CLOSE = Animator.StringToHash(close);
@@ -83,9 +87,23 @@ public class OpenCloseObject : Interactable
                 return LockState(CLOSE, 0.9f);
 
             }
+
+            if (_playIntro)
+            {
+                _playIntro = false;
+
+                //Play Intro
+                //Fade Screen, Show Logo
+
+                GameObject.Find("Player").GetComponent<Player>().CameraTransition(23f);
+                _gameIntro.PlayIntro();
+
+            }
+
             return OPENED;
         }
     }
+
 
     public void ChangeAnimationState(int state)
     {
@@ -104,7 +122,7 @@ public class OpenCloseObject : Interactable
 
     public override void Interact()
     {
-        if (locked) 
+        if (locked)
         {
             if (PlayerProfile.gameData.currentArea.HasKey())
             {
@@ -112,7 +130,7 @@ public class OpenCloseObject : Interactable
             }
             
         }
-        else 
+        else
         {
             _interact = true;
         }
