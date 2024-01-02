@@ -13,6 +13,9 @@ public class GameRuntimeManager : MonoBehaviour
     [SerializeField] bool ProceduralGen;
     Dictionary<string, GameObject> enemies;
     GameObject playerInstance;
+    private AudioSource audioSource;
+    private bool musicStopped;
+
     void OnEnable()
     {
         enemies = new Dictionary<string, GameObject>();
@@ -81,9 +84,27 @@ public class GameRuntimeManager : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (GameObject.Find("Player").GetComponent<GameIntro>()._playIntroMusic &&
+            !musicStopped)
+        {
+            musicStopped = true;
+            audioSource.Stop();
+        }
+
+        if (musicStopped && !GameObject.Find("Player").GetComponent<GameIntro>()._playIntroMusic)
+        {
+            audioSource.Play();
+        }
+
+    }
+
     private void PlayMusic()
     {
-        gameObject.GetComponent<AudioSource>().Play();
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.Play();
+        musicStopped = false;
     }
 
     private void DisableGore() 

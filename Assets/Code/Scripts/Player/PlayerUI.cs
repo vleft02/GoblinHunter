@@ -22,6 +22,10 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private GameObject equipMenu;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private GameObject blackScreen;
+    [SerializeField] private GameObject introBackground;
+    [SerializeField] private GameObject introText;
+    [SerializeField] private GameObject introTextStudio;
+    [SerializeField] private GameObject introTextPresents;
 
     private void Awake()
     {
@@ -118,10 +122,10 @@ public class PlayerUI : MonoBehaviour
         Invoke("DisableDamageVfx", 1f);
     }
 
-    public void DeathUI() 
+    public void DeathUI()
     {
         _crosshair.enabled = false;
-        Invoke("ShowDeathScreen",1.5f);
+        Invoke("ShowDeathScreen", 1.5f);
     }
 
     public void ShowDeathScreen()
@@ -137,16 +141,16 @@ public class PlayerUI : MonoBehaviour
         blackScreen.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        StartCoroutine(Effects.StartFadeWithFunction(blackScreen.GetComponent<Image>(), 5f, 1f,RollCredits));
+        StartCoroutine(Effects.StartFadeWithFunction(blackScreen.GetComponent<Image>(), 5f, 1f, RollCredits));
         StartCoroutine(Effects.StartFade(GameObject.Find("GameManager")?.GetComponent<AudioSource>(), 5f, 0f));
     }
 
-    private void RollCredits() 
+    private void RollCredits()
     {
         SceneManager.LoadScene("Credits");
     }
 
-    private void TogglePauseMenu() 
+    private void TogglePauseMenu()
     {
         if (pauseMenu.activeSelf)
         {
@@ -159,7 +163,7 @@ public class PlayerUI : MonoBehaviour
             Time.timeScale = 1f;
         }
         else
-        { 
+        {
             pauseMenu.SetActive(true);
             healthBar.enabled = false;
             staminaBar.enabled = false;
@@ -169,6 +173,46 @@ public class PlayerUI : MonoBehaviour
             Time.timeScale = 0f;
         }
 
+    }
+
+    public void ShowIntroBackground()
+    {
+        introBackground.SetActive(true);
+    }
+
+    public void HideIntroBackground()
+    {
+        introBackground.SetActive(false);
+    }
+
+    public void ShowIntroText()
+    {
+        introText.SetActive(true);
+    }
+
+    public void HideIntroText()
+    {
+        introText.SetActive(false);
+    }
+
+    public void ShowIntroTextStudio()
+    {
+        introTextStudio.SetActive(true);
+    }
+
+    public void HideIntroTextStudio()
+    {
+        introTextStudio.SetActive(false);
+    }
+
+    public void ShowIntroTextPresents()
+    {
+        introTextPresents.SetActive(true);
+    }
+
+    public void HideIntroTextPresents()
+    {
+        introTextPresents.SetActive(false);
     }
 
 }
