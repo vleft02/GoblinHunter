@@ -13,6 +13,7 @@ public class OpenCloseObject : Interactable
     private string prompt_message;
     public string prompt_message_close = "Press E to close the door";
     public string prompt_message_open = "Press E to open the door";
+    private string prompt_message_locked = "You need a Key";
     public string closed = "Closed";
     public string close = "Close";
     public string opened = "Opened";
@@ -66,7 +67,6 @@ public class OpenCloseObject : Interactable
 
         if (!_objectOpen)
         {
-            prompt_message = prompt_message_open;
             if (_interact)
             {
                 _interact = false;
@@ -79,7 +79,6 @@ public class OpenCloseObject : Interactable
         }
         else
         {
-            prompt_message = prompt_message_close;
             if (_interact)
             {
                 _interact = false;
@@ -119,7 +118,6 @@ public class OpenCloseObject : Interactable
     {
         var state = this.GetState();
         this.ChangeAnimationState(state);
-
     }
 
     public override void Interact()
@@ -130,10 +128,7 @@ public class OpenCloseObject : Interactable
             {
                 _interact = true;
             }
-            else
-            {
-                prompt_message = "You need a Key";
-            }
+            
         }
         else
         {
@@ -144,6 +139,14 @@ public class OpenCloseObject : Interactable
 
     public override string GetPromptMessage()
     {
-        return prompt_message;
+        if (!this._objectOpen)
+        {
+            if (locked && PlayerProfile.gameData.currentArea.HasKey())
+            {
+                return prompt_message_locked;
+            }
+            return prompt_message_open;
+        }
+        return prompt_message_close;
     }
 }
