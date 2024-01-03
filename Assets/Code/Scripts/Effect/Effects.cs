@@ -29,7 +29,7 @@ public static class Effects
         while (currentTime < duration)
         {
             currentTime += Time.deltaTime;
-            start.a = Mathf.Lerp(start.a, targetVolume, currentTime / duration);
+            start.a = Mathf.Lerp(start.a, targetVolume, Mathf.Clamp01(currentTime / duration));
             img.color = start;
             yield return null;
         }
@@ -45,7 +45,7 @@ public static class Effects
         while (currentTime < duration)
         {
             currentTime += Time.deltaTime;
-            start.a = Mathf.Lerp(start.a, targetVolume, currentTime / duration);
+            start.a = Mathf.Lerp(start.a, targetVolume, Mathf.Clamp01(currentTime / duration) * 0.1f);
             img.color = start;
             yield return null;
         }

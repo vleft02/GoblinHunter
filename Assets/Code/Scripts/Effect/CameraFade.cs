@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,8 +31,9 @@ public class CameraFade : MonoBehaviour
         image.color = new Color(FadeColor.r, FadeColor.g, FadeColor.b, _alpha);
     }
 
-    public void StartFadeOutEffect()
+    public void StartFadeOutEffect(float scale = 1f)
     {
+        _speedScale = scale;
         _fadeEffect = true;
         _alpha = 0f;
         image.color = new Color(FadeColor.r, FadeColor.g, FadeColor.b, _alpha);

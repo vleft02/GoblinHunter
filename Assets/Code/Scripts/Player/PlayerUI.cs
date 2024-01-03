@@ -141,6 +141,7 @@ public class PlayerUI : MonoBehaviour
         blackScreen.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
         StartCoroutine(Effects.StartFadeWithFunction(blackScreen.GetComponent<Image>(), 5f, 1f, RollCredits));
         StartCoroutine(Effects.StartFade(GameObject.Find("GameManager")?.GetComponent<AudioSource>(), 5f, 0f));
     }

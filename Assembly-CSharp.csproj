@@ -124,6 +124,7 @@
     <Compile Include="Assets\ThirdParty\OToon- URP Toon Shading\Shaders\SpherizeNormalCenterObject.cs" />
     <Compile Include="Assets\Code\Scripts\Animation\PlayerStates\AttackState.cs" />
     <Compile Include="Assets\Code\Scripts\Weapon\WeaponManager.cs" />
+    <Compile Include="Assets\ScreenResolutionAdjuster.cs" />
     <Compile Include="Assets\Code\Scripts\Goblin\GoblinStates\GoblinChaseState.cs" />
     <Compile Include="Assets\Code\Scripts\States\BaseState.cs" />
     <Compile Include="Assets\Code\Rendering &amp; Shaders\Outline Effect\OutlineEffect3D.cs" />
