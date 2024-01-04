@@ -25,7 +25,6 @@ public class EnemyController : MonoBehaviour, Hittable
         {
             health -= amount;
             MoveBack();
-            /*ShowHitEffect();*/
         }
         else
         {
@@ -34,11 +33,6 @@ public class EnemyController : MonoBehaviour, Hittable
         Debug.Log("Health After: " + health);
     }
 
-    public bool HasZeroHealth()
-    {
-        return health == 0;
-
-    }
     
     private void MoveBack()
     {
@@ -52,7 +46,6 @@ public class EnemyController : MonoBehaviour, Hittable
 
     void Update()
     {
-        /*if ()*/
     }
 
 

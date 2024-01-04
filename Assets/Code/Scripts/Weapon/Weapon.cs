@@ -24,6 +24,9 @@ public abstract class Weapon
     {
 
     }
+
+    public abstract PlayerWeapon GetWeapon();
+
     public float GetWeaponDamage() 
     {
         return weaponDamage;
@@ -47,7 +50,7 @@ public abstract class Weapon
     {
         return timeTillHit;
     }
-    public abstract PlayerWeapon getWeapon();
+
 
     
 

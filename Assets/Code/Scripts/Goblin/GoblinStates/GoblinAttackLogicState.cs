@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class GoblinAttackLogicState : BaseState<GoblinStateMachine.GoblinState>
 {
-    private int _currentWaypointIndex;
+    /*private int _currentWaypointIndex;*/
     private GoblinStateMachine _enemy;
-    private float attackWeight = 70f;   // Initial weight for attacking
+/*    private float attackWeight = 70f;   // Initial weight for attacking
     private float blockWeight = 20f;    // Initial weight for blocking
     private float continueAttackWeight = 10f;  // Initial weight for continuing to attack
-    private float weightChangeRate = 5f; // Rate at which weights change (adjust this as needed)
+    private float weightChangeRate = 5f; // Rate at which weights change (adjust this as needed)*/
 
     public GoblinAttackLogicState(GoblinStateMachine enemy, GoblinStateMachine.GoblinState key = GoblinStateMachine.GoblinState.ATTACK) : base(key)
     {

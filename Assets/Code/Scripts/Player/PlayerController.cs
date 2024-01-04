@@ -307,11 +307,6 @@ public class PlayerController : MonoBehaviour, Hittable
     }
 
 
-    public bool HasZeroHealth()
-    {
-        return player.health == 0;
-    }
-
     
     public void ReplenishStamina()
     {

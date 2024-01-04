@@ -18,7 +18,7 @@ public class Daggers : Weapon
     }
 
 
-    public override PlayerWeapon getWeapon()
+    public override PlayerWeapon GetWeapon()
     {
         return PlayerWeapon.DAGGERS;
     }

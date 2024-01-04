@@ -5,13 +5,6 @@ using UnityEngine.Events;
 
 public abstract class Interactable : MonoBehaviour
 {
-    /*
-    public void BaseInteract()
-    {
-        Interact();
-    }
-    */
-
     public bool useEvents;
     public bool triggerEvent;
 

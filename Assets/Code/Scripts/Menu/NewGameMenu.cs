@@ -17,7 +17,6 @@ public class NewGameMenu : MonoBehaviour
         {
             PlayerProfile.NewGameData(text);
             LoadScene();
-            /*Invoke(nameof(LoadScene), 0.6f);*/
         }
         else 
         {

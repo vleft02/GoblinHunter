@@ -17,7 +17,7 @@ public class Hands : Weapon
         DEATH = new AnimationClip(Animator.StringToHash("Death"), 1f);
     }
 
-    public override PlayerWeapon getWeapon()
+    public override PlayerWeapon GetWeapon()
     {
         return PlayerWeapon.HANDS;
     }

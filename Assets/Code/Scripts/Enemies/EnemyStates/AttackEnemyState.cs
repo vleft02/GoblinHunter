@@ -7,10 +7,10 @@ public class AttackEnemyState : BaseState<EnemyStateMachine.EnemyState>
     private int _currentWaypointIndex;
     private EnemyStateMachine _enemy;
     private float combat_radius = 2f;
-    private float attackWeight = 70f;   // Initial weight for attacking
+   /* private float attackWeight = 70f;   // Initial weight for attacking
     private float blockWeight = 20f;    // Initial weight for blocking
     private float continueAttackWeight = 10f;  // Initial weight for continuing to attack
-    private float weightChangeRate = 5f; // Rate at which weights change (adjust this as needed)
+    private float weightChangeRate = 5f; // Rate at which weights change (adjust this as needed)*/
 
     public AttackEnemyState(EnemyStateMachine enemy, EnemyStateMachine.EnemyState key = EnemyStateMachine.EnemyState.ATTACK) : base(key) 
     {

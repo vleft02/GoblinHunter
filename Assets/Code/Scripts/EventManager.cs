@@ -5,10 +5,9 @@ using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public static class EventManager /*: MonoBehaviour*/
+public static class EventManager 
 {
     public static event Action AttackEvent;
-    public static event Action CanAttackEvent;
 
     public static event Action EquipWeaponEvent;
     
@@ -17,6 +16,7 @@ public static class EventManager /*: MonoBehaviour*/
     public static event Action<GameObject> EnemyDeathEvent;
 
     public static event Action PlayerHitEffectEvent;
+
     public static event Action<float> PlayerHitEvent;
 
     public static event Action PlayerDeathEvent;
@@ -24,11 +24,10 @@ public static class EventManager /*: MonoBehaviour*/
     public static event Action EnemyAttackEvent;
 
     public static event Action TogglePause;
+
     public static event Action ToggleEquipMenu;
 
     public static event Action BossDefeatedEvent;
-    /*    public static event Action AttackWaitInAttackEnemy;
-    */
 
     public static void AttackPerformed()
     {
@@ -44,11 +43,6 @@ public static class EventManager /*: MonoBehaviour*/
     {
         EnemyHitEvent?.Invoke(enemy);
         enemy.TakeDamage(WeaponManager._currentWeapon.GetWeaponDamage());
-/*        if (enemy.HasZeroHealth())
-        {
-            //death
-            EnemyDeath(enemy);
-        }*/
     }
 
     public static void EnemyDeath(GameObject enemy)
@@ -87,8 +81,4 @@ public static class EventManager /*: MonoBehaviour*/
         BossDefeatedEvent?.Invoke(); 
     }
 
-    /*    public static void EnemyWaitInAttack()
-        {
-            AttackWaitInAttackEnemy?.Invoke();
-        }*/
 }

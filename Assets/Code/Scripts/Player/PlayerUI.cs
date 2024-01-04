@@ -138,12 +138,18 @@ public class PlayerUI : MonoBehaviour
 
     public void FadeToBlack()
     {
-        blackScreen.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        /*blackScreen.SetActive(true);
+        
 
         StartCoroutine(Effects.StartFadeWithFunction(blackScreen.GetComponent<Image>(), 5f, 1f, RollCredits));
-        StartCoroutine(Effects.StartFade(GameObject.Find("GameManager")?.GetComponent<AudioSource>(), 5f, 0f));
+        StartCoroutine(Effects.StartFade(GameObject.Find("GameManager")?.GetComponent<AudioSource>(), 5f, 0f));*/
+
+        ShowIntroBackground();
+        GetComponent<CameraFade>().StartFadeOutEffect(0.1f);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        RollCredits();
     }
 
     private void RollCredits()

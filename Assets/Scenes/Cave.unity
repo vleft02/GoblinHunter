@@ -2130,6 +2130,7 @@ GameObject:
   - component: {fileID: 146105090}
   - component: {fileID: 146105092}
   - component: {fileID: 146105091}
+  - component: {fileID: 146105093}
   m_Layer: 0
   m_Name: Crystal
   m_TagString: Untagged
@@ -2202,6 +2203,30 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 146105089}
   m_Mesh: {fileID: -2284883875663310624, guid: 7d29a46db6f402848aef1431131f13bc, type: 3}
+--- !u!205 &146105093
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146105089}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!4 &146336471 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2651546457422537161, guid: ee107be10eb01844992414cb55aaef34, type: 3}
@@ -9763,6 +9788,7 @@ GameObject:
   - component: {fileID: 740289941}
   - component: {fileID: 740289943}
   - component: {fileID: 740289942}
+  - component: {fileID: 740289944}
   m_Layer: 0
   m_Name: Crystal_4_Lp
   m_TagString: Untagged
@@ -9835,6 +9861,30 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 740289940}
   m_Mesh: {fileID: -3837676615773488196, guid: 57fbf6fb0ff98164ea55aea192446011, type: 3}
+--- !u!205 &740289944
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740289940}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.00000062584877, y: 0.00000011920929, z: 0.00000020861626}
+  m_Size: 0.0889748
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.4474757
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.40798247
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!1 &743479987 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 769392208970672474, guid: 305fc4b4d2ce2eb4ea627807ba5be991, type: 3}
@@ -10399,6 +10449,7 @@ GameObject:
   - component: {fileID: 802745953}
   - component: {fileID: 802745955}
   - component: {fileID: 802745954}
+  - component: {fileID: 802745956}
   m_Layer: 0
   m_Name: Crystal
   m_TagString: Untagged
@@ -10471,6 +10522,30 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 802745952}
   m_Mesh: {fileID: -2284883875663310624, guid: 7d29a46db6f402848aef1431131f13bc, type: 3}
+--- !u!205 &802745956
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802745952}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!1001 &816605968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18941,6 +19016,7 @@ GameObject:
   - component: {fileID: 1352673613}
   - component: {fileID: 1352673615}
   - component: {fileID: 1352673614}
+  - component: {fileID: 1352673616}
   m_Layer: 0
   m_Name: Crystal
   m_TagString: Untagged
@@ -19013,6 +19089,30 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352673612}
   m_Mesh: {fileID: -2284883875663310624, guid: 7d29a46db6f402848aef1431131f13bc, type: 3}
+--- !u!205 &1352673616
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352673612}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!1 &1356488935
 GameObject:
   m_ObjectHideFlags: 0
@@ -19024,6 +19124,7 @@ GameObject:
   - component: {fileID: 1356488936}
   - component: {fileID: 1356488938}
   - component: {fileID: 1356488937}
+  - component: {fileID: 1356488939}
   m_Layer: 0
   m_Name: Crystal
   m_TagString: Untagged
@@ -19096,6 +19197,30 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356488935}
   m_Mesh: {fileID: -2284883875663310624, guid: 7d29a46db6f402848aef1431131f13bc, type: 3}
+--- !u!205 &1356488939
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356488935}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!1001 &1362651117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23603,6 +23728,7 @@ GameObject:
   - component: {fileID: 1586734951}
   - component: {fileID: 1586734953}
   - component: {fileID: 1586734952}
+  - component: {fileID: 1586734954}
   m_Layer: 0
   m_Name: Crystal_4_Lp
   m_TagString: Untagged
@@ -23675,6 +23801,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586734950}
   m_Mesh: {fileID: -3837676615773488196, guid: 57fbf6fb0ff98164ea55aea192446011, type: 3}
+--- !u!205 &1586734954
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586734950}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1586734952}
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1586734952}
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1586734952}
+  m_Enabled: 1
 --- !u!1 &1588584452
 GameObject:
   m_ObjectHideFlags: 0

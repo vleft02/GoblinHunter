@@ -94,9 +94,9 @@ public class WeaponManager
                 _previousWeapon= new Hands();
             }
 
-            if (weapons[weapon.getWeapon()] == null)
+            if (weapons[weapon.GetWeapon()] == null)
             {
-                weapons[weapon.getWeapon()] = _currentWeapon;
+                weapons[weapon.GetWeapon()] = _currentWeapon;
             }
             PlayerProfile.UpdateWeapons(weapons, _currentWeapon);
             EventManager.EquipWeapon();

@@ -61,14 +61,7 @@ public class LoadMenu : MonoBehaviour
                     textFields[8].text = path;
                     saveSlot.transform.SetParent(loadList.transform);
                     saveSlot.transform.localScale = Vector3.one;
-
-                    
                 }
-                else
-                {
-                    Debug.Log("File Missing");
-                }
-
             }
         }
         else 
