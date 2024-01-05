@@ -39,7 +39,6 @@ public class GoblinController : MonoBehaviour, Hittable
             PlayerProfile.EnemyKilled(this.gameObject.name);
             PlayerProfile.IncrementKills();
         }
-        Debug.Log("Health After: " + health);
     }
 
 

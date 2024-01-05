@@ -10,7 +10,6 @@ public class GoblinToDeathState : BaseAnimationState<GoblinAnimation>
     public GoblinToDeathState(AnimationAspectManager _aspectManager, GoblinAnimation key = GoblinAnimation.TO_DEATH)
         : base(key)
     {
-        // TODO
         Id = 0;
 
         AspectManager = _aspectManager;
@@ -30,23 +29,8 @@ public class GoblinToDeathState : BaseAnimationState<GoblinAnimation>
     {
         if (toDeathState[Aspects.FRONT].State != Id)
         {
-            //Debug.Log("Change Aspect to " + AspectManager._currentAspectKey);
             ChangeAnimation(Aspects.FRONT);
         }
-
-
-        //TODO
-        //if (WeaponManager._currentWeapon != null)
-        //{
-        //    if (Id != WeaponManager._currentWeapon.ATTACK.State)
-        //    {
-        //        Id = WeaponManager._currentWeapon.ATTACK.State;
-        //        Duration = WeaponManager._currentWeapon.ATTACK.Duration;
-
-        //    }
-        //}
-
-        //LockState();
 
     }
 
@@ -63,7 +47,6 @@ public class GoblinToDeathState : BaseAnimationState<GoblinAnimation>
 
     public override GoblinAnimation GetNextState()
     {
-        // TODO
         return GoblinAnimation.TO_DEATH;
 
     }

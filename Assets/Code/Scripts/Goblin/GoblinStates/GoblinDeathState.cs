@@ -24,7 +24,6 @@ public class GoblinDeathState : BaseState<GoblinStateMachine.GoblinState>
 
     public override GoblinStateMachine.GoblinState GetNextState()
     {
-        // TODO
         return GoblinStateMachine.GoblinState.DEAD;
     }
 
@@ -45,7 +44,6 @@ public class GoblinDeathState : BaseState<GoblinStateMachine.GoblinState>
 
     public override void UpdateState()
     {
-        /*        this._enemy.transform.position = Vector3.MoveTowards(this._enemy.transform.position, targetObject.transform.position, 10*Time.deltaTime);
-        */
+
     }
 }

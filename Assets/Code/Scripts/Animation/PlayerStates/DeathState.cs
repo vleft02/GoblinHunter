@@ -7,7 +7,6 @@ public class DeathState : BaseAnimationState<PlayerAnimationFSM.PlayerAnimation>
     public DeathState(PlayerAnimationFSM.PlayerAnimation key = PlayerAnimationFSM.PlayerAnimation.DEATH)
         : base(key)
     {
-        // TODO
         Id = 0;
 
     }

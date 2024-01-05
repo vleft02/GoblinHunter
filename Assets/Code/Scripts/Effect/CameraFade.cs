@@ -17,13 +17,6 @@ public class CameraFade : MonoBehaviour
     private int _direction = 0; // 1 -> FadeIn, -1 -> FadeOut
     private float _time = 0f;
 
-    void Start()
-    {
-        //_texture = new Texture2D(1, 1);
-        //_texture.SetPixel(0, 0, new Color(FadeColor.r, FadeColor.g, FadeColor.b, _alpha));
-        //_texture.Apply();
-    }
-
     public void StartFadeInEffect()
     {
         _fadeEffect = true;
@@ -61,8 +54,6 @@ public class CameraFade : MonoBehaviour
         {
             _time += _direction * Time.deltaTime * _speedScale;
             _alpha = Curve.Evaluate(_time);
-            //_texture.SetPixel(0, 0, new Color(FadeColor.r, FadeColor.g, FadeColor.b, _alpha));
-            //_texture.Apply();
             image.color = new Color(FadeColor.r, FadeColor.g, FadeColor.b, _alpha);
             if (_alpha <= 0f || _alpha >= 1f)
             {
@@ -72,35 +63,6 @@ public class CameraFade : MonoBehaviour
 
         }
     }
-
-    /*
-    public void OnGUI()
-    {
-        //if (_alpha > 0f) GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), _texture);        
-
-        if (_direction != 0)
-        {
-            _time += _direction * Time.deltaTime * _speedScale;
-            _alpha = Curve.Evaluate(_time);
-            //_texture.SetPixel(0, 0, new Color(FadeColor.r, FadeColor.g, FadeColor.b, _alpha));
-            //_texture.Apply();
-            image.color = new Color(FadeColor.r, FadeColor.g, FadeColor.b, _alpha);
-            if (_alpha <= 0f || _alpha >= 1f)
-            {
-                _direction = 0;
-                _fadeEffect = false;
-            }
-
-        }
-    }
-    */
-
-
-
-
-
-
-
 
 
 }

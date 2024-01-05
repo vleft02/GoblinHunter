@@ -61,39 +61,6 @@ public class AnimationAspectManager : MonoBehaviour
 
     }
 
-
-    /*
-    public Aspects GetAspectFromAngle(float angle)
-    {
-
-        // Front
-        if (angle <= 45f && angle >= 0f || (angle > -45f && angle <= 0f))
-        {
-            return Aspects.FRONT;
-        }
-
-        // Left
-        if (angle > 45 && angle <= 135)
-        {
-            return Aspects.RIGHT;
-        }
-
-        // Back
-        if (angle > 135f ||( angle >= -180f && angle <= -165f))
-        {
-            return Aspects.BACK;
-        }
-
-        // Right
-        if (angle > -165f && angle <= -45f)
-        {
-            return Aspects.LEFT;
-        }
-
-        else return Aspects.FRONT;
-    }
-    */
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;

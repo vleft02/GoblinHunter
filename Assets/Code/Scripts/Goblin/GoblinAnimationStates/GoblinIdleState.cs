@@ -12,7 +12,6 @@ public class GoblinIdleState : BaseAnimationState<GoblinAnimation>
     public GoblinIdleState(AnimationAspectManager _aspectManager, GoblinStateMachine stateMachine, GoblinAnimation key = GoblinAnimation.IDLE)
         : base(key)
     {
-        // TODO
         Id = 0;
 
         AspectManager = _aspectManager;
@@ -40,7 +39,6 @@ public class GoblinIdleState : BaseAnimationState<GoblinAnimation>
     {
         if (idleState[AspectManager._currentAspectKey].State != Id)
         {
-            //Debug.Log("Change Aspect to " + AspectManager._currentAspectKey);
             ChangeAnimation(AspectManager._currentAspectKey);
         }
 
@@ -50,7 +48,6 @@ public class GoblinIdleState : BaseAnimationState<GoblinAnimation>
     {
         if (idleState[AspectManager._currentAspectKey].State != Id)
         {
-            //Debug.Log("Change Aspect to " + AspectManager._currentAspectKey);
             ChangeAnimation(AspectManager._currentAspectKey);
             AspectManager._changeAspect = true;
 
@@ -65,7 +62,6 @@ public class GoblinIdleState : BaseAnimationState<GoblinAnimation>
 
     public override GoblinAnimation GetNextState()
     {
-        // TODO
         if (_stateMachine.isAttacking)
         {
             return GoblinAnimation.ATTACK;

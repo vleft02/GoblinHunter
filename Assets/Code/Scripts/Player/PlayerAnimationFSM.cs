@@ -1,7 +1,6 @@
 using UnityEngine;
 using static PlayerAnimationFSM;
 
-
 public class PlayerAnimationFSM : AnimationStateManager<PlayerAnimation>
 {
     public enum PlayerAnimation

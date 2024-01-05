@@ -27,7 +27,6 @@ public class GoblinStateMachine : StateManager<GoblinStateMachine.GoblinState>
     private UnityEngine.AI.NavMeshAgent agent;
     public UnityEngine.AI.NavMeshAgent Agent { get => agent; }
     public GameObject Player;
-    public Path path;
 
     void InitStates()
     {
@@ -44,9 +43,6 @@ public class GoblinStateMachine : StateManager<GoblinStateMachine.GoblinState>
         billboard = GetComponentInChildren<SpriteBillboard>();
         controller = GetComponent<GoblinController>();
         EventManager.EnemyDeathEvent += DropDead;
-        //EventManager.EnemyAttackEvent += Attack;
-
-        //agent.updateRotation = false;
         Agent.isStopped = true;
 
         combat_radius = 2f;
@@ -69,20 +65,19 @@ public class GoblinStateMachine : StateManager<GoblinStateMachine.GoblinState>
             {
                 transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
             }
-            //transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
         }
     }
 
+    /*
     private void OnDrawGizmos()
     {
         // Draw a wireframe sphere to represent the detection radius in the Unity editor
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, 5f);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(PatrolEnemyState.nextWaypoint, 1f);
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, 7f);
     }
+    */
 
     public bool PlayerDetected(float detection_radius)
     {
@@ -157,16 +152,6 @@ public class GoblinStateMachine : StateManager<GoblinStateMachine.GoblinState>
         agent.isStopped = true;
         agent.speed = 0;
 
-        //    //    // Perform the attack action here (e.g. deal damage, etc.)
-        //    //    Debug.Log("Enemy is attacking!");
-
-
-        //    //    //EventManager.EnemyAttackPerform();
-
-
-        //yield return new WaitForSeconds(2f);
-
-        //isAttacking = false;
     }
 
     public IEnumerator IdleAndWait()
@@ -186,10 +171,6 @@ public class GoblinStateMachine : StateManager<GoblinStateMachine.GoblinState>
 
     public void CannotEndAttack()
     {
-        //if (PlayerDetected(combat_radius))
-        //{
-        //    canEndAttack = false;
-        //}
 
         canEndAttack = false;
 
@@ -201,7 +182,6 @@ public class GoblinStateMachine : StateManager<GoblinStateMachine.GoblinState>
         
         if (PlayerDetected(combat_radius))
         {
-            //Debug.Log("Damage Player");
             EventManager.PlayerTakeHit(controller.damage);
 
         }
