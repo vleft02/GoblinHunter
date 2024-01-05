@@ -25,7 +25,6 @@ public static class Effects
     {
         float currentTime = 0;
         UnityEngine.Color start = img.color;
-/*        float start = color;*/
         while (currentTime < duration)
         {
             currentTime += Time.deltaTime;
@@ -41,7 +40,6 @@ public static class Effects
     {
         float currentTime = 0;
         UnityEngine.Color start = img.color;
-        /*        float start = color;*/
         while (currentTime < duration)
         {
             currentTime += Time.deltaTime;
@@ -85,7 +83,6 @@ public static class Effects
         Color originalColor = image.color;
         Color flashColor = Color.red;
         bool flash = true;
-        //int counter = 0;
 
         while (currentTime < duration)
         {
@@ -94,9 +91,8 @@ public static class Effects
             {
                 image.color = flashColor;
                 flash = false;
-                //counter++;
             }
-            else //if (counter > 1)
+            else
             {
                 image.color = originalColor;
                 flash = true;

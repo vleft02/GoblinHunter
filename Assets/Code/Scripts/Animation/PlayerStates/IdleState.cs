@@ -8,7 +8,6 @@ public class IdleState : BaseAnimationState<PlayerAnimationFSM.PlayerAnimation>
     public IdleState(PlayerAnimationFSM.PlayerAnimation key = PlayerAnimationFSM.PlayerAnimation.IDLE) 
         : base(key) 
     {
-        // TODO
         Id = 0;
         
     }
@@ -48,18 +47,6 @@ public class IdleState : BaseAnimationState<PlayerAnimationFSM.PlayerAnimation>
 
     public override PlayerAnimationFSM.PlayerAnimation GetNextState()
     {
-/*        // TODO
-        if (PlayerMovementManager._isAttacking)
-        {
-            PlayerMovementManager._isAttacking = false;
-            return PlayerAnimationFSM.PlayerAnimation.ATTACK;
-        }*/
-/*
-        if (WeaponManager._changeWeapon)
-        {
-            return PlayerAnimationFSM.PlayerAnimation.UNEQUIP;
-        }*/
-
         return PlayerAnimationFSM.PlayerAnimation.IDLE;
     }
 

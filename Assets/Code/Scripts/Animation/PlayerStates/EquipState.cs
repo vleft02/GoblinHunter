@@ -7,7 +7,6 @@ public class EquipState : BaseAnimationState<PlayerAnimationFSM.PlayerAnimation>
     public EquipState(PlayerAnimationFSM.PlayerAnimation key = PlayerAnimationFSM.PlayerAnimation.EQUIP)
         : base(key)
     {
-        // TODO
         Id = 0;
 
     }
@@ -39,13 +38,6 @@ public class EquipState : BaseAnimationState<PlayerAnimationFSM.PlayerAnimation>
 
     public override PlayerAnimationFSM.PlayerAnimation GetNextState()
     {
-        // TODO
-
-        /*        if (PlayerMovementManager._isAttacking)
-                {
-                    return PlayerAnimationFSM.PlayerAnimation.ATTACK;
-                }
-        */
         if (GameObject.Find("LoadingScreen") != null)
         {
             GameObject.Find("LoadingScreen").SetActive(false);

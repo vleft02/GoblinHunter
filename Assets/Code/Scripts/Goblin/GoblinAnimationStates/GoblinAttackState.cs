@@ -12,7 +12,6 @@ public class GoblinAttackState : BaseAnimationState<GoblinAnimation>
     public GoblinAttackState(AnimationAspectManager _aspectManager, GoblinStateMachine stateMachine, GoblinAnimation key = GoblinAnimation.ATTACK)
         : base(key)
     {
-        // TODO
         Id = 0;
         AspectManager = _aspectManager;
 
@@ -44,7 +43,6 @@ public class GoblinAttackState : BaseAnimationState<GoblinAnimation>
             if (_stateMachine.IsInCombatRange())
             {
                 _stateMachine.canEndAttack = false;
-                Debug.Log("Attack end");
                 AspectManager._changeAspect = true;
                 LockState();
             }
@@ -57,20 +55,13 @@ public class GoblinAttackState : BaseAnimationState<GoblinAnimation>
 
     public override void ExitState()
     {
-        //_stateMachine.isAttacking = false;
     }
 
     public override GoblinAnimation GetNextState()
     {
 
-        //if (_stateMachine.isAttacking)
-        //{
-        //    return GoblinAnimation.ATTACK;
-        //}
-
         if (_stateMachine.Agent.velocity.magnitude > 0)
         {
-            //Debug.Log("Animation: Enter Walk State");
             return GoblinAnimation.WALK;
         }
 

@@ -18,24 +18,6 @@ public abstract class AnimationStateManager<EState> : MonoBehaviour where EState
 
     protected void ChangeAnimationState(int state)
     {
-        //if (state == CurrentState.Id) return;
-
-        /*
-        if (_spawnWeapon)
-        {
-            //When we intend to spawn the next weapon we first check if 
-            //the next weapon equip animation has begun
-            if (currentClip == _weaponToBeEquiped.EQUIP)
-            {
-                _spawnWeapon = false;
-                _player.WeaponPickUp(_weaponToBeEquiped);
-                _player._instantiateWeapon = true;
-                _weapon = _weaponToBeEquiped;
-                _weaponToBeEquiped = null;
-            }
-        }
-        */
-
         _animator.CrossFadeInFixedTime(state, 0, 0);
     }
 
@@ -47,8 +29,6 @@ public abstract class AnimationStateManager<EState> : MonoBehaviour where EState
         CurrentState.ExitState();
         CurrentState = States[stateKey];
         CurrentState.EnterState();
-
-        //Debug.Log("Enter " + CurrentState.StateKey + "State");
 
         _animator.CrossFadeInFixedTime(CurrentState.Id, 0, 0);
         isTransitionState = false;
@@ -79,7 +59,6 @@ public abstract class AnimationStateManager<EState> : MonoBehaviour where EState
             }
         }
 
-        //ChangeAnimationState(CurrentState.Id);
 
     }
 

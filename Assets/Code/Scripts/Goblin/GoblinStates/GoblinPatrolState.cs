@@ -25,10 +25,6 @@ public class GoblinPatrolState : BaseState<GoblinStateMachine.GoblinState>
     public override void UpdateState()
     {
         PatrolCycle();
-
-        //_enemy.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-
-
     }
 
     public override void ExitState()
@@ -40,7 +36,6 @@ public class GoblinPatrolState : BaseState<GoblinStateMachine.GoblinState>
     {
         if (_enemy.Agent.isStopped)
         {
-            // Continue
             nextWaypoint = GenerateRandomPointIn3DSpace(center, walking_radius);
             _enemy.Agent.speed = _walkingSpeed;
             _enemy.Agent.isStopped = false;

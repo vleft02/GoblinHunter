@@ -21,7 +21,6 @@ public class GoblinHitState : BaseAnimationState<GoblinAnimation>
     public GoblinHitState(AnimationAspectManager _aspectManager, GoblinStateMachine stateMachine, GoblinAnimation key = GoblinAnimation.HIT)
         : base(key)
     {
-        // TODO
         Id = 0;
 
         _stateMachine = stateMachine;
@@ -59,12 +58,6 @@ public class GoblinHitState : BaseAnimationState<GoblinAnimation>
     public override void UpdateState()
     {
         timer += Time.deltaTime;
-        //if (hitState[AspectManager._currentAspectKey].State != Id)
-        //{
-        //    //Debug.Log("Change Aspect to " + AspectManager._currentAspectKey);
-        //    ChangeAnimation(AspectManager._currentAspectKey);
-        //    AspectManager._changeAspect = true;
-        //}
 
         if (flash)
         {
@@ -86,7 +79,6 @@ public class GoblinHitState : BaseAnimationState<GoblinAnimation>
 
     public override GoblinAnimation GetNextState()
     {
-        // TODO
         if (timer > staggerTime)
         {
             if (_stateMachine.isAttacking)

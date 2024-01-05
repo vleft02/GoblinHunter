@@ -15,7 +15,6 @@ public class GoblinChaseState : BaseState<GoblinStateMachine.GoblinState>
     {
         _enemy.Agent.isStopped = false;
         _enemy.Agent.speed = speed;
-        // Play The Walk Animation
     }
 
     public override void ExitState()
@@ -27,7 +26,6 @@ public class GoblinChaseState : BaseState<GoblinStateMachine.GoblinState>
     {
         if (_enemy.PlayerDetected(_enemy.combat_radius))
         {
-            Debug.Log("Enter Attack");
             return GoblinStateMachine.GoblinState.ATTACK;
         }
         if (!_enemy.PlayerDetected(_enemy.chase_radius))

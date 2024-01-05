@@ -10,7 +10,6 @@ public class HitState : BaseAnimationState<PlayerAnimationFSM.PlayerAnimation>
     public HitState(PlayerAnimationFSM.PlayerAnimation key = PlayerAnimationFSM.PlayerAnimation.IDLE)
           : base(key)
     {
-        // TODO
         Id = 0;
 
     }
@@ -49,12 +48,6 @@ public class HitState : BaseAnimationState<PlayerAnimationFSM.PlayerAnimation>
 
     public override PlayerAnimationFSM.PlayerAnimation GetNextState()
     {
-        /*        // TODO
-                if (PlayerMovementManager._isAttacking)
-                {
-                    PlayerMovementManager._isAttacking = false;
-                    return PlayerAnimationFSM.PlayerAnimation.ATTACK;
-                }*/
         if (timer > staggerTime)
         {
             return PlayerAnimationFSM.PlayerAnimation.IDLE;
