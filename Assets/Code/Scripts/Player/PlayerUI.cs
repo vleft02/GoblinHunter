@@ -24,6 +24,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private GameObject blackScreen;
     [SerializeField] private GameObject introBackground;
     [SerializeField] private GameObject introText;
+    [SerializeField] private GameObject introTextStory;
     [SerializeField] private GameObject introTextStudio;
     [SerializeField] private GameObject introTextPresents;
 
@@ -185,6 +186,16 @@ public class PlayerUI : MonoBehaviour
     public void HideIntroBackground()
     {
         introBackground.SetActive(false);
+    }
+
+    public void ShowStoryText()
+    {
+        introTextStory.SetActive(true);
+    }
+
+    public void HideStoryText()
+    {
+        introTextStory.SetActive(false);
     }
 
     public void ShowIntroText()

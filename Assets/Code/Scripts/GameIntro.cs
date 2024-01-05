@@ -54,6 +54,14 @@ public class GameIntro : MonoBehaviour
 
         player.GetComponent<PlayerUI>().HideIntroText();
 
+        yield return new WaitForSeconds(2f);
+
+        player.GetComponent<PlayerUI>().ShowStoryText();
+
+        yield return new WaitForSeconds(12f);
+
+        player.GetComponent<PlayerUI>().HideStoryText();
+
         player.GetComponent<CameraFade>().StartFadeInEffect();
 
         yield return new WaitForSeconds(3f);
