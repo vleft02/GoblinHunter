@@ -1,11 +1,8 @@
 using Newtonsoft.Json;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 [System.Serializable]
-public class EnemyData /*: EnemyData*/
+public class EnemyData 
 {
     [JsonProperty]
     private string name;

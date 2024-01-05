@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class OutlineEffect : MonoBehaviour
@@ -23,8 +20,6 @@ public class OutlineEffect : MonoBehaviour
         
         if (!_isSelected)
         {
-            // Make It Transparent
-            //material.SetColor("_Color", new Color(255, 255, 255, 0));
             material.SetColor("_Color", _colorTransparent);
         }
 

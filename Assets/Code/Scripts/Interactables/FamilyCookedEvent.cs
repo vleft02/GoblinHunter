@@ -1,15 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FamilyCookedEvent : Interactable
 {
-
-    private void Start()
-    {
-
-    }
-
     public override string GetPromptMessage()
     {
         return "";

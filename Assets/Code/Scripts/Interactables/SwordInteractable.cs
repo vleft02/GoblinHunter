@@ -1,13 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SwordInteractable : Interactable
 {
-    /*    private void Start()
-        {
-            EventManager += 
-        }*/
+
     [SerializeField] bool DestroyOnPickUp;
 
     public override string GetPromptMessage()

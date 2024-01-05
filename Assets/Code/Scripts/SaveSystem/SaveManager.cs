@@ -5,7 +5,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Newtonsoft.Json;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 
 /// <summary>

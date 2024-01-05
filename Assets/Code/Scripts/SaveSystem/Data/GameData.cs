@@ -24,7 +24,6 @@ public class GameData
                  currentArea = area;
             }
         }
-    /*    Debug.Log("Scene from current area Not Found");*/
     }
 
     public void SetCurrentAreaEnemyData(List<EnemyData> enemies)

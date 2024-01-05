@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.Controls;
 
 public class PlayerRotate : MonoBehaviour
 {
@@ -46,7 +44,6 @@ public class PlayerRotate : MonoBehaviour
         rotateHorizontal();
         
         initialRotation = _cameraHolder.localRotation;
-        //if (!_rotateToAngles) currentRotationHorizontal = transform.localRotation;
         currentRotationHorizontal = transform.localRotation;
         PlayerProfile.UpdateRotation(gameObject.transform.localRotation.eulerAngles);
 

@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
     public bool isDead;
     public PlayerController _playerController;
     private PlayerRotate _rotate;
-    private PlayerRotate _rotateSmooth;
     private PlayerRotate _currentRotate;
 
     // Start is called before the first frame update
@@ -26,10 +25,7 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         isPaused = false;
         isDead = false;
-       /*
-        
-        _currentWeapon = PlayerWeapon.HANDS;
-*/
+
 
         PlayerProfile.UpdateCurrentArea();
 
@@ -38,14 +34,8 @@ public class Player : MonoBehaviour
         _onFoot = _playerInput.OnFoot;
         _playerController = GetComponent<PlayerController>();
         _rotate = GetComponents<PlayerRotate>()[0];
-        /*_rotateSmooth = GetComponents<PlayerRotate>()[1];*/
 
         _currentRotate = _rotate;
-/*#if UNITY_EDITOR
-        _currentRotate = _rotate;
-#else
-        _currentRotate = _rotateSmooth;
-#endif*/
 
         AssignInputs();
 
@@ -65,6 +55,25 @@ public class Player : MonoBehaviour
         EventManager.BossDefeatedEvent += TerminateInput;
         
     }
+    private void OnDisable()
+    {
+        _onFoot.Disable();
+        _onFoot.Jump.performed -= ctx => _playerController.Jump();
+        _onFoot.QuickSave.performed -= ctx => SaveManager.SaveGame();
+        _onFoot.Pause.performed -= ctx => EventManager.PauseEvent();
+        _onFoot.EquipMenu.performed -= ctx => EventManager.EquipMenuEvent();
+        _onFoot.Run.performed -= ctx => _playerController._isRunning = true;
+        _onFoot.Run.canceled -= ctx => _playerController._isRunning = false;
+        _onFoot.WeaponSlot1.performed -= ctx => WeaponManager.ChangeWeapon(1);
+        _onFoot.WeaponSlot2.performed -= ctx => WeaponManager.ChangeWeapon(2);
+        _onFoot.WeaponSlot3.performed -= ctx => WeaponManager.ChangeWeapon(3);
+        _onFoot.WeaponSlot4.performed -= ctx => WeaponManager.ChangeWeapon(4);
+
+        EventManager.TogglePause -= ChangeInput;
+        EventManager.ToggleEquipMenu -= ChangeInput;
+        EventManager.BossDefeatedEvent -= TerminateInput;
+    }
+
 
     private void Update()
     {
@@ -85,24 +94,6 @@ public class Player : MonoBehaviour
     }
 
 
-    private void OnDisable()
-    {
-        _onFoot.Disable();
-        _onFoot.Jump.performed -= ctx => _playerController.Jump();
-        _onFoot.QuickSave.performed -= ctx => SaveManager.SaveGame();
-        _onFoot.Pause.performed -= ctx => EventManager.PauseEvent();
-        _onFoot.EquipMenu.performed -= ctx => EventManager.EquipMenuEvent();
-        _onFoot.Run.performed -= ctx => _playerController._isRunning = true;
-        _onFoot.Run.canceled -= ctx => _playerController._isRunning = false;
-        _onFoot.WeaponSlot1.performed -= ctx => WeaponManager.ChangeWeapon(1);
-        _onFoot.WeaponSlot2.performed -= ctx => WeaponManager.ChangeWeapon(2);
-        _onFoot.WeaponSlot3.performed -= ctx => WeaponManager.ChangeWeapon(3);
-        _onFoot.WeaponSlot4.performed -= ctx => WeaponManager.ChangeWeapon(4);
-
-        EventManager.TogglePause -= ChangeInput;
-        EventManager.ToggleEquipMenu -= ChangeInput;
-        EventManager.BossDefeatedEvent -= TerminateInput;
-    }
 
     private void ChangeInput()
     {
@@ -118,7 +109,6 @@ public class Player : MonoBehaviour
                 _onFoot.WeaponSlot2.Enable();
                 _onFoot.WeaponSlot3.Enable();
                 _onFoot.WeaponSlot4.Enable();
-/*                _onFoot.EquipMenu.Enable();*/
                 DefaultInputActions.UIActions uiActions = uiInputActions.UI;
                 uiActions.Disable();
             }
@@ -132,7 +122,6 @@ public class Player : MonoBehaviour
                 _onFoot.WeaponSlot2.Disable();
                 _onFoot.WeaponSlot3.Disable();
                 _onFoot.WeaponSlot4.Disable();
-/*                _onFoot.EquipMenu.Disable();*/
                 DefaultInputActions.UIActions uiActions = uiInputActions.UI;
                 uiActions.Enable();
             }

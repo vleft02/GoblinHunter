@@ -78,7 +78,6 @@
     <Compile Include="Assets\Code\Scripts\Weapon\Hands.cs" />
     <Compile Include="Assets\Code\Scripts\Goblin\GoblinAnimationStates\GoblinIdleState.cs" />
     <Compile Include="Assets\Code\Scripts\Player\PlayerInteract.cs" />
-    <Compile Include="Assets\FamilyCookedEvent.cs" />
     <Compile Include="Assets\Code\Scripts\Player\PlayerRotate.cs" />
     <Compile Include="Assets\Code\Scripts\Interactables\SwordInteractable.cs" />
     <Compile Include="Assets\Code\Scripts\Animation\PlayerStates\DeathState.cs" />
@@ -98,6 +97,7 @@
     <Compile Include="Assets\Art\Particles\Hit Particles\CFX_AutoDestructShuriken.cs" />
     <Compile Include="Assets\Code\Scripts\Weapon\Weapon.cs" />
     <Compile Include="Assets\Code\Scripts\OutllneEffect.cs" />
+    <Compile Include="Assets\Code\Scripts\Interactables\FamilyCookedEvent.cs" />
     <Compile Include="Assets\Code\Scripts\Interactables\OpenCloseObject.cs" />
     <Compile Include="Assets\Code\Scripts\Interactables\HealingInteractable.cs" />
     <Compile Include="Assets\Code\Scripts\Weapon\Daggers.cs" />
@@ -105,8 +105,6 @@
     <Compile Include="Assets\ThirdParty\OToon- URP Toon Shading\Shaders\OutlineObjectFeature.cs" />
     <Compile Include="Assets\Code\Scripts\Animation\PlayerStates\IdleState.cs" />
     <Compile Include="Assets\Code\Scripts\Hittable.cs" />
-    <Compile Include="Assets\Code\Scripts\Kill.cs" />
-    <Compile Include="Assets\Code\Scripts\Interactables\Cube.cs" />
     <Compile Include="Assets\Code\Scripts\Menu\OptionsMenu.cs" />
     <Compile Include="Assets\Code\Scripts\SaveSystem\Data\PlayerData.cs" />
     <Compile Include="Assets\Code\Scripts\Enemies\EnemyAnimationStates\HitEnemyState.cs" />
@@ -118,18 +116,17 @@
     <Compile Include="Assets\Code\Scripts\Enemies\EnemyStateMachine.cs" />
     <Compile Include="Assets\Code\Scripts\Goblin\GoblinAnimationStates\GoblinAttackState.cs" />
     <Compile Include="Assets\Code\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Code\Scripts\Menu\Credits.cs" />
     <Compile Include="Assets\Code\Scripts\Goblin\GoblinAnimationStates\GoblinToDeathState.cs" />
     <Compile Include="Assets\Code\Scripts\Player\PlayerSFX.cs" />
     <Compile Include="Assets\Code\Scripts\Enemies\EnemyStates\ChaseEnemyState.cs" />
     <Compile Include="Assets\ThirdParty\OToon- URP Toon Shading\Shaders\SpherizeNormalCenterObject.cs" />
     <Compile Include="Assets\Code\Scripts\Animation\PlayerStates\AttackState.cs" />
     <Compile Include="Assets\Code\Scripts\Weapon\WeaponManager.cs" />
-    <Compile Include="Assets\ScreenResolutionAdjuster.cs" />
     <Compile Include="Assets\Code\Scripts\Goblin\GoblinStates\GoblinChaseState.cs" />
     <Compile Include="Assets\Code\Scripts\States\BaseState.cs" />
     <Compile Include="Assets\Code\Rendering &amp; Shaders\Outline Effect\OutlineEffect3D.cs" />
     <Compile Include="Assets\Code\Scripts\Player\PlayerLogic.cs" />
-    <Compile Include="Assets\Code\Scripts\Interactables\Door.cs" />
     <Compile Include="Assets\Code\Scripts\Effect\CameraFade.cs" />
     <Compile Include="Assets\Code\Scripts\Animation\BaseAnimationState.cs" />
     <Compile Include="Assets\Code\Scripts\Enemies\Path.cs" />
@@ -144,7 +141,6 @@
     <Compile Include="Assets\Code\Scripts\Menu\MainMenu.cs" />
     <Compile Include="Assets\Code\Scripts\Menu\NewGameMenu.cs" />
     <Compile Include="Assets\Code\Scripts\Effect\Effects.cs" />
-    <Compile Include="Assets\Credits.cs" />
     <Compile Include="Assets\Code\Scripts\SaveSystem\SaveFinder.cs" />
     <Compile Include="Assets\Code\Scripts\SaveSystem\Data\EnemyData.cs" />
     <Compile Include="Assets\Code\Scripts\Interactables\AxeInteractable.cs" />

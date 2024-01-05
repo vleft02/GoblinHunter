@@ -1,11 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static EnemyStateMachine;
-using UnityEngine.AI;
 using static PlayerAnimationFSM;
-using static EnemyAnimationFSM;
-using System.Security.Cryptography;
+
 
 public class PlayerAnimationFSM : AnimationStateManager<PlayerAnimation>
 {
@@ -31,7 +26,6 @@ public class PlayerAnimationFSM : AnimationStateManager<PlayerAnimation>
         EventManager.AttackEvent += Attack;
         EventManager.EquipWeaponEvent += Equip;
         EventManager.PlayerDeathEvent += ToDeathAnimation;
-/*        EventManager.PlayerHitEvent += GetHit;*/
     }
 
 

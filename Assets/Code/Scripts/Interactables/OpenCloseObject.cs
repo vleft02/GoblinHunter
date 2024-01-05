@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class OpenCloseObject : Interactable
@@ -19,10 +15,7 @@ public class OpenCloseObject : Interactable
     public string opened = "Opened";
     public string open = "Open";
 
-    // ---------- //
-    // Animations //
-    // ---------- //
-
+    //animations
     private int CLOSED;
     private int CLOSE;
     private int OPEN;
@@ -36,25 +29,17 @@ public class OpenCloseObject : Interactable
     public bool _playIntro;
     private GameIntro _gameIntro;
 
-    // Start is called before the first frame update
     void Start()
     {
         _gameIntro = GameObject.Find("Player").GetComponent<GameIntro>();
 
-        // _promptMessage = "Press E to open the door";
         _animator = GetComponent<Animator>();
         CLOSED = Animator.StringToHash(closed);
         CLOSE = Animator.StringToHash(close);
         OPENED = Animator.StringToHash(opened);
         OPEN = Animator.StringToHash(open);
     }
-    /*
-    protected override void Interact()
-    {
-        _interact = true;
-        Debug.Log("Interact with " + gameObject.name);
-    }
-    */
+
     private int LockState(int state, float lt)
     {
         this._lockedStateTime = Time.time + lt;
@@ -94,7 +79,6 @@ public class OpenCloseObject : Interactable
 
                 //Play Intro
                 //Fade Screen, Show Logo
-
                 GameObject.Find("Player").GetComponent<Player>().CameraTransition(23f);
                 _gameIntro.PlayIntro();
 

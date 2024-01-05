@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class PlayerInteract : MonoBehaviour
 {
@@ -20,10 +15,7 @@ public class PlayerInteract : MonoBehaviour
     private Player _player;
 
     private OutlineEffect outline;
-    private OutlineEffect3D outline3D;
 
-    Hittable hitTarget;
-    Transform hittablePos;
     GameObject target;
     private void Awake()
     {
@@ -31,10 +23,6 @@ public class PlayerInteract : MonoBehaviour
         _player = GetComponent<Player>();
     }
 
-    /*    private void Start()
-        {
-            WeaponManager.initWeapons();
-        }*/
 
     private void checkInteraction()
     {
@@ -61,13 +49,6 @@ public class PlayerInteract : MonoBehaviour
                 }
 
 
-                // 3D object
-                //if (interactable.GetComponent<OutlineEffect3D>() != null)
-                //{
-                //    outline3D = interactable.GetComponent<OutlineEffect3D>();
-                //    outline3D._isSelected = true;
-                //}
-
                 // Player UI Update
                 if (!interactable.useEvents)
                 {
@@ -77,13 +58,6 @@ public class PlayerInteract : MonoBehaviour
 
                 if (_player._onFoot.Interact.triggered)
                 {
-                    /*                if (interactable.GetComponent<Weapon>() != null)
-                                    {
-                                        _player._changeWeapon = true;
-                                        //! allagi isos
-                                        _player._currentWeapon = PlayerWeapon.SWORD;
-                                    }
-                    */
                     interactable.Interact();
                 }
             }
@@ -95,12 +69,6 @@ public class PlayerInteract : MonoBehaviour
                 outline._isSelected = false;
                 outline = null;
             }
-
-            //if (outline3D != null)
-            //{
-            //    outline3D._isSelected = false;
-            //    outline3D = null;
-            //}
 
             _playerUI.crosshairNoInteraction();
             Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.green);
@@ -127,24 +95,13 @@ public class PlayerInteract : MonoBehaviour
 
                         target = hitInfo.collider.gameObject;
 
-                        /*                        Hittable hittable = hitInfo.collider.GetComponent<Hittable>();
-                                                Transform hittablePos = hitInfo.collider.GetComponent<Transform>();*/
-
-                        // Player UI Update
-
-                        //_playerUI.crosshairInteraction();
-                        //hittable.TakeDamage(WeaponManager._currentWeapon.GetWeaponDamage());
-
                         _playerUI.crosshairInteraction();
-                        /*                        hitTarget = hittable;                        
-                                                this.hittablePos = hittablePos;*/
-                        Invoke("InvokeEnemyHit", WeaponManager._currentWeapon.GetTimeTillHit());
                         
+                        Invoke("InvokeEnemyHit", WeaponManager._currentWeapon.GetTimeTillHit());
                     }
                 }
                 else
                 {
-                    //_playerUI.crosshairNoInteraction();
                     Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.yellow);
                 }
             }
@@ -167,14 +124,6 @@ public class PlayerInteract : MonoBehaviour
 
             //Kane to hdh yparxon _weapon tou trapezioy paidi kai metakinise to 
             //! den exoume ksekatharisei ean to weapon to spawn einai teli
-
-            /*            
-                        _player._currentWeapon = PlayerWeapon.SWORD;
-                        _player._weapon = GetComponent<Sword>();
-                        _player._weapon.transform.SetParent(_weaponHolder.transform);
-                        _player._weapon.transform.localPosition = Vector3.zero;
-                        _player._weapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
-                        _player._weapon.transform.localScale = Vector3.one;*/
         }
 
 
@@ -185,7 +134,6 @@ public class PlayerInteract : MonoBehaviour
         StartCoroutine(Effects.Flash(target.GetComponentInChildren<SpriteRenderer>(), 0.5f));
         GetComponent<PlayerController>().PlayVFX(target.GetComponent<Transform>());
         GetComponent<PlayerController>().PlayImpactSound();
-
     }
 
 }

@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class CreditsMenu : MonoBehaviour
 {
     public Animator creditsAnimator;
     public GameObject mainMenu;
+
     private void OnEnable()
     {
         PlayCredits();

@@ -1,15 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.UI;
-using UnityEngine.VFX;
 
 
-//Pithano Onoma PlayerController
 public class PlayerController : MonoBehaviour, Hittable
 {
     private CharacterController _player;
@@ -33,7 +25,6 @@ public class PlayerController : MonoBehaviour, Hittable
     public float _speed = 5f;
     public float _runningSpeed;
     public float _tiredSpeed;
-/*    public float _runningStaminaConsumption;*/
     public float _staminaConsumptionRate;
     public float _jumpHeight = 2.5f;
     public float _gravity = -6f;
@@ -82,8 +73,7 @@ public class PlayerController : MonoBehaviour, Hittable
         
         AudioSource[] soundChannels = gameObject.GetComponents<AudioSource>();
         playerSFX = new PlayerSFX(soundChannels[0], soundChannels[1], soundChannels[2], soundChannels[3], soundChannels[4]);
-  /*      playerSFX.Initialize(soundChannels[0], soundChannels[1], soundChannels[2], soundChannels[3]);
-*/
+
         _velocity = Vector3.zero;
 
         _currentSpeed = 0f;
@@ -91,7 +81,6 @@ public class PlayerController : MonoBehaviour, Hittable
         _gravity = -20f;
         _runningSpeed = 12f;
         _tiredSpeed = 2f;
-        /*_runningStaminaConsumption = 0.2f;*/
         _staminaConsumptionRate = 12f;
         _waitForRegen = false;
         _noStaminaEffect = false;
@@ -112,7 +101,6 @@ public class PlayerController : MonoBehaviour, Hittable
 
     void Update()
     {
-        //Debug.Log("Stamina: " + player.stamina);
         _isGrounded = _player.isGrounded;
         _timer += Time.deltaTime;
     }
@@ -129,8 +117,7 @@ public class PlayerController : MonoBehaviour, Hittable
         }
         else if (_isRunning && player.stamina > 0 && !_waitForRegen)
         {
-            _currentSpeed = _runningSpeed;/*
-            player.stamina -= _runningStaminaConsumption;*/
+            _currentSpeed = _runningSpeed;
             player.stamina = Mathf.Clamp(player.stamina - Time.deltaTime * _staminaConsumptionRate, -1f, player.maxStamina);
             PlayMovementSound(runEffect);
         }
@@ -224,7 +211,6 @@ public class PlayerController : MonoBehaviour, Hittable
             }
         }
 
-        //Debug.Log("Velocity: " + _velocity);
 
         _player.Move(transform.TransformDirection(_velocity) * Time.deltaTime);
 
@@ -234,10 +220,6 @@ public class PlayerController : MonoBehaviour, Hittable
 
     public bool canAttack()
     {
-        //if (timer >= attackCooldown && _isStaminaEnough)
-        //{
-        //    attackCooldown = 0;
-        //}
 
         //enable for stamina consumption while punching
         if (_timer >= _attackCooldown && 
@@ -254,22 +236,6 @@ public class PlayerController : MonoBehaviour, Hittable
         }
         else
         {
-            //enable for stamina consumption while punching
-            //bug: no stamina consumption when player stays still and punches, need to move!
-            /*
-            if (_waitForRegen && !_noStaminaEffect)
-            {
-                _noStaminaEffect = true;
-                StartCoroutine(
-                    Effects.FlashStaminaEffect(
-                        GameObject.Find("Fill Stamina").GetComponent<Image>(),
-                        0.2f,
-                        () => { _noStaminaEffect = false; }
-                    )
-                );
-            }
-            */
-
             return false;
         }
 
@@ -312,7 +278,6 @@ public class PlayerController : MonoBehaviour, Hittable
     {
         if (player.stamina<player.maxStamina) 
         {
-            //frame rate independent stamina regen
             player.stamina = Mathf.Clamp(player.stamina + Time.deltaTime*regenRate , 0, player.maxStamina);
         }
     }
