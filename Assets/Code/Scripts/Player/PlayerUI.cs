@@ -45,7 +45,7 @@ public class PlayerUI : MonoBehaviour
         EventManager.PlayerHitEffectEvent -= PlayDamageVfx;
         EventManager.TogglePause -= TogglePauseMenu;
         EventManager.ToggleEquipMenu -= ToggleRadialMenu;
-        EventManager.ToggleEquipMenu -= FadeToBlack;
+        EventManager.BossDefeatedEvent -= FadeToBlack;
     }
 
     private void ToggleRadialMenu()
@@ -138,18 +138,13 @@ public class PlayerUI : MonoBehaviour
 
     public void FadeToBlack()
     {
-        /*blackScreen.SetActive(true);
-        
+        blackScreen.SetActive(true);
 
-        StartCoroutine(Effects.StartFadeWithFunction(blackScreen.GetComponent<Image>(), 5f, 1f, RollCredits));
-        StartCoroutine(Effects.StartFade(GameObject.Find("GameManager")?.GetComponent<AudioSource>(), 5f, 0f));*/
-
-        ShowIntroBackground();
-        GetComponent<CameraFade>().StartFadeOutEffect(0.1f);
+        StartCoroutine(Effects.StartFadeWithFunction(blackScreen.GetComponent<Image>(), 4f, 1f, RollCredits));
+        StartCoroutine(Effects.StartFade(GameObject.Find("GameManager")?.GetComponent<AudioSource>(), 5f, 0f));
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        RollCredits();
     }
 
     private void RollCredits()
