@@ -1894,7 +1894,6 @@ GameObject:
   - component: {fileID: 1286436717188821756}
   - component: {fileID: 6859531390649807074}
   - component: {fileID: 7753705321393212180}
-  - component: {fileID: 7859037492854632313}
   - component: {fileID: 5204003527741591002}
   - component: {fileID: 1898201763766650918}
   - component: {fileID: 8920248689233592405}
@@ -1965,28 +1964,6 @@ MonoBehaviour:
   _anglesToRotate: {x: 0, y: 0, z: 0}
   tiltAmount: 0
   tiltSpeed: 0
---- !u!114 &7859037492854632313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4325341676441248389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93f754adbde71834e85eb3ca9d3f99bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cameraHolder: {fileID: 550136523393284725}
-  sensitivity: 8
-  _rotationLimitUp: -35
-  _rotationLimitDown: 45
-  _rotateToAngles: 0
-  _anglesToRotate: {x: 0, y: 0, z: 0}
-  tiltAmount: 0
-  tiltSpeed: 0
-  _smoothTime: 0.02
-  _horizontalRotationHelper: {fileID: 4150067041896323914}
 --- !u!114 &5204003527741591002
 MonoBehaviour:
   m_ObjectHideFlags: 0

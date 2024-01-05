@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoblinController : MonoBehaviour, Hittable
+public class EnemyController : MonoBehaviour, Hittable
 {
     [SerializeField] private float health = 100;
     [SerializeField] private bool boss = false;

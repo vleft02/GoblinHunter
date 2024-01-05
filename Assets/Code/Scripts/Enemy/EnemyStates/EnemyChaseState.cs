@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoblinChaseState : BaseState<GoblinStateMachine.GoblinState>
+public class EnemyChaseState : BaseState<EnemyStateMachine.EnemyState>
 {
     private float speed = 2f;
-    private GoblinStateMachine _enemy;
-    public GoblinChaseState(GoblinStateMachine enemy, GoblinStateMachine.GoblinState key = GoblinStateMachine.GoblinState.CHASE) : base(key)
+    private EnemyStateMachine _enemy;
+    public EnemyChaseState(EnemyStateMachine enemy, EnemyStateMachine.EnemyState key = EnemyStateMachine.EnemyState.CHASE) : base(key)
     {
         _enemy = enemy;
     }
@@ -22,18 +22,18 @@ public class GoblinChaseState : BaseState<GoblinStateMachine.GoblinState>
 
     }
 
-    public override GoblinStateMachine.GoblinState GetNextState()
+    public override EnemyStateMachine.EnemyState GetNextState()
     {
         if (_enemy.PlayerDetected(_enemy.combat_radius))
         {
-            return GoblinStateMachine.GoblinState.ATTACK;
+            return EnemyStateMachine.EnemyState.ATTACK;
         }
         if (!_enemy.PlayerDetected(_enemy.chase_radius))
         {
-            return GoblinStateMachine.GoblinState.PATROL;
+            return EnemyStateMachine.EnemyState.PATROL;
         }
 
-        return GoblinStateMachine.GoblinState.CHASE;
+        return EnemyStateMachine.EnemyState.CHASE;
     }
 
     public override void OnTriggerEnter(Collider other)

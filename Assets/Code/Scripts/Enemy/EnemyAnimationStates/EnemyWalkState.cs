@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static GoblinAnimationFSM;
+using static EnemyAnimationFSM;
 
-public class GoblinWalkState : BaseAnimationState<GoblinAnimation>
+public class EnemyWalkState : BaseAnimationState<EnemyAnimation>
 {
     private Dictionary<Aspects, AnimationClip> walkState = new Dictionary<Aspects, AnimationClip>();
 
-    private GoblinStateMachine _stateMachine;
+    private EnemyStateMachine _stateMachine;
 
-    public GoblinWalkState(AnimationAspectManager _aspectManager, GoblinStateMachine stateMachine, GoblinAnimation key = GoblinAnimation.WALK)
+    public EnemyWalkState(AnimationAspectManager _aspectManager, EnemyStateMachine stateMachine, EnemyAnimation key = EnemyAnimation.WALK)
         : base(key)
     {
         Id = 0;
@@ -46,7 +46,7 @@ public class GoblinWalkState : BaseAnimationState<GoblinAnimation>
 
     public override void UpdateState()
     {
-        if (_stateMachine.CurrentState.StateKey == GoblinStateMachine.GoblinState.CHASE)
+        if (_stateMachine.CurrentState.StateKey == EnemyStateMachine.EnemyState.CHASE)
         {
             AspectManager.disableAspects = true;
         }
@@ -69,19 +69,19 @@ public class GoblinWalkState : BaseAnimationState<GoblinAnimation>
     
     }
 
-    public override GoblinAnimation GetNextState()
+    public override EnemyAnimation GetNextState()
     {
         if (_stateMachine.isAttacking)
         {
-            return GoblinAnimation.ATTACK;
+            return EnemyAnimation.ATTACK;
         }
 
         if (_stateMachine.Agent.velocity.magnitude > 0)
         {
-            return GoblinAnimation.WALK;
+            return EnemyAnimation.WALK;
         }
 
-        return GoblinAnimation.IDLE;
+        return EnemyAnimation.IDLE;
 
     }
 }

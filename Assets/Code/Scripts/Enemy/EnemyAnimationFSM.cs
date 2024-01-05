@@ -2,33 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoblinAnimationFSM : AnimationStateManager<GoblinAnimationFSM.GoblinAnimation>
+public class EnemyAnimationFSM : AnimationStateManager<EnemyAnimationFSM.EnemyAnimation>
 {
-    private GoblinStateMachine stateMachine;
+    private EnemyStateMachine stateMachine;
 
-    public enum GoblinAnimation
+    public enum EnemyAnimation
     {
         IDLE, WALK, HIT, TO_DEATH, ATTACK
     }
 
     void InitStates()
     {
-        States.Add(GoblinAnimation.IDLE, new GoblinIdleState(AspectManager, stateMachine));
-        States.Add(GoblinAnimation.WALK, new GoblinWalkState(AspectManager, stateMachine));
-        States.Add(GoblinAnimation.HIT, new GoblinHitState(AspectManager, stateMachine));
-        States.Add(GoblinAnimation.TO_DEATH, new GoblinToDeathState(AspectManager));
-        States.Add(GoblinAnimation.ATTACK, new GoblinAttackState(AspectManager, stateMachine));
+        States.Add(EnemyAnimation.IDLE, new EnemyIdleState(AspectManager, stateMachine));
+        States.Add(EnemyAnimation.WALK, new EnemyWalkState(AspectManager, stateMachine));
+        States.Add(EnemyAnimation.HIT, new EnemyHitState(AspectManager, stateMachine));
+        States.Add(EnemyAnimation.TO_DEATH, new EnemyToDeathState(AspectManager));
+        States.Add(EnemyAnimation.ATTACK, new EnemyAttackState(AspectManager, stateMachine));
 
     }
 
     private void Awake()
     {
-        stateMachine = GetComponent<GoblinStateMachine>();
+        stateMachine = GetComponent<EnemyStateMachine>();
         AspectManager = GetComponent<AnimationAspectManager>();
         EventManager.EnemyHitEvent += GetHit;
         EventManager.EnemyDeathEvent += ToDeathAnimation;
         InitStates();
-        CurrentState = States[GoblinAnimation.IDLE];
+        CurrentState = States[EnemyAnimation.IDLE];
     }
 
     private void OnDisable()
@@ -45,9 +45,9 @@ public class GoblinAnimationFSM : AnimationStateManager<GoblinAnimationFSM.Gobli
     
     public void GetHit(Hittable enemy)
     {
-        if (gameObject.GetComponent<Hittable>() == enemy && CurrentState.StateKey != GoblinAnimation.TO_DEATH)
+        if (gameObject.GetComponent<Hittable>() == enemy && CurrentState.StateKey != EnemyAnimation.TO_DEATH)
         {
-            TransitionToState(GoblinAnimation.HIT);
+            TransitionToState(EnemyAnimation.HIT);
         }
     }
     
@@ -56,7 +56,7 @@ public class GoblinAnimationFSM : AnimationStateManager<GoblinAnimationFSM.Gobli
     {
         if (gameObject == enemy && !TerminateFSM)
         {
-            TransitionToState(GoblinAnimation.TO_DEATH);
+            TransitionToState(EnemyAnimation.TO_DEATH);
             TerminateFSM = true;
         }
     }

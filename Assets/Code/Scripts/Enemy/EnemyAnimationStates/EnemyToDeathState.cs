@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static GoblinAnimationFSM;
+using static EnemyAnimationFSM;
 
-public class GoblinToDeathState : BaseAnimationState<GoblinAnimation>
+public class EnemyToDeathState : BaseAnimationState<EnemyAnimation>
 {
     private Dictionary<Aspects, AnimationClip> toDeathState = new Dictionary<Aspects, AnimationClip>();
 
-    public GoblinToDeathState(AnimationAspectManager _aspectManager, GoblinAnimation key = GoblinAnimation.TO_DEATH)
+    public EnemyToDeathState(AnimationAspectManager _aspectManager, EnemyAnimation key = EnemyAnimation.TO_DEATH)
         : base(key)
     {
         Id = 0;
@@ -45,9 +45,9 @@ public class GoblinToDeathState : BaseAnimationState<GoblinAnimation>
 
     }
 
-    public override GoblinAnimation GetNextState()
+    public override EnemyAnimation GetNextState()
     {
-        return GoblinAnimation.TO_DEATH;
+        return EnemyAnimation.TO_DEATH;
 
     }
 }

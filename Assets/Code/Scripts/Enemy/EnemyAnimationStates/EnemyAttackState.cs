@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static GoblinAnimationFSM;
+using static EnemyAnimationFSM;
 
-public class GoblinAttackState : BaseAnimationState<GoblinAnimation>
+public class EnemyAttackState : BaseAnimationState<EnemyAnimation>
 {
     private Dictionary<Aspects, AnimationClip> attackState = new Dictionary<Aspects, AnimationClip>();
 
-    private GoblinStateMachine _stateMachine;
+    private EnemyStateMachine _stateMachine;
 
-    public GoblinAttackState(AnimationAspectManager _aspectManager, GoblinStateMachine stateMachine, GoblinAnimation key = GoblinAnimation.ATTACK)
+    public EnemyAttackState(AnimationAspectManager _aspectManager, EnemyStateMachine stateMachine, EnemyAnimation key = EnemyAnimation.ATTACK)
         : base(key)
     {
         Id = 0;
@@ -57,15 +57,15 @@ public class GoblinAttackState : BaseAnimationState<GoblinAnimation>
     {
     }
 
-    public override GoblinAnimation GetNextState()
+    public override EnemyAnimation GetNextState()
     {
 
         if (_stateMachine.Agent.velocity.magnitude > 0)
         {
-            return GoblinAnimation.WALK;
+            return EnemyAnimation.WALK;
         }
 
-        return GoblinAnimation.ATTACK;
+        return EnemyAnimation.ATTACK;
 
     }
 }

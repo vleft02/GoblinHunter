@@ -253,7 +253,6 @@ public class PlayerController : MonoBehaviour, Hittable
     {
         if (player.health > amount)
         {
-            Debug.Log("Health Before: " + player.health);
             player.health -= amount*defense;
             PlayerProfile.UpdatePlayerHealth(player.health);
             playerSFX.PlayFromHurtSound(HurtEffect);
@@ -264,7 +263,6 @@ public class PlayerController : MonoBehaviour, Hittable
             player.health = 0;
             EventManager.PlayerDeath();
         }
-        Debug.Log("Health After: " + player.health);
     }
 
     public void Heal(int healingAmount)

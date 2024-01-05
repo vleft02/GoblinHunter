@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoblinStateMachine : StateManager<GoblinStateMachine.GoblinState>
+public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
 {
     public bool canEndAttack = false;
     public float combat_radius = 2f;
     public float patrol_radius = 18f;
     public float chase_radius = 12f;
 
-    public enum GoblinState
+    public enum EnemyState
     {
         ATTACK, PATROL, CHASE, DEAD
     }
 
     private SpriteBillboard billboard;
-    private GoblinController controller;
+    private EnemyController controller;
     private bool _isAttacking = false;
 
     public bool _isIdling = false;
@@ -30,10 +30,10 @@ public class GoblinStateMachine : StateManager<GoblinStateMachine.GoblinState>
 
     void InitStates()
     {
-        States.Add(GoblinState.ATTACK, new GoblinAttackLogicState(this));
-        States.Add(GoblinState.PATROL, new GoblinPatrolState(this));
-        States.Add(GoblinState.CHASE, new GoblinChaseState(this));
-        States.Add(GoblinState.DEAD, new GoblinDeathState(this));
+        States.Add(EnemyState.ATTACK, new EnemyAttackLogicState(this));
+        States.Add(EnemyState.PATROL, new EnemyPatrolState(this));
+        States.Add(EnemyState.CHASE, new EnemyChaseState(this));
+        States.Add(EnemyState.DEAD, new EnemyDeathState(this));
     }
 
     private void Awake()
@@ -41,7 +41,7 @@ public class GoblinStateMachine : StateManager<GoblinStateMachine.GoblinState>
         Player = GameObject.Find("Player");
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         billboard = GetComponentInChildren<SpriteBillboard>();
-        controller = GetComponent<GoblinController>();
+        controller = GetComponent<EnemyController>();
         EventManager.EnemyDeathEvent += DropDead;
         Agent.isStopped = true;
 
@@ -50,7 +50,7 @@ public class GoblinStateMachine : StateManager<GoblinStateMachine.GoblinState>
         chase_radius = 12f;
 
         InitStates();
-        CurrentState = States[GoblinState.PATROL];
+        CurrentState = States[EnemyState.PATROL];
     }
     private void OnDisable()
     {
@@ -58,7 +58,7 @@ public class GoblinStateMachine : StateManager<GoblinStateMachine.GoblinState>
     }
     private void LateUpdate()
     {
-        if (CurrentState.StateKey != GoblinState.DEAD)
+        if (CurrentState.StateKey != EnemyState.DEAD)
         {
 
             if (agent.velocity.sqrMagnitude > Mathf.Epsilon)
@@ -104,7 +104,7 @@ public class GoblinStateMachine : StateManager<GoblinStateMachine.GoblinState>
     {
         if (gameObject == enemy)
         {
-            TransitionToState(GoblinState.DEAD);
+            TransitionToState(EnemyState.DEAD);
             TerminateFSM = true;
             billboard.rotateYAxis = true;
             GetComponent<Collider>().enabled = false;

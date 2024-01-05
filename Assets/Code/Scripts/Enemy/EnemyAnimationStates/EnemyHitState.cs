@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static GoblinAnimationFSM;
+using static EnemyAnimationFSM;
 
-public class GoblinHitState : BaseAnimationState<GoblinAnimation>
+public class EnemyHitState : BaseAnimationState<EnemyAnimation>
 {
     private Dictionary<Aspects, AnimationClip> hitState = new Dictionary<Aspects, AnimationClip>();
 
-    private GoblinStateMachine _stateMachine;
+    private EnemyStateMachine _stateMachine;
 
     private SpriteRenderer sprite;
     private Transform enemyTransform;
@@ -18,7 +18,7 @@ public class GoblinHitState : BaseAnimationState<GoblinAnimation>
 
     private Material flashMaterial;
     private Material originalMaterial;
-    public GoblinHitState(AnimationAspectManager _aspectManager, GoblinStateMachine stateMachine, GoblinAnimation key = GoblinAnimation.HIT)
+    public EnemyHitState(AnimationAspectManager _aspectManager, EnemyStateMachine stateMachine, EnemyAnimation key = EnemyAnimation.HIT)
         : base(key)
     {
         Id = 0;
@@ -77,23 +77,23 @@ public class GoblinHitState : BaseAnimationState<GoblinAnimation>
         sprite.material = originalMaterial;
     }
 
-    public override GoblinAnimation GetNextState()
+    public override EnemyAnimation GetNextState()
     {
         if (timer > staggerTime)
         {
             if (_stateMachine.isAttacking)
             {
-                return GoblinAnimation.ATTACK;
+                return EnemyAnimation.ATTACK;
             }
 
             if (_stateMachine.Agent.velocity.magnitude > 0)
             {
-                return GoblinAnimation.WALK;
+                return EnemyAnimation.WALK;
             }
 
-            return GoblinAnimation.IDLE;
+            return EnemyAnimation.IDLE;
         }
-        return GoblinAnimation.HIT;
+        return EnemyAnimation.HIT;
 
     }
 }

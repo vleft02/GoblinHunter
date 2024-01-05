@@ -442,11 +442,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7511896830623928232}
   - component: {fileID: 7966443585951611549}
-  - component: {fileID: 3101870011504742673}
   - component: {fileID: 5967130322496440575}
   - component: {fileID: 822214817512777120}
   - component: {fileID: 36994020693431810}
-  - component: {fileID: 7337590781398869647}
   - component: {fileID: 1946574120072107389}
   - component: {fileID: 905518388095210158}
   - component: {fileID: 2597861608828844703}
@@ -489,24 +487,10 @@ MonoBehaviour:
   sensitivity: 15
   _rotationLimitUp: 45
   _rotationLimitDown: -35
---- !u!114 &3101870011504742673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8954870798843638692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93f754adbde71834e85eb3ca9d3f99bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cameraHolder: {fileID: 1726373498765415727}
-  sensitivity: 15
-  _rotationLimitUp: -35
-  _rotationLimitDown: 45
-  _smoothTime: 0.02
-  _horizontalRotationHelper: {fileID: 8103485333335401376}
+  _rotateToAngles: 0
+  _anglesToRotate: {x: 0, y: 0, z: 0}
+  tiltAmount: 0
+  tiltSpeed: 0
 --- !u!114 &5967130322496440575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,14 +504,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveDir: {x: 0, y: 0, z: 0}
-  _playerAnimator: {fileID: 7337590781398869647}
-  _isGrounded: 1
+  regenRate: 7
+  _currentSpeed: 0
+  _maxVelocity: 0
   _speed: 8
   _runningSpeed: 10
+  _tiredSpeed: 0
+  _staminaConsumptionRate: 0
   _jumpHeight: 2
-  _isRunning: 0
   _gravity: -9.8
-  _isAttacking: 0
+  _isGrounded: 1
+  _isRunning: 0
+  HitEffectEmmiter: {fileID: 0}
+  BloodEffectEmmiter: {fileID: 0}
+  walkEffect: {fileID: 0}
+  runEffect: {fileID: 0}
+  attackEffect: {fileID: 0}
+  EquipEffect: {fileID: 0}
+  impactEffect: {fileID: 0}
+  tiredEffect: {fileID: 0}
+  HurtEffect: {fileID: 0}
 --- !u!143 &822214817512777120
 CharacterController:
   m_ObjectHideFlags: 0
@@ -566,20 +562,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6fb5794a012fa84e929e2d609970805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7337590781398869647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8954870798843638692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f0afab2e8d97cb49a8dcdf2951e4c05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IDLE: 2081823275
-  ATTACK: 1080829965
+  _instantiateWeapon: 0
+  _currentWeapon: 0
+  _changeWeapon: 0
+  isPaused: 0
+  isDead: 0
+  _playerController: {fileID: 0}
 --- !u!114 &1946574120072107389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,6 +620,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _crosshair: {fileID: 9192432822471111317}
   _notifText: {fileID: 3996230238075328623}
+  healthBar: {fileID: 0}
+  staminaBar: {fileID: 0}
+  healthVFX: {fileID: 0}
+  healthVFX_0: {fileID: 0}
+  healthRadialFX: {fileID: 0}
+  damageRadialFX: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  equipMenu: {fileID: 0}
+  deathScreen: {fileID: 0}
+  blackScreen: {fileID: 0}
+  introBackground: {fileID: 0}
+  introText: {fileID: 0}
+  introTextStory: {fileID: 0}
+  introTextStudio: {fileID: 0}
+  introTextPresents: {fileID: 0}
 --- !u!1 &9151498894086419093
 GameObject:
   m_ObjectHideFlags: 0

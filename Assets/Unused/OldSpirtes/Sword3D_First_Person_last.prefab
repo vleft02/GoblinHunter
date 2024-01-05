@@ -205,7 +205,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1904953553
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 59840193a95b5324b997ce94047ccec7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -390,11 +390,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5830563844009022465}
   - component: {fileID: 3070674684285302598}
-  - component: {fileID: 3738971391767830538}
   - component: {fileID: 8982387976739873939}
   - component: {fileID: 319704535912172067}
   - component: {fileID: 2492682519779066934}
-  - component: {fileID: 8923960705909750513}
   - component: {fileID: 363722578409502497}
   - component: {fileID: 3689933640016015229}
   - component: {fileID: 1557560069566293772}
@@ -437,24 +435,10 @@ MonoBehaviour:
   sensitivity: 15
   _rotationLimitUp: 45
   _rotationLimitDown: -35
---- !u!114 &3738971391767830538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5614196621514171084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93f754adbde71834e85eb3ca9d3f99bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cameraHolder: {fileID: 5663751371985571205}
-  sensitivity: 15
-  _rotationLimitUp: -35
-  _rotationLimitDown: 45
-  _smoothTime: 0.02
-  _horizontalRotationHelper: {fileID: 5671004642813064232}
+  _rotateToAngles: 0
+  _anglesToRotate: {x: 0, y: 0, z: 0}
+  tiltAmount: 0
+  tiltSpeed: 0
 --- !u!114 &8982387976739873939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,14 +452,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveDir: {x: 0, y: 0, z: 0}
-  _playerAnimator: {fileID: 8923960705909750513}
-  _isGrounded: 1
+  regenRate: 7
+  _currentSpeed: 0
+  _maxVelocity: 0
   _speed: 8
   _runningSpeed: 10
+  _tiredSpeed: 0
+  _staminaConsumptionRate: 0
   _jumpHeight: 2
-  _isRunning: 0
   _gravity: -9.8
-  _isAttacking: 0
+  _isGrounded: 1
+  _isRunning: 0
+  HitEffectEmmiter: {fileID: 0}
+  BloodEffectEmmiter: {fileID: 0}
+  walkEffect: {fileID: 0}
+  runEffect: {fileID: 0}
+  attackEffect: {fileID: 0}
+  EquipEffect: {fileID: 0}
+  impactEffect: {fileID: 0}
+  tiredEffect: {fileID: 0}
+  HurtEffect: {fileID: 0}
 --- !u!143 &319704535912172067
 CharacterController:
   m_ObjectHideFlags: 0
@@ -514,23 +510,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6fb5794a012fa84e929e2d609970805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 0}
   _instantiateWeapon: 0
   _currentWeapon: 0
   _changeWeapon: 0
-  _weaponHolder: {fileID: 6685234172179013819}
---- !u!114 &8923960705909750513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5614196621514171084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f0afab2e8d97cb49a8dcdf2951e4c05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  isPaused: 0
+  isDead: 0
+  _playerController: {fileID: 0}
 --- !u!114 &363722578409502497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -548,8 +533,6 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 64
-  _weaponToSpawn: {fileID: 5329367450572198311, guid: 01901ab8e445bd9489b444c03b2f9b15, type: 3}
-  _weaponHolder: {fileID: 6685234172179013819}
 --- !u!95 &3689933640016015229
 Animator:
   serializedVersion: 5
@@ -585,6 +568,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _crosshair: {fileID: 4518978425443096078}
   _notifText: {fileID: 1588399744434325439}
+  healthBar: {fileID: 0}
+  staminaBar: {fileID: 0}
+  healthVFX: {fileID: 0}
+  healthVFX_0: {fileID: 0}
+  healthRadialFX: {fileID: 0}
+  damageRadialFX: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  equipMenu: {fileID: 0}
+  deathScreen: {fileID: 0}
+  blackScreen: {fileID: 0}
+  introBackground: {fileID: 0}
+  introText: {fileID: 0}
+  introTextStory: {fileID: 0}
+  introTextStudio: {fileID: 0}
+  introTextPresents: {fileID: 0}
 --- !u!1 &6685234172179013819
 GameObject:
   m_ObjectHideFlags: 0

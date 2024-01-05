@@ -108,11 +108,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8635550707758014329}
   - component: {fileID: 2254329762692428248}
-  - component: {fileID: 7917018038248410848}
   - component: {fileID: 8277475827228245594}
   - component: {fileID: 3799304399907225665}
   - component: {fileID: 5827243577721426887}
-  - component: {fileID: 1673396570844667262}
   - component: {fileID: 670658252012703717}
   - component: {fileID: 2579061411165353434}
   m_Layer: 0
@@ -154,24 +152,10 @@ MonoBehaviour:
   sensitivity: 20
   _rotationLimitUp: 45
   _rotationLimitDown: -35
---- !u!114 &7917018038248410848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4564094218639042921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93f754adbde71834e85eb3ca9d3f99bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cameraHolder: {fileID: 2460334138967227942}
-  sensitivity: 20
-  _rotationLimitUp: -35
-  _rotationLimitDown: 45
-  _smoothTime: 0.02
-  _horizontalRotationHelper: {fileID: 4763963367001531485}
+  _rotateToAngles: 0
+  _anglesToRotate: {x: 0, y: 0, z: 0}
+  tiltAmount: 0
+  tiltSpeed: 0
 --- !u!114 &8277475827228245594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,14 +169,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveDir: {x: 0, y: 0, z: 0}
-  _playerAnimator: {fileID: 1673396570844667262}
-  _isGrounded: 1
+  regenRate: 7
+  _currentSpeed: 0
+  _maxVelocity: 0
   _speed: 8
   _runningSpeed: 10
+  _tiredSpeed: 0
+  _staminaConsumptionRate: 0
   _jumpHeight: 2
-  _isRunning: 0
   _gravity: -9.8
-  _isAttacking: 0
+  _isGrounded: 1
+  _isRunning: 0
+  HitEffectEmmiter: {fileID: 0}
+  BloodEffectEmmiter: {fileID: 0}
+  walkEffect: {fileID: 0}
+  runEffect: {fileID: 0}
+  attackEffect: {fileID: 0}
+  EquipEffect: {fileID: 0}
+  impactEffect: {fileID: 0}
+  tiredEffect: {fileID: 0}
+  HurtEffect: {fileID: 0}
 --- !u!143 &3799304399907225665
 CharacterController:
   m_ObjectHideFlags: 0
@@ -231,20 +227,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6fb5794a012fa84e929e2d609970805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1673396570844667262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4564094218639042921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f0afab2e8d97cb49a8dcdf2951e4c05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IDLE: 2081823275
-  ATTACK: 1080829965
+  _instantiateWeapon: 0
+  _currentWeapon: 0
+  _changeWeapon: 0
+  isPaused: 0
+  isDead: 0
+  _playerController: {fileID: 0}
 --- !u!114 &670658252012703717
 MonoBehaviour:
   m_ObjectHideFlags: 0

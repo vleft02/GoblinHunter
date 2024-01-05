@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class GoblinPatrolState : BaseState<GoblinStateMachine.GoblinState>
+public class EnemyPatrolState : BaseState<EnemyStateMachine.EnemyState>
 {
-    private GoblinStateMachine _enemy;
+    private EnemyStateMachine _enemy;
     private Vector3 center;
     static public Vector3 nextWaypoint;
     private float _walkingSpeed = 2.0f;
     private float walking_radius = 10f;
-    public GoblinPatrolState(GoblinStateMachine enemy, GoblinStateMachine.GoblinState key = GoblinStateMachine.GoblinState.PATROL) : base(key)
+    public EnemyPatrolState(EnemyStateMachine enemy, EnemyStateMachine.EnemyState key = EnemyStateMachine.EnemyState.PATROL) : base(key)
     {
         _enemy = enemy;
     }
@@ -52,13 +52,13 @@ public class GoblinPatrolState : BaseState<GoblinStateMachine.GoblinState>
         }
     }
 
-    public override GoblinStateMachine.GoblinState GetNextState()
+    public override EnemyStateMachine.EnemyState GetNextState()
     {
         if (_enemy.PlayerDetected(_enemy.chase_radius))
         {
-            return GoblinStateMachine.GoblinState.CHASE;
+            return EnemyStateMachine.EnemyState.CHASE;
         }
-        return GoblinStateMachine.GoblinState.PATROL;
+        return EnemyStateMachine.EnemyState.PATROL;
     }
 
     public override void OnTriggerEnter(Collider other) { }

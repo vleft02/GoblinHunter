@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoblinDeathState : BaseState<GoblinStateMachine.GoblinState>
+public class EnemyDeathState : BaseState<EnemyStateMachine.EnemyState>
 {
-    private GoblinStateMachine _enemy;
+    private EnemyStateMachine _enemy;
 
-    public GoblinDeathState(GoblinStateMachine enemy, GoblinStateMachine.GoblinState key = GoblinStateMachine.GoblinState.DEAD)
+    public EnemyDeathState(EnemyStateMachine enemy, EnemyStateMachine.EnemyState key = EnemyStateMachine.EnemyState.DEAD)
         : base(key)
     {
         _enemy = enemy;
@@ -22,9 +22,9 @@ public class GoblinDeathState : BaseState<GoblinStateMachine.GoblinState>
 
     }
 
-    public override GoblinStateMachine.GoblinState GetNextState()
+    public override EnemyStateMachine.EnemyState GetNextState()
     {
-        return GoblinStateMachine.GoblinState.DEAD;
+        return EnemyStateMachine.EnemyState.DEAD;
     }
 
     public override void OnTriggerEnter(Collider other)

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoblinAttackLogicState : BaseState<GoblinStateMachine.GoblinState>
+public class EnemyAttackLogicState : BaseState<EnemyStateMachine.EnemyState>
 {
-    private GoblinStateMachine _enemy;
+    private EnemyStateMachine _enemy;
 
-    public GoblinAttackLogicState(GoblinStateMachine enemy, GoblinStateMachine.GoblinState key = GoblinStateMachine.GoblinState.ATTACK) : base(key)
+    public EnemyAttackLogicState(EnemyStateMachine enemy, EnemyStateMachine.EnemyState key = EnemyStateMachine.EnemyState.ATTACK) : base(key)
     {
         _enemy = enemy;
     }
@@ -22,15 +22,15 @@ public class GoblinAttackLogicState : BaseState<GoblinStateMachine.GoblinState>
 
     }
 
-    public override GoblinStateMachine.GoblinState GetNextState()
+    public override EnemyStateMachine.EnemyState GetNextState()
     {
 
         if (!_enemy.PlayerDetected(_enemy.combat_radius) && _enemy.canEndAttack)
         {
-            return GoblinStateMachine.GoblinState.CHASE;
+            return EnemyStateMachine.EnemyState.CHASE;
         }
 
-        return GoblinStateMachine.GoblinState.ATTACK;
+        return EnemyStateMachine.EnemyState.ATTACK;
     }
 
     public override void OnTriggerEnter(Collider other)
