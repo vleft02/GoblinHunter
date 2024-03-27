@@ -111,5 +111,5 @@ The game comprises three distinct areas, with the Dungeon being one of them. The
  ┗ 📜Utils.cs
 
 ```
-To find more information about the implementation of the project, you can check this [report](https://docs.google.com/gview?url=https://raw.githubusercontent.com/Panattack/GoblinHunter/main/Goblin_Hunter_Report.pdf&embedded=true)
+To find more information about the implementation of the project, you can double click this [link](https://docs.google.com/gview?url=https://raw.githubusercontent.com/Panattack/GoblinHunter/main/Goblin_Hunter_Report.pdf&embedded=true) to check the report.
 
