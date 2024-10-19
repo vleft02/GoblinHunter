@@ -1,14 +1,11 @@
 # **Goblin Hunter** 🗡️🎮
 
 ## **Trailer**
-*Check out the trailer for Goblin Hunter below:*
-
-<video width="800" controls>
-  <source src="https://panattack.github.io/GoblinHunter/GoblinTrailer.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-
----
+<p align="center">
+  <a href="https://youtu.be/1g0OP0_okLE">
+    <img src="https://img.youtube.com/vi/1g0OP0_okLE/0.jpg" alt="Goblin Hunter Trailer" />
+  </a>
+</p>
 
 ## **About the Game**
 **Goblin Hunter** is a first-person dungeon crawler developed using Unity and C#, drawing inspiration from classic games like *Doom (1993)*. With a 2.5D visual style and 8-directional sprites, this game offers a nostalgic, yet modern, experience. The core feature of **Goblin Hunter** is the procedural map generation, making each dungeon exploration unique. The game is designed for educational purposes and not for commercial release.
