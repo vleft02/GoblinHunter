@@ -4,7 +4,7 @@
 *Check out the trailer for Goblin Hunter below:*
 
 <video width="800" controls>
-  <source src="https://github.com/Panattack/GoblinHunter/blob/main/GoblinTrailer.mp4" type="video/mp4">
+  <source src="https://panattack.github.io/GoblinHunter/GoblinTrailer.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
