@@ -6,6 +6,9 @@
     <img src="https://img.youtube.com/vi/1g0OP0_okLE/0.jpg" alt="Goblin Hunter Trailer" />
   </a>
 </p>
+<video src="GoblinHunter/GoblinTrailer.mp4" controls="controls" width="600">
+Your browser does not support the video tag.
+</video>
 
 ## **About the Game**
 **Goblin Hunter** is a first-person dungeon crawler developed using Unity and C#, drawing inspiration from classic games like *Doom (1993)*. With a 2.5D visual style and 8-directional sprites, this game offers a nostalgic, yet modern, experience. The core feature of **Goblin Hunter** is the procedural map generation and the camera techniques, making each dungeon exploration unique. The game is designed for educational purposes and not for commercial release.
