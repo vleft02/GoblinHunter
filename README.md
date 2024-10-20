@@ -8,9 +8,7 @@
 </p>
 
 ## **About the Game**
-**Goblin Hunter** is a first-person dungeon crawler developed using Unity and C#, drawing inspiration from classic games like *Doom (1993)*. With a 2.5D visual style and 8-directional sprites, this game offers a nostalgic, yet modern, experience. The core feature of **Goblin Hunter** is the procedural map generation, making each dungeon exploration unique. The game is designed for educational purposes and not for commercial release.
-
----
+**Goblin Hunter** is a first-person dungeon crawler developed using Unity and C#, drawing inspiration from classic games like *Doom (1993)*. With a 2.5D visual style and 8-directional sprites, this game offers a nostalgic, yet modern, experience. The core feature of **Goblin Hunter** is the procedural map generation and the camera techniques, making each dungeon exploration unique. The game is designed for educational purposes and not for commercial release.
 
 ## **Key Features**
 - **Procedural Dungeon Generation**: Custom Depth First Search algorithm ensures a unique dungeon layout with dynamic enemy and item placements for every playthrough.
@@ -20,24 +18,18 @@
 - **Terrain Design**: Utilizes [Unity Terrain Tools](https://assetstore.unity.com/packages/tools/terrain/terrain-tools-64852#releases) for creating immersive level environments.
 - **Multiple Weapons & Interactables**: Equip your player with different weapons like swords, axes, and daggers, while also interacting with keys, doors, and healing items.
 
----
-
 ## **How to Play**
 1. **Exploring the Dungeon**: Traverse the procedurally generated dungeon and engage in combat with various enemies.
 2. **Combat System**: Choose from a variety of weapons (sword, daggers, axe) and fight enemies using strategic combat moves.
 3. **AI Encounters**: Face enemies with unique AI behaviors powered by state machines.
 4. **Saving & Loading**: Save your progress at any point and load your saved game to continue your adventure.
 
----
-
 ## **Technologies Used**
 - **Unity**: For overall game development.
 - **C#**: Main programming language for scripting.
-- **Blender**: Used to create custom shaders.
-- **Unity Terrain Tools**: For level and environment design.
+- **Blender**: Used to create 3d models like the cave and others.
+- **Unity Terrain Tools**: For level and environment design like the forest.
 - **JSON Serialization**: Save and load player stats and game state.
-
----
 
 ## **Project Structure**
 Here's an overview of the key files and scripts in the project:
