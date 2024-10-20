@@ -14,8 +14,8 @@
 - **Procedural Dungeon Generation**: Custom Depth First Search algorithm ensures a unique dungeon layout with dynamic enemy and item placements for every playthrough.
 - **State Machines**: AI and player animations are controlled via custom state machines integrated with Unity's framework for smooth behavior transitions.
 - **Save and Load System**: Progress is saved and loaded through JSON serialization, allowing players to pick up where they left off.
-- **Custom Shaders**: Handcrafted shaders built with Blender and Unity to maintain a consistent 2.5D aesthetic.
-- **Terrain Design**: Utilizes [Unity Terrain Tools](https://assetstore.unity.com/packages/tools/terrain/terrain-tools-64852#releases) for creating immersive level environments.
+- **Custom Shaders**: Handcrafted shaders built with Unity to maintain a consistent aesthetic.
+- **Terrain Design**: Utilizes [Unity Terrain Tools](https://assetstore.unity.com/packages/tools/terrain/terrain-tools-64852#releases) and Blender for creating immersive level environments.
 - **Multiple Weapons & Interactables**: Equip your player with different weapons like swords, axes, and daggers, while also interacting with keys, doors, and healing items.
 
 ## **How to Play**
@@ -130,6 +130,11 @@ Here's an overview of the key files and scripts in the project:
  ┗ 📜Utils.cs
 
 ```
+
+## Contributors
+* [Dimitris Pararas](https://github.com/dimparar)
+* [Vaggelis Leftakis](https://github.com/vleft02)
+* [Panagiotis Triantafillidis](https://github.com/Panattack)
 
 ## More info
 
